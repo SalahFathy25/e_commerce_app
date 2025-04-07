@@ -88,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember Me"),
     "resendEmail": MessageLookupByLibrary.simpleMessage("Resend Email"),
     "resendEmailIn": MessageLookupByLibrary.simpleMessage("Resend email in"),
+    "searchInStore": MessageLookupByLibrary.simpleMessage("Search in Store"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "signupTitle": MessageLookupByLibrary.simpleMessage(
       "Let\'s create your account",

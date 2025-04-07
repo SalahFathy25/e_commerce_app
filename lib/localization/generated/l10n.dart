@@ -434,6 +434,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Search in Store`
+  String get searchInStore {
+    return Intl.message(
+      'Search in Store',
+      name: 'searchInStore',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

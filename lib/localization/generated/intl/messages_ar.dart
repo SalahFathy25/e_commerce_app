@@ -90,6 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resendEmailIn": MessageLookupByLibrary.simpleMessage(
       "إعادة إرسال البريد خلال",
     ),
+    "searchInStore": MessageLookupByLibrary.simpleMessage("ابحث في المتجر"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signupTitle": MessageLookupByLibrary.simpleMessage("لننشئ حسابك"),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
