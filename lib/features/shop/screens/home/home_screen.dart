@@ -25,7 +25,10 @@ class HomeScreen extends StatelessWidget {
                   CustomSearchContainer(text: TextStrings.searchInStore),
                   const SizedBox(height: Sizes.spaceBetweenSections),
                   Padding(
-                    padding: const EdgeInsets.only(left: Sizes.defaultSpace),
+                    padding: const EdgeInsets.only(
+                      left: Sizes.defaultSpace,
+                      right: Sizes.defaultSpace / 2,
+                    ),
                     child: Column(
                       children: [
                         SectionHeading(
