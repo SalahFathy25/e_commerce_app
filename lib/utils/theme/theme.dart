@@ -10,8 +10,8 @@ import 'custom_themes/custom_text_button_theme.dart';
 import 'custom_themes/custom_text_field_theme.dart';
 import 'custom_themes/custom_text_theme.dart';
 
-class Apptheme {
-  Apptheme._();
+class AppTheme {
+  AppTheme._();
 
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
