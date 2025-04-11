@@ -6,7 +6,7 @@ import '../../../../utils/constants/app_colors.dart';
 class CartCounterIcon extends StatelessWidget {
   const CartCounterIcon({
     super.key,
-    required this.iconColor,
+    this.iconColor = AppColors.white,
     required this.onPressed,
   });
 

@@ -41,7 +41,7 @@ class VerticalImageText extends StatelessWidget {
               child: Image(
                 image: AssetImage(image),
                 fit: BoxFit.cover,
-                color: dark ? AppColors.light : AppColors.dark,
+                color: AppColors.dark ,
               ),
             ),
             const SizedBox(height: Sizes.spaceBetweenItems / 2),

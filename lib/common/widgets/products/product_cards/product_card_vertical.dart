@@ -9,6 +9,7 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../icons/circular_icon.dart';
+import '../../texts/brand_title_with_verified_icon.dart';
 import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
 
@@ -73,22 +74,7 @@ class ProductCardVertical extends StatelessWidget {
                 children: [
                   ProductTitleText(title: 'Product Name', smallSize: true),
                   const SizedBox(height: Sizes.spaceBetweenItems / 2),
-                  Row(
-                    children: [
-                      Text(
-                        'Nike',
-                        style: Theme.of(context).textTheme.labelMedium,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                      SizedBox(width: Sizes.sm),
-                      Icon(
-                        Iconsax.verify5,
-                        color: AppColors.primary,
-                        size: Sizes.xsIcon,
-                      ),
-                    ],
-                  ),
+                  BrandTitleWithVerifiedIcon(title: 'Nike')
                 ],
               ),
             ),
@@ -124,3 +110,4 @@ class ProductCardVertical extends StatelessWidget {
     );
   }
 }
+
