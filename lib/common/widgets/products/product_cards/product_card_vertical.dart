@@ -89,32 +89,34 @@ class ProductCardVertical extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ProductPriceText(price: '60.0'),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(Sizes.mdCardRadius),
-                            bottomRight: Radius.circular(
-                              Sizes.productImageRadius,
-                            ),
-                          ),
-                        ),
-                        child: SizedBox(
-                          width: Sizes.lgIcon * 1.2,
-                          height: Sizes.lgIcon * 1.2,
-                          child: Center(
-                            child: Icon(Iconsax.add, color: AppColors.white),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
+            ),
+            Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: Sizes.sm),
+                  child: ProductPriceText(price: '60.0'),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(Sizes.mdCardRadius),
+                      bottomRight: Radius.circular(Sizes.productImageRadius),
+                    ),
+                  ),
+                  child: SizedBox(
+                    width: Sizes.lgIcon * 1.2,
+                    height: Sizes.lgIcon * 1.2,
+                    child: Center(
+                      child: Icon(Iconsax.add, color: AppColors.white),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

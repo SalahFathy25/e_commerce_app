@@ -39,6 +39,7 @@ class HomeScreen extends StatelessWidget {
                           title: 'Popular Categories',
                           showActionButton: false,
                           textColor: Colors.white,
+                          onPressed: () {},
                         ),
                         const SizedBox(height: Sizes.spaceBetweenItems),
                         HomeCategories(),
