@@ -19,6 +19,7 @@ class ProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
+    final isRTL = HelperFunctions.isRTL(context);
     return GestureDetector(
       onTap: () {},
       child: Container(
@@ -30,51 +31,63 @@ class ProductCardVertical extends StatelessWidget {
           color: dark ? AppColors.darkerGrey : AppColors.white,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RoundedContainer(
-              height: 180,
-              padding: const EdgeInsets.all(Sizes.sm),
-              backgroundColor: dark ? AppColors.dark : AppColors.light,
-              child: Stack(
-                children: [
-                  RoundedImage(
-                    image: ImagesStrings.productImage1,
-                    applyImageRadius: true,
-                  ),
-                  Positioned(
-                    top: 12,
-                    child: RoundedContainer(
-                      radius: Sizes.sm,
-                      backgroundColor: AppColors.secondary.withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: Sizes.sm,
-                        vertical: Sizes.xs,
-                      ),
-                      child: Text(
-                        '25%',
-                        style: Theme.of(
-                          context,
-                        ).textTheme.labelLarge!.apply(color: AppColors.black),
+            Center(
+              child: RoundedContainer(
+                height: 180,
+                padding: const EdgeInsets.all(Sizes.sm),
+                backgroundColor: dark ? AppColors.dark : AppColors.light,
+                child: Stack(
+                  children: [
+                    RoundedImage(
+                      image: ImagesStrings.productImage1,
+                      applyImageRadius: true,
+                    ),
+                    Positioned(
+                      top: 12,
+                      left: isRTL ? null : 12,
+                      right: isRTL ? 12 : null,
+                      child: RoundedContainer(
+                        radius: Sizes.sm,
+                        backgroundColor: AppColors.secondary.withOpacity(0.8),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: Sizes.sm,
+                          vertical: Sizes.xs,
+                        ),
+                        child: Text(
+                          '25%',
+                          style: Theme.of(
+                            context,
+                          ).textTheme.labelLarge!.apply(color: AppColors.black),
+                        ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: CircularIcon(icon: Iconsax.heart5 , color: Colors.red,),
-                  ),
-                ],
+                    Positioned(
+                      top: 0,
+                      left: isRTL ? 0 : null,
+                      right: isRTL ? null : 0,
+                      child: CircularIcon(
+                        icon: Iconsax.heart5,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(height: Sizes.spaceBetweenItems / 2),
             Padding(
-              padding: const EdgeInsets.only(left: Sizes.sm),
+              padding: EdgeInsets.only(
+                left: isRTL ? 0 : Sizes.sm,
+                right: isRTL ? Sizes.sm : 0,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ProductTitleText(title: 'Product Name', smallSize: true),
                   const SizedBox(height: Sizes.spaceBetweenItems / 2),
-                  BrandTitleWithVerifiedIcon(title: 'Nike')
+                  BrandTitleWithVerifiedIcon(title: 'Nike'),
                 ],
               ),
             ),
@@ -83,15 +96,32 @@ class ProductCardVertical extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: Sizes.sm),
+                  padding: EdgeInsets.only(
+                    left: isRTL ? 0 : Sizes.sm,
+                    right: isRTL ? Sizes.sm : 0,
+                  ),
                   child: ProductPriceText(price: '60.0'),
                 ),
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.dark,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(Sizes.mdCardRadius),
-                      bottomRight: Radius.circular(Sizes.productImageRadius),
+                      topLeft:
+                          isRTL
+                              ? Radius.zero
+                              : Radius.circular(Sizes.mdCardRadius),
+                      topRight:
+                          isRTL
+                              ? Radius.circular(Sizes.mdCardRadius)
+                              : Radius.zero,
+                      bottomLeft:
+                          isRTL
+                              ? Radius.circular(Sizes.productImageRadius)
+                              : Radius.zero,
+                      bottomRight:
+                          isRTL
+                              ? Radius.zero
+                              : Radius.circular(Sizes.productImageRadius),
                     ),
                   ),
                   child: SizedBox(
@@ -110,4 +140,3 @@ class ProductCardVertical extends StatelessWidget {
     );
   }
 }
-

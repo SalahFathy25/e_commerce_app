@@ -88,6 +88,10 @@ class HelperFunctions {
     return Localizations.localeOf(context).languageCode == 'ar';
   }
 
+  static bool isRTL(BuildContext context) {
+    return Directionality.of(context) == TextDirection.RTL;
+  }
+
   static Size screenSize() {
     return MediaQuery.of(Get.context!).size;
   }

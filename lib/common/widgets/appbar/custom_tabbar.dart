@@ -20,6 +20,7 @@ class CustomTabBar extends StatelessWidget implements PreferredSizeWidget {
         indicatorColor: AppColors.primary,
         unselectedLabelColor: AppColors.darkerGrey,
         labelColor: dark ? AppColors.white : AppColors.primary,
+        physics: const BouncingScrollPhysics(),
       ),
     );
   }
