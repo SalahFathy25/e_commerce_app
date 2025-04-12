@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/personalization/screens/settings/settings_screen.dart';
 import 'package:e_commerce_app/features/shop/screens/home/home_screen.dart';
 import 'package:e_commerce_app/features/shop/screens/store/store_screen.dart';
 import 'package:e_commerce_app/features/shop/screens/wishlist/wishlist_screen.dart';
@@ -47,6 +48,6 @@ class NavigationController extends GetxController {
     HomeScreen(),
     StoreScreen(),
     WishlistScreen(),
-    const Center(child: Text('Profile')),
+    SettingsScreen(),
   ];
 }
