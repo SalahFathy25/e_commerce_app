@@ -1,14 +1,7 @@
-import 'package:e_commerce_app/common/widgets/appbar/custom_appbar.dart';
-import 'package:e_commerce_app/common/widgets/custom_shapes/curved_edges/curved_edge_widget.dart';
-import 'package:e_commerce_app/common/widgets/icons/circular_icon.dart';
-import 'package:e_commerce_app/common/widgets/images/rounded_image.dart';
 import 'package:e_commerce_app/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
-import '../../../../utils/constants/app_colors.dart';
-import '../../../../utils/constants/images_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import 'widgets/product_image_slider.dart';
 import 'widgets/rating_share_widget.dart';
