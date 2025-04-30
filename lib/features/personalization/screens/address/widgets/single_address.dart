@@ -61,10 +61,7 @@ class SingleAddress extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               const SizedBox(height: Sizes.sm / 2),
-              Text(
-                '1234 Elm Street, Springfield, IL 62704',
-                softWrap: true,
-              ),
+              Text('1234 Elm Street, Springfield, IL 62704', softWrap: true),
             ],
           ),
         ],
