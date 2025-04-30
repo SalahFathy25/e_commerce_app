@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart';
+
+import '../../../../../common/widgets/products/cart/add_remove_buttons.dart';
+import '../../../../../common/widgets/products/cart/cart_item.dart';
+import '../../../../../common/widgets/texts/product_price_text.dart';
+import '../../../../../utils/constants/sizes.dart';
+
+class CartItems extends StatelessWidget {
+  const CartItems({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      shrinkWrap: true,
+      separatorBuilder: (_, __) => SizedBox(height: Sizes.spaceBetweenSections),
+      itemCount: 4,
+      itemBuilder:
+          (_, index) => Column(
+            children: [
+              CartItem(),
+              const SizedBox(height: Sizes.spaceBetweenItems),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      SizedBox(width: 70),
+                      ProductQuantityWithAddRemoveButton(),
+                    ],
+                  ),
+                  ProductPriceText(price: '256'),
+                ],
+              ),
+            ],
+          ),
+    );
+  }
+}
