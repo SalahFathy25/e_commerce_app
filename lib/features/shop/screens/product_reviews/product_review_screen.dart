@@ -1,10 +1,7 @@
 import 'package:e_commerce_app/common/widgets/appbar/custom_appbar.dart';
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:iconsax/iconsax.dart';
 
-import '../../../../utils/constants/app_colors.dart';
 import '../../../../common/widgets/products/rating/custom_rating_bar_indicator.dart';
 import 'widgets/overall_product_rating.dart';
 import 'widgets/user_review_card.dart';
