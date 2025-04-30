@@ -3,7 +3,6 @@ import 'package:e_commerce_app/common/widgets/products/rating/custom_rating_bar_
 import 'package:e_commerce_app/utils/constants/app_colors.dart';
 import 'package:e_commerce_app/utils/constants/images_strings.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../../../../utils/constants/sizes.dart';
