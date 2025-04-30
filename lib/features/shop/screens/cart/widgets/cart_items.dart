@@ -6,7 +6,9 @@ import '../../../../../common/widgets/texts/product_price_text.dart';
 import '../../../../../utils/constants/sizes.dart';
 
 class CartItems extends StatelessWidget {
-  const CartItems({super.key});
+  const CartItems({super.key, this.showAddRemoveButtons = true});
+
+  final bool showAddRemoveButtons;
 
   @override
   Widget build(BuildContext context) {
@@ -18,20 +20,22 @@ class CartItems extends StatelessWidget {
           (_, index) => Column(
             children: [
               CartItem(),
-              const SizedBox(height: Sizes.spaceBetweenItems),
+              if (showAddRemoveButtons)
+                const SizedBox(height: Sizes.spaceBetweenItems),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      SizedBox(width: 70),
-                      ProductQuantityWithAddRemoveButton(),
-                    ],
-                  ),
-                  ProductPriceText(price: '256'),
-                ],
-              ),
+              if (showAddRemoveButtons)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(width: 70),
+                        ProductQuantityWithAddRemoveButton(),
+                      ],
+                    ),
+                    ProductPriceText(price: '256'),
+                  ],
+                ),
             ],
           ),
     );
