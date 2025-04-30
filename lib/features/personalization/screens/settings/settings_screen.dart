@@ -2,6 +2,7 @@ import 'package:e_commerce_app/common/widgets/appbar/custom_appbar.dart';
 import 'package:e_commerce_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:e_commerce_app/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:e_commerce_app/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce_app/features/shop/screens/order/order_screen.dart';
 import 'package:e_commerce_app/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -71,6 +72,12 @@ class SettingsScreen extends StatelessWidget {
                     title: 'My Orders',
                     subtitle: 'In-progress and Completed orders',
                     icon: Iconsax.bag_tick,
+                    onTap:
+                        () => Get.to(
+                          () => const OrderScreen(),
+                          transition: Transition.rightToLeft,
+                          duration: const Duration(milliseconds: 500),
+                        ),
                   ),
                   SettingsMenuTile(
                     title: 'Bank Account',
