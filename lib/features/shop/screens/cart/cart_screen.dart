@@ -1,8 +1,10 @@
 import 'package:e_commerce_app/common/widgets/appbar/custom_appbar.dart';
 import 'package:e_commerce_app/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../utils/constants/sizes.dart';
+import '../checkout/checkout_screen.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -21,7 +23,11 @@ class CartScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(Sizes.defaultSpace),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed:
+              () => Get.to(
+                () => const CheckoutScreen(),
+                transition: Transition.rightToLeft,
+              ),
           child: Text('Checkout \$256.0'),
         ),
       ),

@@ -15,7 +15,7 @@ class CartItems extends StatelessWidget {
     return ListView.separated(
       shrinkWrap: true,
       separatorBuilder: (_, __) => SizedBox(height: Sizes.spaceBetweenSections),
-      itemCount: 4,
+      itemCount: 2,
       itemBuilder:
           (_, index) => Column(
             children: [
