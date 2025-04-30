@@ -31,7 +31,7 @@ class CustomSearchContainer extends StatelessWidget {
       child: Padding(
         padding: padding,
         child: Container(
-          width: DeviceUtils.getScreenWidth(),
+          width: DeviceUtils.getScreenWidth(context),
           padding: const EdgeInsets.all(Sizes.md),
           decoration: BoxDecoration(
             color:
