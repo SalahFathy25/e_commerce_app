@@ -7,9 +7,11 @@ import 'package:e_commerce_app/utils/constants/app_colors.dart';
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:e_commerce_app/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../common/widgets/appbar/custom_tabbar.dart';
 import '../../../../common/widgets/brands/brand_card.dart';
+import '../all_brands/all_brands_screen.dart';
 import 'widgets/category_tab.dart';
 
 class StoreScreen extends StatelessWidget {
@@ -59,7 +61,12 @@ class StoreScreen extends StatelessWidget {
 
                       SectionHeading(
                         title: 'Featured Brands',
-                        onPressed: () {},
+                        onPressed:
+                            () => Get.to(
+                              () => const AllBrandsScreen(),
+                              transition: Transition.rightToLeft,
+                              duration: const Duration(milliseconds: 300),
+                            ),
                       ),
                       SizedBox(height: Sizes.spaceBetweenItems / 1.5),
 

@@ -1,6 +1,8 @@
+import 'package:e_commerce_app/features/shop/screens/all_products/all_products_screen.dart';
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:e_commerce_app/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/custom_search_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
@@ -39,7 +41,12 @@ class HomeScreen extends StatelessWidget {
                           title: 'Popular Categories',
                           showActionButton: false,
                           textColor: Colors.white,
-                          onPressed: () {},
+                          onPressed:
+                              () => Get.to(
+                                () => const AllProductsScreen(),
+                                transition: Transition.rightToLeft,
+                                duration: const Duration(milliseconds: 300),
+                              ),
                         ),
                         const SizedBox(height: Sizes.spaceBetweenItems),
                         HomeCategories(),
