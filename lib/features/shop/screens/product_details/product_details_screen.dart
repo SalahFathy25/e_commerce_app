@@ -17,7 +17,6 @@ class ProductDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final dark = HelperFunctions.isDarkMode(context);
     return Scaffold(
       bottomNavigationBar: BottomAddToCart(),
       body: SingleChildScrollView(
@@ -59,10 +58,10 @@ class ProductDetailsScreen extends StatelessWidget {
                   const SizedBox(height: Sizes.spaceBetweenItems),
                   ReadMoreText(
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl nunc egestas nisi, vitae aliquam nunc nisl eget nisi.',
-                    trimLines: 3,
+                    trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' Show more',
-                    trimExpandedText: 'Less',
+                    trimExpandedText: ' Less',
                     moreStyle: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w800,

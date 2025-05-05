@@ -59,6 +59,7 @@ class BottomAddToCart extends StatelessWidget {
             child: Row(
               children: [
                 const Icon(Iconsax.shopping_bag, size: 18),
+                const SizedBox(width: Sizes.sm),
                 const Text('Add to Bag'),
               ],
             ),

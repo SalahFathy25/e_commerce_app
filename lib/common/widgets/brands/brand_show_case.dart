@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'brand_card.dart';
 import '../../../utils/constants/app_colors.dart';
 import '../../../utils/constants/sizes.dart';
@@ -14,21 +13,30 @@ class BrandShowCase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
+    final isRTL = HelperFunctions.isRTL(context);
+
     return RoundedContainer(
       showBorder: true,
       borderColor: AppColors.darkGrey,
       backgroundColor: Colors.transparent,
-      margin: EdgeInsets.only(bottom: Sizes.spaceBetweenItems),
-      padding: EdgeInsets.all(Sizes.md),
+      margin: const EdgeInsets.only(bottom: Sizes.spaceBetweenItems),
+      padding: const EdgeInsets.all(Sizes.md),
       child: Column(
         children: [
-          BrandCard(showBorder: false),
-          SizedBox(height: Sizes.spaceBetweenItems),
+          const BrandCard(showBorder: false),
+          const SizedBox(height: Sizes.spaceBetweenItems),
 
           Row(
+            textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
             children:
-                images.map((image) {
-                  return brandTopProductImageWidget(image, context, dark);
+                images.asMap().entries.map((entry) {
+                  return brandTopProductImageWidget(
+                    entry.value,
+                    context,
+                    dark,
+                    isLast: entry.key == images.length - 1,
+                    isRTL: isRTL,
+                  );
                 }).toList(),
           ),
         ],
@@ -36,13 +44,21 @@ class BrandShowCase extends StatelessWidget {
     );
   }
 
-  Widget brandTopProductImageWidget(String image, context, bool dark) {
+  Widget brandTopProductImageWidget(
+    String image,
+    BuildContext context,
+    bool dark, {
+    required bool isLast,
+    required bool isRTL,
+  }) {
     return Expanded(
       child: RoundedContainer(
         height: 100,
         backgroundColor: dark ? AppColors.darkerGrey : AppColors.light,
-        margin: EdgeInsets.only(right: Sizes.sm),
-        padding: EdgeInsets.all(Sizes.md),
+        margin: EdgeInsetsDirectional.only(
+          end: isLast ? 0 : Sizes.sm,
+        ).resolve(TextDirection.ltr),
+        padding: const EdgeInsets.all(Sizes.md),
         child: Image(image: AssetImage(image), fit: BoxFit.contain),
       ),
     );

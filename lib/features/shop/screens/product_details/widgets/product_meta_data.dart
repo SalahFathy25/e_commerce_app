@@ -18,7 +18,7 @@ class ProductMetaData extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
@@ -56,7 +56,7 @@ class ProductMetaData extends StatelessWidget {
 
         Row(
           children: [
-            ProductTitleText(title: 'Status'),
+            ProductTitleText(title: 'Status : '),
             SizedBox(height: Sizes.spaceBetweenItems),
             Text('In Stock', style: Theme.of(context).textTheme.titleMedium),
           ],

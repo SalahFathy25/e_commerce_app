@@ -56,12 +56,6 @@ class ProductAttributes extends StatelessWidget {
                   ),
                 ],
               ),
-
-              ProductTitleText(
-                title: 'Description',
-                smallSize: true,
-                maxLines: 4,
-              ),
             ],
           ),
         ),

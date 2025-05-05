@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:e_commerce_app/common/widgets/success_screen/success_screen.dart';
 import 'package:e_commerce_app/features/shop/screens/cart/widgets/cart_items.dart';
+import 'package:e_commerce_app/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:e_commerce_app/features/shop/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:e_commerce_app/features/shop/screens/checkout/widgets/billing_payment_section.dart';
 import 'package:e_commerce_app/navigation_menu.dart';
@@ -55,6 +56,9 @@ class CheckoutScreen extends StatelessWidget {
                     SizedBox(height: Sizes.spaceBetweenItems),
 
                     BillingPaymentSection(),
+                    SizedBox(height: Sizes.spaceBetweenItems),
+
+                    BillingAddressSection(),
                     SizedBox(height: Sizes.spaceBetweenItems),
                   ],
                 ),

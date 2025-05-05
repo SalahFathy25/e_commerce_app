@@ -73,7 +73,7 @@ class StoreScreen extends StatelessWidget {
                       GridLayout(
                         itemCount: 4,
                         mainAxisExtent: 80,
-                        itemBuilder: (_, index) => BrandCard(showBorder: false),
+                        itemBuilder: (_, index) => BrandCard(showBorder: true),
                       ),
                     ],
                   ),

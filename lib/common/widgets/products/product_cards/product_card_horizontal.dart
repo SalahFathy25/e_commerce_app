@@ -18,6 +18,8 @@ class ProductCardHorizontal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
+    final isRTL = HelperFunctions.isRTL(context);
+
     return Container(
       width: 310,
       padding: const EdgeInsets.all(1),
@@ -26,14 +28,16 @@ class ProductCardHorizontal extends StatelessWidget {
         color: dark ? AppColors.darkerGrey : AppColors.softGrey,
       ),
       child: Row(
+        textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
         children: [
-          /// Thumbnail
+          /// Thumbnail Section
           RoundedContainer(
             height: 120,
             padding: const EdgeInsets.all(Sizes.sm),
             backgroundColor: dark ? AppColors.dark : AppColors.light,
             child: Stack(
               children: [
+                // Product Image
                 SizedBox(
                   width: 120,
                   height: 120,
@@ -43,8 +47,11 @@ class ProductCardHorizontal extends StatelessWidget {
                   ),
                 ),
 
+                // Discount Badge
                 Positioned(
                   top: 12,
+                  left: isRTL ? null : Sizes.sm,
+                  right: isRTL ? Sizes.sm : null,
                   child: RoundedContainer(
                     radius: Sizes.sm,
                     backgroundColor: AppColors.secondary.withOpacity(0.8),
@@ -61,46 +68,68 @@ class ProductCardHorizontal extends StatelessWidget {
                   ),
                 ),
 
+                // Favorite Icon
                 Positioned(
                   top: 0,
-                  right: 0,
+                  left: isRTL ? 0 : null,
+                  right: isRTL ? null : 0,
                   child: CircularIcon(icon: Iconsax.heart5, color: Colors.red),
                 ),
               ],
             ),
           ),
 
-          /// Product Details
+          /// Product Details Section
           SizedBox(
             width: 172,
             child: Padding(
-              padding: const EdgeInsets.only(top: Sizes.sm, left: Sizes.sm),
+              padding: EdgeInsets.only(
+                top: Sizes.sm,
+                left: isRTL ? 0 : Sizes.sm,
+                right: isRTL ? Sizes.sm : 0,
+              ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Product Title and Brand
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ProductTitleText(title: 'Product Name', smallSize: true),
-                      SizedBox(height: Sizes.spaceBetweenItems / 2),
-                      BrandTitleWithVerifiedIcon(title: 'Nike'),
+                      const SizedBox(height: Sizes.spaceBetweenItems / 2),
+                      const BrandTitleWithVerifiedIcon(title: 'Nike'),
                     ],
                   ),
 
                   const Spacer(),
 
+                  // Price and Add to Cart
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Flexible(child: ProductPriceText(price: '120.0')),
 
+                      // Add to Cart Button
                       Container(
                         decoration: BoxDecoration(
                           color: AppColors.dark,
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(Sizes.mdCardRadius),
-                            bottomRight: Radius.circular(
-                              Sizes.productImageRadius,
-                            ),
+                            topLeft:
+                                isRTL
+                                    ? Radius.zero
+                                    : Radius.circular(Sizes.mdCardRadius),
+                            topRight:
+                                isRTL
+                                    ? Radius.circular(Sizes.mdCardRadius)
+                                    : Radius.zero,
+                            bottomLeft:
+                                isRTL
+                                    ? Radius.circular(Sizes.productImageRadius)
+                                    : Radius.zero,
+                            bottomRight:
+                                isRTL
+                                    ? Radius.zero
+                                    : Radius.circular(Sizes.productImageRadius),
                           ),
                         ),
                         child: SizedBox(

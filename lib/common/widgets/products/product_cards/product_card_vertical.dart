@@ -22,6 +22,7 @@ class ProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
     final isRTL = HelperFunctions.isRTL(context);
+
     return GestureDetector(
       onTap: () => Get.to(() => const ProductDetailsScreen()),
       child: Container(
@@ -35,6 +36,7 @@ class ProductCardVertical extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            /// Thumbnail with Badge and Favorite
             Center(
               child: RoundedContainer(
                 height: 180,
@@ -42,14 +44,17 @@ class ProductCardVertical extends StatelessWidget {
                 backgroundColor: dark ? AppColors.dark : AppColors.light,
                 child: Stack(
                   children: [
+                    /// Product Image
                     RoundedImage(
                       image: ImagesStrings.productImage1,
                       applyImageRadius: true,
                     ),
+
+                    /// Discount Tag
                     Positioned(
                       top: 12,
-                      left: isRTL ? null : 12,
-                      right: isRTL ? 12 : null,
+                      left: isRTL ? null : Sizes.sm,
+                      right: isRTL ? Sizes.sm : null,
                       child: RoundedContainer(
                         radius: Sizes.sm,
                         backgroundColor: AppColors.secondary.withOpacity(0.8),
@@ -65,6 +70,8 @@ class ProductCardVertical extends StatelessWidget {
                         ),
                       ),
                     ),
+
+                    /// Favorite Button
                     Positioned(
                       top: 0,
                       left: isRTL ? 0 : null,
@@ -78,7 +85,10 @@ class ProductCardVertical extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: Sizes.spaceBetweenItems / 2),
+
+            const SizedBox(height: Sizes.spaceBetweenItems / 2),
+
+            /// Product Details
             Padding(
               padding: EdgeInsets.only(
                 left: isRTL ? 0 : Sizes.sm,
@@ -87,23 +97,29 @@ class ProductCardVertical extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ProductTitleText(title: 'Product Name', smallSize: true),
+                  ProductTitleText(title: 'Green Nike Shoe', smallSize: true),
                   const SizedBox(height: Sizes.spaceBetweenItems / 2),
-                  BrandTitleWithVerifiedIcon(title: 'Nike'),
+                  const BrandTitleWithVerifiedIcon(title: 'Nike'),
                 ],
               ),
             ),
-            Spacer(),
+
+            const Spacer(),
+
+            /// Price & Add to Cart
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                /// Price
                 Padding(
                   padding: EdgeInsets.only(
                     left: isRTL ? 0 : Sizes.sm,
                     right: isRTL ? Sizes.sm : 0,
                   ),
-                  child: ProductPriceText(price: '60.0'),
+                  child: const ProductPriceText(price: '60.0'),
                 ),
+
+                /// Add to Cart Button
                 Container(
                   decoration: BoxDecoration(
                     color: AppColors.dark,

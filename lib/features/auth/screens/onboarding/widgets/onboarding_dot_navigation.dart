@@ -15,7 +15,7 @@ class OnBoardingDotNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = OnboardingController.instance;
     final dark = HelperFunctions.isDarkMode(context);
-     final ar = HelperFunctions.isArabic(context);
+    final ar = HelperFunctions.isArabic(context);
     return Positioned(
       bottom: DeviceUtils.getBottomNavigationBarHeight() + 25,
       left: ar ? null : Sizes.defaultSpace,

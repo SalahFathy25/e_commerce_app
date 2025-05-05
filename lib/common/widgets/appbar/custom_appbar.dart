@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../utils/helpers/helper_functions.dart';
+
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppbar({
     super.key,
@@ -22,21 +24,24 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isRTL = HelperFunctions.isRTL(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: Sizes.md),
       child: AppBar(
         automaticallyImplyLeading: false,
-        leading:
-            showBackArrow
+        leading: showBackArrow
+            ? IconButton(
+                onPressed: () => Get.back(),
+                icon: Icon(
+                  isRTL ? Iconsax.arrow_right : Iconsax.arrow_left,
+                ),
+              )
+            : leadingIcon != null
                 ? IconButton(
-                  onPressed: () => Get.back(),
-                  icon: Icon(Iconsax.arrow_left),
-                )
-                : leadingIcon != null
-                ? IconButton(
-                  onPressed: onLeadingPressed,
-                  icon: Icon(leadingIcon),
-                )
+                    onPressed: onLeadingPressed,
+                    icon: Icon(leadingIcon),
+                  )
                 : null,
         title: title,
         actions: actions,

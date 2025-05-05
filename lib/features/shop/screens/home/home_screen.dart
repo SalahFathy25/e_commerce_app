@@ -41,12 +41,6 @@ class HomeScreen extends StatelessWidget {
                           title: 'Popular Categories',
                           showActionButton: false,
                           textColor: Colors.white,
-                          onPressed:
-                              () => Get.to(
-                                () => const AllProductsScreen(),
-                                transition: Transition.rightToLeft,
-                                duration: const Duration(milliseconds: 300),
-                              ),
                         ),
                         const SizedBox(height: Sizes.spaceBetweenItems),
                         HomeCategories(),
@@ -69,6 +63,15 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: Sizes.spaceBetweenSections),
+                  SectionHeading(
+                    title: 'Popular Products',
+                    onPressed:
+                        () => Get.to(
+                          () => const AllProductsScreen(),
+                          transition: Transition.rightToLeft,
+                          duration: const Duration(milliseconds: 300),
+                        ),
+                  ),
                   GridLayout(
                     itemCount: 4,
                     itemBuilder: (_, index) => const ProductCardVertical(),

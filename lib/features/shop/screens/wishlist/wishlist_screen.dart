@@ -2,7 +2,7 @@ import 'package:e_commerce_app/common/widgets/appbar/custom_appbar.dart';
 import 'package:e_commerce_app/common/widgets/icons/circular_icon.dart';
 import 'package:e_commerce_app/common/widgets/layouts/grid_layout.dart';
 import 'package:e_commerce_app/common/widgets/products/product_cards/product_card_vertical.dart';
-import 'package:e_commerce_app/features/shop/screens/home/home_screen.dart';
+import 'package:e_commerce_app/navigation_menu.dart';
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,7 +22,7 @@ class WishlistScreen extends StatelessWidget {
         actions: [
           CircularIcon(
             icon: Iconsax.add,
-            onPressed: () => Get.to(HomeScreen()),
+            onPressed: () => Get.to(NavigationMenu()),
           ),
         ],
       ),
