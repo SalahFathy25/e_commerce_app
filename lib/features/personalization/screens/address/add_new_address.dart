@@ -2,14 +2,22 @@ import 'package:e_commerce_app/common/widgets/appbar/custom_appbar.dart';
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:e_commerce_app/utils/helpers/helper_functions.dart';
+
+import '../../../../utils/constants/text_strings.dart';
 
 class AddNewAddress extends StatelessWidget {
   const AddNewAddress({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isRTL = HelperFunctions.isRTL(context);
+
     return Scaffold(
-      appBar: CustomAppbar(showBackArrow: true, title: Text('Add New Address')),
+      appBar: CustomAppbar(
+        showBackArrow: true,
+        title: Text(TextStrings.addNewAddress),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(Sizes.defaultSpace),
@@ -17,76 +25,100 @@ class AddNewAddress extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Name Field
                 TextFormField(
-                  decoration: const InputDecoration(
+                  textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
+                  decoration: InputDecoration(
                     prefixIcon: Icon(Iconsax.user),
-                    labelText: 'Name',
+                    labelText: TextStrings.name,
                   ),
                 ),
                 const SizedBox(height: Sizes.spaceBetweenInputFields),
+
+                // Phone Field
                 TextFormField(
-                  decoration: const InputDecoration(
+                  textDirection: TextDirection.ltr,
+                  keyboardType: TextInputType.phone,
+                  decoration: InputDecoration(
                     prefixIcon: Icon(Iconsax.mobile),
-                    labelText: 'Phone Number',
+                    labelText: TextStrings.phoneNo,
                   ),
                 ),
                 const SizedBox(height: Sizes.spaceBetweenInputFields),
+
+                // Street + Postal Code Row
                 Row(
+                  textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
                   children: [
                     Expanded(
                       child: TextFormField(
-                        decoration: const InputDecoration(
+                        textDirection:
+                            isRTL ? TextDirection.rtl : TextDirection.ltr,
+                        decoration: InputDecoration(
                           prefixIcon: Icon(Iconsax.building_31),
-                          labelText: 'Street',
+                          labelText: TextStrings.street,
                         ),
                       ),
                     ),
-                    const SizedBox(width: Sizes.spaceBetweenInputFields),
+                    SizedBox(width: Sizes.spaceBetweenInputFields),
                     Expanded(
                       child: TextFormField(
-                        decoration: const InputDecoration(
+                        textDirection: TextDirection.ltr,
+                        decoration: InputDecoration(
                           prefixIcon: Icon(Iconsax.code),
-                          labelText: 'Postal Code',
+                          labelText: TextStrings.postalCode,
                         ),
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(height: Sizes.spaceBetweenInputFields),
+
+                // City + State Row
                 Row(
+                  textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
                   children: [
                     Expanded(
                       child: TextFormField(
-                        decoration: const InputDecoration(
+                        textDirection:
+                            isRTL ? TextDirection.rtl : TextDirection.ltr,
+                        decoration: InputDecoration(
                           prefixIcon: Icon(Iconsax.building),
-                          labelText: 'City',
+                          labelText: TextStrings.city,
                         ),
                       ),
                     ),
-                    const SizedBox(width: Sizes.spaceBetweenInputFields),
+                    SizedBox(width: Sizes.spaceBetweenInputFields),
                     Expanded(
                       child: TextFormField(
-                        decoration: const InputDecoration(
+                        textDirection:
+                            isRTL ? TextDirection.rtl : TextDirection.ltr,
+                        decoration: InputDecoration(
                           prefixIcon: Icon(Iconsax.activity),
-                          labelText: 'State',
+                          labelText: TextStrings.state,
                         ),
                       ),
                     ),
                   ],
                 ),
                 const SizedBox(height: Sizes.spaceBetweenInputFields),
+
+                // Country Field
                 TextFormField(
-                  decoration: const InputDecoration(
+                  textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
+                  decoration: InputDecoration(
                     prefixIcon: Icon(Iconsax.global),
-                    labelText: 'Country',
+                    labelText: TextStrings.country,
                   ),
                 ),
                 const SizedBox(height: Sizes.defaultSpace),
+
+                // Save Button
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: const Text('Save Address'),
+                    child: Text(TextStrings.saveAddress),
                   ),
                 ),
               ],

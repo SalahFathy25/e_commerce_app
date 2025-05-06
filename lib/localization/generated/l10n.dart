@@ -75,9 +75,9 @@ class S {
     return Intl.message('Submit', name: 'submit', desc: '', args: []);
   }
 
-  /// `T-Store`
+  /// `My Store`
   String get appName {
-    return Intl.message('T-Store', name: 'appName', desc: '', args: []);
+    return Intl.message('My Store', name: 'appName', desc: '', args: []);
   }
 
   /// `Continue`
@@ -255,10 +255,10 @@ class S {
     return Intl.message('Terms of use', name: 'termsOfUse', desc: '', args: []);
   }
 
-  /// `verificationCode`
+  /// `Verification Code`
   String get verificationCode {
     return Intl.message(
-      'verificationCode',
+      'Verification Code',
       name: 'verificationCode',
       desc: '',
       args: [],
@@ -440,6 +440,341 @@ class S {
     return Intl.message(
       'Search in Store',
       name: 'searchInStore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account`
+  String get account {
+    return Intl.message('Account', name: 'account', desc: '', args: []);
+  }
+
+  /// `Account Settings`
+  String get accountSettings {
+    return Intl.message(
+      'Account Settings',
+      name: 'accountSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Address`
+  String get address {
+    return Intl.message('My Address', name: 'address', desc: '', args: []);
+  }
+
+  /// `Set Shopping delivery address`
+  String get addressSubtitle {
+    return Intl.message(
+      'Set Shopping delivery address',
+      name: 'addressSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Cart`
+  String get cart {
+    return Intl.message('My Cart', name: 'cart', desc: '', args: []);
+  }
+
+  /// `Add, remove products and move to checkout`
+  String get cartSubtitle {
+    return Intl.message(
+      'Add, remove products and move to checkout',
+      name: 'cartSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Orders`
+  String get orders {
+    return Intl.message('My Orders', name: 'orders', desc: '', args: []);
+  }
+
+  /// `In-progress and Completed orders`
+  String get ordersSubtitle {
+    return Intl.message(
+      'In-progress and Completed orders',
+      name: 'ordersSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bank Account`
+  String get bankAccount {
+    return Intl.message(
+      'Bank Account',
+      name: 'bankAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add, remove products and move to checkout`
+  String get bankAccountSubtitle {
+    return Intl.message(
+      'Add, remove products and move to checkout',
+      name: 'bankAccountSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Coupons`
+  String get coupons {
+    return Intl.message('My Coupons', name: 'coupons', desc: '', args: []);
+  }
+
+  /// `List of all the discount coupons`
+  String get couponsSubtitle {
+    return Intl.message(
+      'List of all the discount coupons',
+      name: 'couponsSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notifications`
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set any kind of notification message`
+  String get notificationsSubtitle {
+    return Intl.message(
+      'Set any kind of notification message',
+      name: 'notificationsSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account Privacy`
+  String get accountPrivacy {
+    return Intl.message(
+      'Account Privacy',
+      name: 'accountPrivacy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manage data usage and connected accounts`
+  String get accountPrivacySubtitle {
+    return Intl.message(
+      'Manage data usage and connected accounts',
+      name: 'accountPrivacySubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App Settings`
+  String get appSettings {
+    return Intl.message(
+      'App Settings',
+      name: 'appSettings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Theme`
+  String get theme {
+    return Intl.message('Theme', name: 'theme', desc: '', args: []);
+  }
+
+  /// `Set light or dark theme`
+  String get themeSubtitle {
+    return Intl.message(
+      'Set light or dark theme',
+      name: 'themeSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message('Language', name: 'language', desc: '', args: []);
+  }
+
+  /// `Set application language`
+  String get languageSubtitle {
+    return Intl.message(
+      'Set application language',
+      name: 'languageSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Safe Mode`
+  String get safeMode {
+    return Intl.message('Safe Mode', name: 'safeMode', desc: '', args: []);
+  }
+
+  /// `Search results is safe for all ages`
+  String get safeModeSubtitle {
+    return Intl.message(
+      'Search results is safe for all ages',
+      name: 'safeModeSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `HD Image Quality`
+  String get hdImage {
+    return Intl.message(
+      'HD Image Quality',
+      name: 'hdImage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set image quality to be seen`
+  String get hdImageSubtitle {
+    return Intl.message(
+      'Set image quality to be seen',
+      name: 'hdImageSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log Out`
+  String get logOut {
+    return Intl.message('Log Out', name: 'logOut', desc: '', args: []);
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message('Profile', name: 'profile', desc: '', args: []);
+  }
+
+  /// `Change Profile Picture`
+  String get changePicture {
+    return Intl.message(
+      'Change Profile Picture',
+      name: 'changePicture',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile Information`
+  String get profileInformation {
+    return Intl.message(
+      'Profile Information',
+      name: 'profileInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message('Name', name: 'name', desc: '', args: []);
+  }
+
+  /// `Personal Information`
+  String get personalInformation {
+    return Intl.message(
+      'Personal Information',
+      name: 'personalInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User ID`
+  String get userId {
+    return Intl.message('User ID', name: 'userId', desc: '', args: []);
+  }
+
+  /// `Gender`
+  String get gender {
+    return Intl.message('Gender', name: 'gender', desc: '', args: []);
+  }
+
+  /// `Male`
+  String get male {
+    return Intl.message('Male', name: 'male', desc: '', args: []);
+  }
+
+  /// `Female`
+  String get female {
+    return Intl.message('Female', name: 'female', desc: '', args: []);
+  }
+
+  /// `Date of Birth`
+  String get dateOfBirth {
+    return Intl.message(
+      'Date of Birth',
+      name: 'dateOfBirth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add New Address`
+  String get addNewAddress {
+    return Intl.message(
+      'Add New Address',
+      name: 'addNewAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Addresses`
+  String get addresses {
+    return Intl.message('Addresses', name: 'addresses', desc: '', args: []);
+  }
+
+  /// `Street`
+  String get street {
+    return Intl.message('Street', name: 'street', desc: '', args: []);
+  }
+
+  /// `Postal Code`
+  String get postalCode {
+    return Intl.message('Postal Code', name: 'postalCode', desc: '', args: []);
+  }
+
+  /// `City`
+  String get city {
+    return Intl.message('City', name: 'city', desc: '', args: []);
+  }
+
+  /// `State`
+  String get state {
+    return Intl.message('State', name: 'state', desc: '', args: []);
+  }
+
+  /// `Country`
+  String get country {
+    return Intl.message('Country', name: 'country', desc: '', args: []);
+  }
+
+  /// `Save Address`
+  String get saveAddress {
+    return Intl.message(
+      'Save Address',
+      name: 'saveAddress',
       desc: '',
       args: [],
     );

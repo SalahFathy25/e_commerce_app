@@ -4,16 +4,16 @@
     "skip": "Skip",
     "done": "Done",
     "submit": "Submit",
-    "appName": "T-Store",
+    "appName": "My Store",
     "tContinue": "Continue",
-
+  
     "onBoardingTitle1": "Choose your product",
     "onBoardingTitle2": "Select Payment Method",
     "onBoardingTitle3": "Deliver at your door step",
     "onBoardingSubTitle1": "Welcome to a World of Limitless Choices - Your Perfect Product Awaits!",
     "onBoardingSubTitle2": "For Seamless Transactions, Choose Your Payment Path - Your Convenience, Our Priority!",
     "onBoardingSubTitle3": "From Our Doorstep to Yours - Swift, Secure, and Contactless Delivery!",
-
+  
     "firstName": "First Name",
     "lastName": "Last Name",
     "email": "E-Mail",
@@ -30,10 +30,10 @@
     "iAgreeTo": "I agree to",
     "privacyPolicy": "Privacy Policy",
     "termsOfUse": "Terms of use",
-    "verificationCode": "verificationCode",
+    "verificationCode": "Verification Code",
     "resendEmail": "Resend Email",
     "resendEmailIn": "Resend email in",
-
+  
     "loginTitle": "Welcome back,",
     "loginSubTitle": "Discover Limitless Choices and Unmatched Convenience.",
     "signupTitle": "Let's create your account",
@@ -46,10 +46,58 @@
     "emailNotReceivedMessage": "Didn't get the email? Check your junk/spam or resend it.",
     "yourAccountCreatedTitle": "Your account successfully created!",
     "yourAccountCreatedSubTitle": "Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping!",
-
+  
     "popularProducts": "Popular Products",
-
+  
     "homeAppbarTitle": "Good day for shopping",
     "homeAppbarSubTitle": "Salah Fathy",
-    "searchInStore": "Search in Store"
-}
+    "searchInStore": "Search in Store",
+  
+    "account": "Account",
+    "accountSettings": "Account Settings",
+    "address": "My Address",
+    "addressSubtitle": "Set Shopping delivery address",
+    "cart": "My Cart",
+    "cartSubtitle": "Add, remove products and move to checkout",
+    "orders": "My Orders",
+    "ordersSubtitle": "In-progress and Completed orders",
+    "bankAccount": "Bank Account",
+    "bankAccountSubtitle": "Add, remove products and move to checkout",
+    "coupons": "My Coupons",
+    "couponsSubtitle": "List of all the discount coupons",
+    "notifications": "Notifications",
+    "notificationsSubtitle": "Set any kind of notification message",
+    "accountPrivacy": "Account Privacy",
+    "accountPrivacySubtitle": "Manage data usage and connected accounts",
+    "appSettings": "App Settings",
+    "theme": "Theme",
+    "themeSubtitle": "Set light or dark theme",
+    "language": "Language",
+    "languageSubtitle": "Set application language",
+    "safeMode": "Safe Mode",
+    "safeModeSubtitle": "Search results is safe for all ages",
+    "hdImage": "HD Image Quality",
+    "hdImageSubtitle": "Set image quality to be seen",
+    "logOut": "Log Out",
+  
+    "profile": "Profile",
+    "changePicture": "Change Profile Picture",
+    "profileInformation": "Profile Information",
+    "name": "Name",
+    "personalInformation": "Personal Information",
+    "userId": "User ID",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "dateOfBirth": "Date of Birth",
+  
+    "addNewAddress": "Add New Address",
+    "addresses": "Addresses",
+    "street": "Street",
+    "postalCode": "Postal Code",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "saveAddress": "Save Address"
+  }
+  

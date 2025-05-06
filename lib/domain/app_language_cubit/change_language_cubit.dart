@@ -8,18 +8,26 @@ class ChangeLanguageCubit extends Cubit<ChangeLanguageState> {
   late SharedPreferences prefs;
 
   Future<void> initialize() async {
+    // prefs = await SharedPreferences.getInstance();
+    // final savedLanguage = prefs.getString('language');
+    // if (savedLanguage == 'en') {
+    //   emit(ChangeLanguageSuccess(languageCode: 'en'));
+    // } else if (savedLanguage == 'ar') {
+    //   emit(ChangeLanguageSuccess(languageCode: 'ar'));
+    // } else {
+    //   emit(ChangeLanguageSuccess(languageCode: 'en'));
+    // }
     prefs = await SharedPreferences.getInstance();
     final savedLanguage = prefs.getString('language');
-    if (savedLanguage == 'en') {
-      emit(ChangeLanguageSuccess(languageCode: 'en'));
-    } else if (savedLanguage == 'ar') {
-      emit(ChangeLanguageSuccess(languageCode: 'ar'));
-    } else {
-      emit(ChangeLanguageSuccess(languageCode: 'en'));
-    }
+    final language = savedLanguage ;
+    emit(ChangeLanguageSuccess(languageCode: language));
   }
 
-  void changeLanguage(LanguageState languageState) {
+  void changeLanguage(LanguageState languageState) async {
+    print('Changing language to: $languageState');
+    if (!prefs.containsKey('language')) {
+      await initialize();
+    }
     switch (languageState) {
       case LanguageState.initial:
         initialize();

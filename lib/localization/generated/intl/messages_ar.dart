@@ -22,85 +22,155 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "account": MessageLookupByLibrary.simpleMessage("الحساب"),
+    "accountPrivacy": MessageLookupByLibrary.simpleMessage("خصوصية الحساب"),
+    "accountPrivacySubtitle": MessageLookupByLibrary.simpleMessage(
+      "إدارة استخدام البيانات والحسابات المرتبطة",
+    ),
+    "accountSettings": MessageLookupByLibrary.simpleMessage("إعدادات الحساب"),
+    "addNewAddress": MessageLookupByLibrary.simpleMessage("أضف عنوان جديد"),
+    "address": MessageLookupByLibrary.simpleMessage("عنواني"),
+    "addressSubtitle": MessageLookupByLibrary.simpleMessage(
+      "حدد عنوان التوصيل الخاص بك",
+    ),
+    "addresses": MessageLookupByLibrary.simpleMessage("العناوين"),
     "and": MessageLookupByLibrary.simpleMessage("و"),
-    "appName": MessageLookupByLibrary.simpleMessage("تي-ستور"),
+    "appName": MessageLookupByLibrary.simpleMessage("متجري"),
+    "appSettings": MessageLookupByLibrary.simpleMessage("إعدادات التطبيق"),
+    "bankAccount": MessageLookupByLibrary.simpleMessage("الحساب البنكي"),
+    "bankAccountSubtitle": MessageLookupByLibrary.simpleMessage(
+      "أضف أو احذف منتجات وانتقل للدفع",
+    ),
+    "cart": MessageLookupByLibrary.simpleMessage("سلتي"),
+    "cartSubtitle": MessageLookupByLibrary.simpleMessage(
+      "أضف، احذف المنتجات وانتقل للدفع",
+    ),
+    "changePicture": MessageLookupByLibrary.simpleMessage(
+      "تغيير صورة الملف الشخصي",
+    ),
     "changeYourPasswordSubTitle": MessageLookupByLibrary.simpleMessage(
-      "أمان حسابك هو أولويتنا! لقد أرسلنا لك رابطًا آمنًا لتغيير كلمة المرور الخاصة بك والحفاظ على حسابك محميًا.",
+      "أمان حسابك هو أولويتنا! لقد أرسلنا لك رابطًا آمنًا لتغيير كلمة المرور والحفاظ على أمان حسابك.",
     ),
     "changeYourPasswordTitle": MessageLookupByLibrary.simpleMessage(
-      "تم إرسال بريد إعادة تعيين كلمة المرور",
+      "تم إرسال رابط إعادة تعيين كلمة المرور",
     ),
+    "city": MessageLookupByLibrary.simpleMessage("المدينة"),
     "confirmEmail": MessageLookupByLibrary.simpleMessage(
-      "قم بتأكيد بريدك الإلكتروني!",
+      "تحقق من بريدك الإلكتروني!",
     ),
     "confirmEmailSubTitle": MessageLookupByLibrary.simpleMessage(
-      "مبروك! حسابك في انتظارك: قم بتأكيد بريدك الإلكتروني لبدء التسوق واستمتع بعالم من العروض المميزة والعروض الشخصية.",
+      "مبروك! حسابك بانتظارك: تحقق من بريدك وابدأ التسوق لتجربة عروض مذهلة ومخصصة.",
+    ),
+    "country": MessageLookupByLibrary.simpleMessage("الدولة"),
+    "coupons": MessageLookupByLibrary.simpleMessage("كوبوناتي"),
+    "couponsSubtitle": MessageLookupByLibrary.simpleMessage(
+      "قائمة بجميع كوبونات الخصم",
     ),
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "dateOfBirth": MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
     "done": MessageLookupByLibrary.simpleMessage("تم"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "emailNotReceivedMessage": MessageLookupByLibrary.simpleMessage(
-      "لم تستلم البريد؟ تحقق من مجلد الرسائل غير المرغوب فيها أو أعد إرساله.",
+      "لم يصلك البريد؟ تحقق من مجلد الرسائل غير المرغوب فيها أو أعد الإرسال.",
     ),
+    "female": MessageLookupByLibrary.simpleMessage("أنثى"),
     "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
-    "forgetPassword": MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+    "forgetPassword": MessageLookupByLibrary.simpleMessage(
+      "هل نسيت كلمة المرور؟",
+    ),
     "forgetPasswordSubTitle": MessageLookupByLibrary.simpleMessage(
-      "لا تقلق، الجميع ينسى أحيانًا، أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة تعيين كلمة المرور.",
+      "لا تقلق، يحدث ذلك أحيانًا. فقط أدخل بريدك الإلكتروني وسنرسل لك رابطًا لإعادة تعيين كلمة المرور.",
     ),
     "forgetPasswordTitle": MessageLookupByLibrary.simpleMessage(
       "نسيت كلمة المرور",
     ),
+    "gender": MessageLookupByLibrary.simpleMessage("النوع"),
+    "hdImage": MessageLookupByLibrary.simpleMessage("جودة الصورة العالية"),
+    "hdImageSubtitle": MessageLookupByLibrary.simpleMessage(
+      "حدد جودة الصور المعروضة",
+    ),
     "homeAppbarSubTitle": MessageLookupByLibrary.simpleMessage("صلاح فتحي"),
-    "homeAppbarTitle": MessageLookupByLibrary.simpleMessage("يوم جيد للتسوق"),
+    "homeAppbarTitle": MessageLookupByLibrary.simpleMessage("يوم رائع للتسوق"),
     "iAgreeTo": MessageLookupByLibrary.simpleMessage("أوافق على"),
-    "lastName": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
+    "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+    "languageSubtitle": MessageLookupByLibrary.simpleMessage(
+      "اختر لغة التطبيق",
+    ),
+    "lastName": MessageLookupByLibrary.simpleMessage("اسم العائلة"),
+    "logOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "loginSubTitle": MessageLookupByLibrary.simpleMessage(
-      "اكتشف خيارات لا محدودة وراحة لا مثيل لها.",
+      "اكتشف خيارات غير محدودة وراحة لا مثيل لها.",
     ),
     "loginTitle": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك،"),
-    "newPassword": MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
+    "male": MessageLookupByLibrary.simpleMessage("ذكر"),
+    "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+    "newPassword": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
+    "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+    "notificationsSubtitle": MessageLookupByLibrary.simpleMessage(
+      "قم بإعداد أي نوع من الإشعارات",
+    ),
     "onBoardingSubTitle1": MessageLookupByLibrary.simpleMessage(
-      "مرحبًا بكم في عالم من الخيارات اللامحدودة - منتجك المثالي في انتظارك!",
+      "مرحبًا بك في عالم من الخيارات غير المحدودة - منتجك المثالي بانتظارك!",
     ),
     "onBoardingSubTitle2": MessageLookupByLibrary.simpleMessage(
-      "لعمليات دفع سلسة، اختر طريقة الدفع التي تناسبك - راحتك هي أولويتنا!",
+      "لإجراء معاملات سلسة، اختر وسيلة الدفع التي تناسبك - راحتك أولويتنا!",
     ),
     "onBoardingSubTitle3": MessageLookupByLibrary.simpleMessage(
-      "من عتبة دارنا إلى عتبة داركم - توصيل سريع، آمن، وبدون تلامس!",
+      "من بابنا إلى بابك - توصيل سريع، آمن، وبدون تلامس!",
     ),
     "onBoardingTitle1": MessageLookupByLibrary.simpleMessage("اختر منتجك"),
     "onBoardingTitle2": MessageLookupByLibrary.simpleMessage(
-      "اختر طريقة الدفع",
+      "اختر وسيلة الدفع",
     ),
     "onBoardingTitle3": MessageLookupByLibrary.simpleMessage(
-      "توصيل إلى باب منزلك",
+      "التوصيل حتى باب منزلك",
     ),
-    "orSignInWith": MessageLookupByLibrary.simpleMessage(
-      "أو سجل الدخول باستخدام",
-    ),
-    "orSignUpWith": MessageLookupByLibrary.simpleMessage(
-      "أو أنشئ حساب باستخدام",
+    "orSignInWith": MessageLookupByLibrary.simpleMessage("أو سجل الدخول عبر"),
+    "orSignUpWith": MessageLookupByLibrary.simpleMessage("أو اشترك عبر"),
+    "orders": MessageLookupByLibrary.simpleMessage("طلباتي"),
+    "ordersSubtitle": MessageLookupByLibrary.simpleMessage(
+      "الطلبات الجارية والمكتملة",
     ),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "personalInformation": MessageLookupByLibrary.simpleMessage(
+      "المعلومات الشخصية",
+    ),
     "phoneNo": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "popularProducts": MessageLookupByLibrary.simpleMessage("المنتجات الشائعة"),
+    "postalCode": MessageLookupByLibrary.simpleMessage("الرمز البريدي"),
     "privacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
-    "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
-    "resendEmail": MessageLookupByLibrary.simpleMessage("إعادة إرسال البريد"),
-    "resendEmailIn": MessageLookupByLibrary.simpleMessage(
-      "إعادة إرسال البريد خلال",
+    "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+    "profileInformation": MessageLookupByLibrary.simpleMessage(
+      "معلومات الملف الشخصي",
     ),
+    "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
+    "resendEmail": MessageLookupByLibrary.simpleMessage(
+      "إعادة إرسال البريد الإلكتروني",
+    ),
+    "resendEmailIn": MessageLookupByLibrary.simpleMessage("إعادة الإرسال خلال"),
+    "safeMode": MessageLookupByLibrary.simpleMessage("الوضع الآمن"),
+    "safeModeSubtitle": MessageLookupByLibrary.simpleMessage(
+      "نتائج البحث آمنة لجميع الأعمار",
+    ),
+    "saveAddress": MessageLookupByLibrary.simpleMessage("حفظ العنوان"),
     "searchInStore": MessageLookupByLibrary.simpleMessage("ابحث في المتجر"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signupTitle": MessageLookupByLibrary.simpleMessage("لننشئ حسابك"),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
+    "state": MessageLookupByLibrary.simpleMessage("المنطقة"),
+    "street": MessageLookupByLibrary.simpleMessage("الشارع"),
     "submit": MessageLookupByLibrary.simpleMessage("إرسال"),
-    "tContinue": MessageLookupByLibrary.simpleMessage("متابعة"),
+    "tContinue": MessageLookupByLibrary.simpleMessage("استمرار"),
     "termsOfUse": MessageLookupByLibrary.simpleMessage("شروط الاستخدام"),
+    "theme": MessageLookupByLibrary.simpleMessage("المظهر"),
+    "themeSubtitle": MessageLookupByLibrary.simpleMessage(
+      "اختر الوضع الفاتح أو الداكن",
+    ),
+    "userId": MessageLookupByLibrary.simpleMessage("معرّف المستخدم"),
     "username": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
     "verificationCode": MessageLookupByLibrary.simpleMessage("رمز التحقق"),
     "yourAccountCreatedSubTitle": MessageLookupByLibrary.simpleMessage(
-      "مرحبًا بك في وجهتك النهائية للتسوق: لقد تم إنشاء حسابك، استمتع بمتعة التسوق عبر الإنترنت بدون عناء!",
+      "مرحبًا بك في وجهتك المثالية للتسوق: حسابك جاهز، استمتع بتجربة تسوق سلسة!",
     ),
     "yourAccountCreatedTitle": MessageLookupByLibrary.simpleMessage(
       "تم إنشاء حسابك بنجاح!",

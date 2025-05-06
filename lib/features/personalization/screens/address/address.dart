@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../utils/constants/text_strings.dart';
 import 'add_new_address.dart';
 import 'widgets/single_address.dart';
 
@@ -27,7 +28,7 @@ class UserAddressScreen extends StatelessWidget {
       appBar: CustomAppbar(
         showBackArrow: true,
         title: Text(
-          'Addresses',
+          TextStrings.addresses,
           style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),

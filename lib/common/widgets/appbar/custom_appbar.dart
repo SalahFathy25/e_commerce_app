@@ -30,18 +30,17 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.symmetric(horizontal: Sizes.md),
       child: AppBar(
         automaticallyImplyLeading: false,
-        leading: showBackArrow
-            ? IconButton(
-                onPressed: () => Get.back(),
-                icon: Icon(
-                  isRTL ? Iconsax.arrow_right : Iconsax.arrow_left,
-                ),
-              )
-            : leadingIcon != null
+        leading:
+            showBackArrow
                 ? IconButton(
-                    onPressed: onLeadingPressed,
-                    icon: Icon(leadingIcon),
-                  )
+                  onPressed: () => Get.back(),
+                  icon: Icon(isRTL ? Iconsax.arrow_right : Iconsax.arrow_left),
+                )
+                : leadingIcon != null
+                ? IconButton(
+                  onPressed: onLeadingPressed,
+                  icon: Icon(leadingIcon),
+                )
                 : null,
         title: title,
         actions: actions,

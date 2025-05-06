@@ -1,9 +1,12 @@
 import 'package:e_commerce_app/common/widgets/appbar/custom_appbar.dart';
 import 'package:e_commerce_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
+import 'package:e_commerce_app/common/widgets/language&theme/change_language_button.dart';
+import 'package:e_commerce_app/common/widgets/language&theme/change_theme_button.dart';
 import 'package:e_commerce_app/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:e_commerce_app/common/widgets/texts/section_heading.dart';
 import 'package:e_commerce_app/features/shop/screens/order/order_screen.dart';
 import 'package:e_commerce_app/utils/constants/app_colors.dart';
+import 'package:e_commerce_app/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -27,7 +30,7 @@ class SettingsScreen extends StatelessWidget {
                 children: [
                   CustomAppbar(
                     title: Text(
-                      'Account',
+                      TextStrings.account,
                       style: Theme.of(
                         context,
                       ).textTheme.headlineMedium!.apply(color: AppColors.white),
@@ -47,14 +50,14 @@ class SettingsScreen extends StatelessWidget {
               child: Column(
                 children: [
                   SectionHeading(
-                    title: 'Account Settings',
+                    title: TextStrings.accountSettings,
                     showActionButton: false,
                   ),
                   SizedBox(height: Sizes.spaceBetweenItems),
 
                   SettingsMenuTile(
-                    title: 'My Addresses',
-                    subtitle: 'Set Shopping delivery address',
+                    title: TextStrings.address,
+                    subtitle: TextStrings.addressSubtitle,
                     icon: Iconsax.safe_home,
                     onTap:
                         () => Get.to(
@@ -64,13 +67,13 @@ class SettingsScreen extends StatelessWidget {
                         ),
                   ),
                   SettingsMenuTile(
-                    title: 'My Cart',
-                    subtitle: 'Add, remove products and move to checkout',
+                    title: TextStrings.cart,
+                    subtitle: TextStrings.cartSubtitle,
                     icon: Iconsax.shopping_cart,
                   ),
                   SettingsMenuTile(
-                    title: 'My Orders',
-                    subtitle: 'In-progress and Completed orders',
+                    title: TextStrings.orders,
+                    subtitle: TextStrings.ordersSubtitle,
                     icon: Iconsax.bag_tick,
                     onTap:
                         () => Get.to(
@@ -80,52 +83,64 @@ class SettingsScreen extends StatelessWidget {
                         ),
                   ),
                   SettingsMenuTile(
-                    title: 'Bank Account',
-                    subtitle: 'Withdraw balance to registered bank account',
+                    title: TextStrings.bankAccount,
+                    subtitle: TextStrings.bankAccountSubtitle,
                     icon: Iconsax.bank,
                   ),
                   SettingsMenuTile(
-                    title: 'My Coupons',
-                    subtitle: 'List of all the discount coupons',
+                    title: TextStrings.coupons,
+                    subtitle: TextStrings.couponsSubtitle,
                     icon: Iconsax.discount_shape,
                   ),
                   SettingsMenuTile(
-                    title: 'Notifications',
-                    subtitle: 'Set any kind of notification message',
+                    title: TextStrings.notifications,
+                    subtitle: TextStrings.notificationsSubtitle,
                     icon: Iconsax.notification,
                   ),
                   SettingsMenuTile(
-                    title: 'Account Privacy',
-                    subtitle: 'Manage data usage and connected accounts',
+                    title: TextStrings.accountPrivacy,
+                    subtitle: TextStrings.accountPrivacy,
                     icon: Iconsax.security_card,
                   ),
 
                   SizedBox(height: Sizes.spaceBetweenSections),
                   SectionHeading(
-                    title: 'App Settings',
+                    title: TextStrings.appSettings,
                     showActionButton: false,
                   ),
                   SizedBox(height: Sizes.spaceBetweenItems),
+                  // SettingsMenuTile(
+                  //   title: 'Load Data',
+                  //   subtitle: 'Upload Data to your Cloud Firebase',
+                  //   icon: Iconsax.document_upload,
+                  // ),
+                  // SettingsMenuTile(
+                  //   title: 'Geolocation',
+                  //   subtitle: 'Set recommendation based on location',
+                  //   icon: Iconsax.location,
+                  //   trailing: Switch(value: true, onChanged: (value) {}),
+                  // ),
                   SettingsMenuTile(
-                    title: 'Load Data',
-                    subtitle: 'Upload Data to your Cloud Firebase',
-                    icon: Iconsax.document_upload,
+                    title: TextStrings.theme,
+                    subtitle: TextStrings.themeSubtitle,
+                    icon: Iconsax.moon,
+                    trailing: ChangeThemeButton(),
                   ),
                   SettingsMenuTile(
-                    title: 'Geolocation',
-                    subtitle: 'Set recommendation based on location',
+                    title: TextStrings.language,
+                    subtitle: TextStrings.languageSubtitle,
                     icon: Iconsax.location,
-                    trailing: Switch(value: true, onChanged: (value) {}),
+                    trailing: ChangeLanguageButton(),
                   ),
                   SettingsMenuTile(
-                    title: 'Safe Mode',
-                    subtitle: 'Search results is safe for all ages',
+                    title: TextStrings.safeMode,
+                    subtitle: TextStrings.safeModeSubtitle,
                     icon: Iconsax.security_user,
                     trailing: Switch(value: false, onChanged: (value) {}),
                   ),
                   SettingsMenuTile(
-                    title: 'HD Image Quality',
-                    subtitle: 'Set image quality to be seen',
+                    title: TextStrings.hdImage,
+                    subtitle: TextStrings.hdImageSubtitle,
                     icon: Iconsax.image,
                     trailing: Switch(value: false, onChanged: (value) {}),
                   ),
@@ -135,7 +150,7 @@ class SettingsScreen extends StatelessWidget {
                     width: double.infinity,
                     child: OutlinedButton(
                       onPressed: () {},
-                      child: Text('Log Out'),
+                      child: Text(TextStrings.logOut),
                     ),
                   ),
                   SizedBox(height: Sizes.spaceBetweenSections * 2.5),

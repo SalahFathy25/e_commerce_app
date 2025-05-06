@@ -2,6 +2,7 @@ import 'package:e_commerce_app/common/widgets/appbar/custom_appbar.dart';
 import 'package:e_commerce_app/common/widgets/images/circular_image.dart';
 import 'package:e_commerce_app/common/widgets/texts/section_heading.dart';
 import 'package:e_commerce_app/utils/constants/sizes.dart';
+import 'package:e_commerce_app/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -14,7 +15,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(showBackArrow: true, title: Text('Profile')),
+      appBar: CustomAppbar(
+        showBackArrow: true,
+        title: Text(TextStrings.profile),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(Sizes.defaultSpace),
@@ -31,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: Text('Change Profile Picture'),
+                      child: Text(TextStrings.changePicture),
                     ),
                   ],
                 ),
@@ -41,18 +45,18 @@ class ProfileScreen extends StatelessWidget {
               Divider(),
               SizedBox(height: Sizes.spaceBetweenItems),
               SectionHeading(
-                title: 'Profile Information',
+                title: TextStrings.profileInformation,
                 showActionButton: false,
               ),
               SizedBox(height: Sizes.spaceBetweenItems),
 
               ProfileMenu(
-                title: 'Name',
+                title: TextStrings.name,
                 value: 'Salah Fathy',
                 onPressed: () {},
               ),
               ProfileMenu(
-                title: 'Username',
+                title: TextStrings.username,
                 value: 'salah_fathy',
                 onPressed: () {},
               ),
@@ -61,30 +65,34 @@ class ProfileScreen extends StatelessWidget {
               Divider(),
               SizedBox(height: Sizes.spaceBetweenItems),
               SectionHeading(
-                title: 'Personal Information',
+                title: TextStrings.personalInformation,
                 showActionButton: false,
               ),
               SizedBox(height: Sizes.spaceBetweenItems),
 
               ProfileMenu(
-                title: 'User ID',
+                title: TextStrings.userId,
                 value: '12345',
                 icon: Iconsax.copy,
                 onPressed: () {},
               ),
               ProfileMenu(
-                title: 'Email',
+                title: TextStrings.email,
                 value: 'salah_fathy',
                 onPressed: () {},
               ),
               ProfileMenu(
-                title: 'Phone Number',
+                title: TextStrings.phoneNo,
                 value: '+20123456789',
                 onPressed: () {},
               ),
-              ProfileMenu(title: 'Gender', value: 'Male', onPressed: () {}),
               ProfileMenu(
-                title: 'Date of Birth',
+                title: TextStrings.gender,
+                value: TextStrings.male,
+                onPressed: () {},
+              ),
+              ProfileMenu(
+                title: TextStrings.dateOfBirth,
                 value: '01 Oct, 2000',
                 onPressed: () {},
               ),
@@ -96,7 +104,7 @@ class ProfileScreen extends StatelessWidget {
                 child: TextButton(
                   onPressed: () {},
                   child: Text(
-                    'Logout',
+                    TextStrings.logOut,
                     style: TextStyle(
                       color: Colors.red,
                       fontWeight: FontWeight.w600,
