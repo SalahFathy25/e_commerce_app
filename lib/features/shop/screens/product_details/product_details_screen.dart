@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
+import '../../models/vertical_product.dart';
 import '../product_reviews/product_review_screen.dart';
 import 'widgets/bottom_add_to_cart_widget.dart';
 import 'widgets/product_attributes.dart';
@@ -13,7 +14,9 @@ import 'widgets/product_image_slider.dart';
 import 'widgets/rating_share_widget.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+  const ProductDetailsScreen({super.key, required this.product});
+
+  final VerticalProduct product;
 
   @override
   Widget build(BuildContext context) {

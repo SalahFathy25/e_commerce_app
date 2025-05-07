@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 
+import '../../../utils/constants/text_strings.dart';
+
 class SectionHeading extends StatelessWidget {
   const SectionHeading({
     super.key,
     this.textColor,
     this.showActionButton = true,
     required this.title,
-    this.buttonTitle = 'View All',
+    this.buttonTitle,
     this.onPressed,
   });
 
   final Color? textColor;
   final bool showActionButton;
-  final String title, buttonTitle;
+  final String title;
+  final String? buttonTitle;
   final void Function()? onPressed;
 
   @override
@@ -29,7 +32,10 @@ class SectionHeading extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         if (showActionButton)
-          TextButton(onPressed: onPressed, child: Text(buttonTitle)),
+          TextButton(
+            onPressed: onPressed,
+            child: Text(buttonTitle ?? TextStrings.viewAll),
+          ),
       ],
     );
   }

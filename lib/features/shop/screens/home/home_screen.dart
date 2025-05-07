@@ -10,12 +10,17 @@ import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/images_strings.dart';
+import '../../models/lists/vertical_products_data.dart';
+import '../../models/vertical_product.dart';
 import 'widgets/home_appbar.dart';
 import 'widgets/home_categories.dart';
 import 'widgets/promo_slider.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key, required this.product});
+
+  final VerticalProduct product;
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +43,7 @@ class HomeScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         SectionHeading(
-                          title: 'Popular Categories',
+                          title: TextStrings.popularCategories,
                           showActionButton: false,
                           textColor: Colors.white,
                         ),
@@ -64,17 +69,21 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SizedBox(height: Sizes.spaceBetweenSections),
                   SectionHeading(
-                    title: 'Popular Products',
+                    title: TextStrings.popularProducts,
                     onPressed:
                         () => Get.to(
-                          () => const AllProductsScreen(),
+                          () =>
+                              AllProductsScreen(product: product),
                           transition: Transition.rightToLeft,
                           duration: const Duration(milliseconds: 300),
                         ),
                   ),
                   GridLayout(
-                    itemCount: 4,
-                    itemBuilder: (_, index) => const ProductCardVertical(),
+                    itemCount: verticalProductsData.length,
+                    itemBuilder:
+                        (context, index) => ProductCardVertical(
+                          product: verticalProductsData[index],
+                        ),
                   ),
                 ],
               ),

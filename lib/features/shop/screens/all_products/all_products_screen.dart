@@ -3,9 +3,12 @@ import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/products/sortable/sortable_products.dart';
+import '../../models/vertical_product.dart';
 
 class AllProductsScreen extends StatelessWidget {
-  const AllProductsScreen({super.key});
+  const AllProductsScreen({super.key, required this.product});
+
+  final VerticalProduct product;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class AllProductsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(Sizes.defaultSpace),
-          child: SortableProducts(),
+          child: SortableProducts(product: product),
         ),
       ),
     );

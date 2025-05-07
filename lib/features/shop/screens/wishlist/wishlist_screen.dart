@@ -8,8 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../models/vertical_product.dart';
+
 class WishlistScreen extends StatelessWidget {
-  const WishlistScreen({super.key});
+  const WishlistScreen({super.key, required this.product});
+
+  final VerticalProduct product;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +37,8 @@ class WishlistScreen extends StatelessWidget {
             children: [
               GridLayout(
                 itemCount: 5,
-                itemBuilder: (_, index) => ProductCardVertical(),
+                itemBuilder:
+                    (_, index) => ProductCardVertical(product: product),
               ),
             ],
           ),

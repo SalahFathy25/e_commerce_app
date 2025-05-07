@@ -126,12 +126,12 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.moon,
                     trailing: ChangeThemeButton(),
                   ),
-                  SettingsMenuTile(
-                    title: TextStrings.language,
-                    subtitle: TextStrings.languageSubtitle,
-                    icon: Iconsax.location,
-                    trailing: ChangeLanguageButton(),
-                  ),
+                  // SettingsMenuTile(
+                  //   title: TextStrings.language,
+                  //   subtitle: TextStrings.languageSubtitle,
+                  //   icon: Iconsax.location,
+                  //   trailing: ChangeLanguageButton(),
+                  // ),
                   SettingsMenuTile(
                     title: TextStrings.safeMode,
                     subtitle: TextStrings.safeModeSubtitle,

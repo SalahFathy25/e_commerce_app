@@ -6,9 +6,12 @@ import 'package:flutter/material.dart';
 import '../../../../../common/widgets/brands/brand_show_case.dart';
 import '../../../../../utils/constants/images_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../../../models/vertical_product.dart';
 
 class CategoryTab extends StatelessWidget {
-  const CategoryTab({super.key});
+  const CategoryTab({super.key , required this.product});
+
+  final VerticalProduct product;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,7 @@ class CategoryTab extends StatelessWidget {
               GridLayout(
                 itemCount: 4,
                 itemBuilder: (_, index) {
-                  return ProductCardVertical();
+                  return ProductCardVertical( product: product);
                 },
               ),
               SizedBox(height: Sizes.spaceBetweenSections),

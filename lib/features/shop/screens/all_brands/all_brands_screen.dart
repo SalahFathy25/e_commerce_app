@@ -7,9 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../utils/constants/sizes.dart';
+import '../../models/vertical_product.dart';
 
 class AllBrandsScreen extends StatelessWidget {
-  const AllBrandsScreen({super.key});
+  const AllBrandsScreen({super.key, required this.product});
+
+  final VerticalProduct product;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,8 @@ class AllBrandsScreen extends StatelessWidget {
                 itemBuilder:
                     (context, index) => BrandCard(
                       showBorder: true,
-                      onTap: () => Get.to(() => const BrandProducts()),
+                      onTap:
+                          () => Get.to(() => BrandProducts(product: product)),
                     ),
               ),
             ],

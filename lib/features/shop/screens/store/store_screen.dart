@@ -11,11 +11,14 @@ import 'package:get/get.dart';
 
 import '../../../../common/widgets/appbar/custom_tabbar.dart';
 import '../../../../common/widgets/brands/brand_card.dart';
+import '../../models/vertical_product.dart';
 import '../all_brands/all_brands_screen.dart';
 import 'widgets/category_tab.dart';
 
 class StoreScreen extends StatelessWidget {
-  const StoreScreen({super.key});
+  const StoreScreen({super.key, required this.product});
+
+  final VerticalProduct product;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +66,7 @@ class StoreScreen extends StatelessWidget {
                         title: 'Featured Brands',
                         onPressed:
                             () => Get.to(
-                              () => const AllBrandsScreen(),
+                              () => AllBrandsScreen(product: product),
                               transition: Transition.rightToLeft,
                               duration: const Duration(milliseconds: 300),
                             ),
@@ -92,11 +95,12 @@ class StoreScreen extends StatelessWidget {
           },
           body: TabBarView(
             children: [
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
+              CategoryTab(product: product),
+              CategoryTab(product: product),
+              CategoryTab(product: product),
+              CategoryTab(product: product),
+              CategoryTab(product: product),
+              CategoryTab(product: product),
             ],
           ),
         ),

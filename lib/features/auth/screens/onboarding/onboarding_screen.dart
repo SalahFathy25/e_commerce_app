@@ -18,8 +18,8 @@ class OnboardingScreen extends StatelessWidget {
       body: Stack(
         children: [
           PageView.builder(
-            controller:controller.pageController ,
-            onPageChanged:  controller.updatePageIndicator,
+            controller: controller.pageController,
+            onPageChanged: controller.updatePageIndicator,
             physics: const BouncingScrollPhysics(),
             itemCount: onboardingList.length,
             itemBuilder:

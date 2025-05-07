@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../features/shop/models/vertical_product.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../layouts/grid_layout.dart';
 import '../product_cards/product_card_vertical.dart';
 
 class SortableProducts extends StatelessWidget {
-  const SortableProducts({super.key});
+  const SortableProducts({super.key , required this.product});
+
+  final VerticalProduct product;
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,7 @@ class SortableProducts extends StatelessWidget {
         /// all products
         GridLayout(
           itemCount: 4,
-          itemBuilder: (_, index) => ProductCardVertical(),
+          itemBuilder: (_, index) => ProductCardVertical( product: product,),
         ),
       ],
     );

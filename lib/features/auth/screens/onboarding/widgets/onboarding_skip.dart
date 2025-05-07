@@ -28,6 +28,13 @@ class OnBoardingSkip extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            Row(
+              children: [
+                ChangeThemeButton(),
+                // const SizedBox(width: 8),
+                // ChangeLanguageButton(),
+              ],
+            ),
             TextButton(
               onPressed: () => OnboardingController.instance.skipPage(),
               child: Text(
@@ -38,13 +45,6 @@ class OnBoardingSkip extends StatelessWidget {
                   color: dark ? Colors.white : Colors.black,
                 ),
               ),
-            ),
-            Row(
-              children: [
-                ChangeThemeButton(),
-                const SizedBox(width: 8),
-                ChangeLanguageButton(),
-              ],
             ),
           ],
         ),

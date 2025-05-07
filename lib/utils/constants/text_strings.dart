@@ -59,6 +59,8 @@ class TextStrings {
   static String homeAppbarTitle = S.current.homeAppbarTitle;
   static String homeAppbarSubTitle = S.current.homeAppbarSubTitle;
   static String searchInStore = S.current.searchInStore;
+  static String popularCategories = 'Popular Categories';
+  static String viewAll = 'View All';
 
   // -- Account
   static String account = S.current.account;
@@ -109,4 +111,6 @@ class TextStrings {
   static String state = S.current.state;
   static String country = S.current.country;
   static String saveAddress = S.current.saveAddress;
+
+
 }

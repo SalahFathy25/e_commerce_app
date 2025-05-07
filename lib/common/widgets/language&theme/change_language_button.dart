@@ -6,16 +6,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../domain/app_language_cubit/change_language_cubit.dart';
 import '../../../domain/app_language_cubit/language_state.dart';
+import '../../../utils/helpers/helper_functions.dart';
 
 class ChangeLanguageButton extends StatelessWidget {
   const ChangeLanguageButton({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final dark = HelperFunctions.isDarkMode(context);
     return BlocBuilder<ChangeLanguageCubit, ChangeLanguageState>(
       builder: (context, state) {
-        final currentLanguage =
-            state is ChangeLanguageSuccess ? state.languageCode : 'en';
+        final String currentLanguage =
+            state is ChangeLanguageSuccess ? state.languageCode ?? 'en' : 'en';
 
         return Tooltip(
           message: 'Change Language',
@@ -25,14 +27,14 @@ class ChangeLanguageButton extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: AppColors.dark,
+                color: dark ? AppColors.darkerGrey : AppColors.dark,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    _getLanguageFlag(currentLanguage!),
+                    _getLanguageFlag(currentLanguage),
                     style: const TextStyle(fontSize: 16),
                   ),
                   const SizedBox(width: 4),

@@ -27,10 +27,11 @@ class VerticalImageText extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(right: Sizes.spaceBetweenItems),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 56,
-              height: 56,
+              width: 55,
+              height: 55,
               padding: const EdgeInsets.all(Sizes.sm),
               decoration: BoxDecoration(
                 color:
@@ -47,13 +48,15 @@ class VerticalImageText extends StatelessWidget {
             const SizedBox(height: Sizes.spaceBetweenItems / 2),
             SizedBox(
               width: 55,
-              child: Text(
-                title,
-                style: Theme.of(
-                  context,
-                ).textTheme.labelMedium!.apply(color: textColor),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+              child: Center(
+                child: Text(
+                  title,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.labelMedium!.apply(color: textColor),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
           ],
