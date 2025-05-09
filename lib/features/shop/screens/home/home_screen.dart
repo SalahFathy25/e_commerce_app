@@ -17,13 +17,11 @@ import 'widgets/home_categories.dart';
 import 'widgets/promo_slider.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key, required this.product});
-
-  final VerticalProduct product;
-
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    VerticalProduct product;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -72,8 +70,7 @@ class HomeScreen extends StatelessWidget {
                     title: TextStrings.popularProducts,
                     onPressed:
                         () => Get.to(
-                          () =>
-                              AllProductsScreen(product: product),
+                          () => AllProductsScreen(),
                           transition: Transition.rightToLeft,
                           duration: const Duration(milliseconds: 300),
                         ),

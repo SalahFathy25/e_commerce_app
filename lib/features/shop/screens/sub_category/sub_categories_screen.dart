@@ -38,7 +38,48 @@ class SubCategoriesScreen extends StatelessWidget {
                     child: ListView.separated(
                       itemCount: 3,
                       shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      separatorBuilder:
+                          (context, index) =>
+                              const SizedBox(width: Sizes.spaceBetweenItems),
+                      itemBuilder: (context, index) => ProductCardHorizontal(),
+                    ),
+                  ),
+                ],
+              ),
+
+              /// Sub Categories
+              Column(
+                children: [
+                  SectionHeading(title: 'Sports Accessories', onPressed: () {}),
+                  const SizedBox(height: Sizes.spaceBetweenItems / 2),
+
+                  SizedBox(
+                    height: 120,
+                    child: ListView.separated(
+                      itemCount: 5,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      separatorBuilder:
+                          (context, index) =>
+                              const SizedBox(width: Sizes.spaceBetweenItems),
+                      itemBuilder: (context, index) => ProductCardHorizontal(),
+                    ),
+                  ),
+                ],
+              ),
+
+              /// Sub Categories
+              Column(
+                children: [
+                  SectionHeading(title: 'Sports Shoes', onPressed: () {}),
+                  const SizedBox(height: Sizes.spaceBetweenItems / 2),
+
+                  SizedBox(
+                    height: 120,
+                    child: ListView.separated(
+                      itemCount: 3,
+                      shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       separatorBuilder:
                           (context, index) =>

@@ -4,7 +4,14 @@ import 'package:iconsax/iconsax.dart';
 import '../../../../../utils/constants/sizes.dart';
 
 class RatingAndShare extends StatelessWidget {
-  const RatingAndShare({super.key});
+  const RatingAndShare({
+    super.key,
+    required this.rating,
+    required this.reviewCount,
+  });
+
+  final double rating;
+  final int reviewCount;
 
   @override
   Widget build(BuildContext context) {
@@ -14,25 +21,23 @@ class RatingAndShare extends StatelessWidget {
         Row(
           children: [
             Icon(Iconsax.star5, color: Colors.amber, size: 24),
-            SizedBox(width: Sizes.spaceBetweenItems / 2),
-
+            const SizedBox(width: Sizes.spaceBetweenItems / 2),
             Text.rich(
               TextSpan(
                 children: [
                   TextSpan(
-                    text: '4.5',
+                    text: '$rating',
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  TextSpan(text: '(199)'),
+                  TextSpan(text: '($reviewCount)'),
                 ],
               ),
             ),
           ],
         ),
-
         IconButton(
           onPressed: () {},
-          icon: Icon(Icons.share, size: Sizes.mdIcon),
+          icon: const Icon(Icons.share, size: Sizes.mdIcon),
         ),
       ],
     );

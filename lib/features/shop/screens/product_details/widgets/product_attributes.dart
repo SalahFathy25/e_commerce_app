@@ -88,6 +88,7 @@ class ProductAttributes extends StatelessWidget {
             ),
           ],
         ),
+            const SizedBox(height: Sizes.spaceBetweenItems / 2),
 
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -7,6 +7,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../models/vertical_product.dart';
+import '../checkout/checkout_screen.dart';
 import '../product_reviews/product_review_screen.dart';
 import 'widgets/bottom_add_to_cart_widget.dart';
 import 'widgets/product_attributes.dart';
@@ -25,9 +26,7 @@ class ProductDetailsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // 1 - product image slider
             ProductImageSlider(),
-            // 2 - product details
             Padding(
               padding: const EdgeInsets.only(
                 right: Sizes.defaultSpace,
@@ -36,31 +35,37 @@ class ProductDetailsScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  // Rating & share button
-                  RatingAndShare(),
+                  RatingAndShare(
+                    rating: product.rating,
+                    reviewCount: product.reviewCount,
+                  ),
 
-                  // price, title, stack & brand
                   ProductMetaData(),
 
-                  // attributes
-                  ProductAttributes(),
-                  SizedBox(height: Sizes.spaceBetweenSections),
+                  if (product.sizes != null || product.colors != null)
+                    ProductAttributes(),
+                  const SizedBox(height: Sizes.spaceBetweenSections),
 
-                  // checkout button
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text('Checkout'),
+                      onPressed:
+                          () => Get.to(
+                            () => const CheckoutScreen(),
+                            transition: Transition.rightToLeft,
+                          ),
+                      child: const Text('Checkout'),
                     ),
                   ),
                   const SizedBox(height: Sizes.spaceBetweenSections),
 
-                  // description
-                  SectionHeading(title: 'Description', showActionButton: false),
+                  const SectionHeading(
+                    title: 'Description',
+                    showActionButton: false,
+                  ),
                   const SizedBox(height: Sizes.spaceBetweenItems),
                   ReadMoreText(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl nunc egestas nisi, vitae aliquam nunc nisl eget nisi.',
+                    product.description,
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' Show more',
@@ -75,13 +80,12 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                   ),
 
-                  // reviews
-                  Divider(),
-                  SizedBox(height: Sizes.spaceBetweenItems),
+                  const Divider(),
+                  const SizedBox(height: Sizes.spaceBetweenItems),
                   Row(
                     children: [
                       SectionHeading(
-                        title: 'Reviews(199)',
+                        title: 'Reviews(${product.reviewCount})',
                         showActionButton: false,
                       ),
                       IconButton(

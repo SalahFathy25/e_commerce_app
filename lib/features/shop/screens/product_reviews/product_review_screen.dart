@@ -31,10 +31,7 @@ class ProductReviewScreen extends StatelessWidget {
               // Overall Product Ratings
               OverallProductRating(),
               CustomRatingBarIndicator(rating: 3.5),
-              Text(
-                '12,666',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
+              Text('12,666', style: Theme.of(context).textTheme.bodySmall),
               const SizedBox(height: Sizes.spaceBetweenSections),
 
               // User Reviews List

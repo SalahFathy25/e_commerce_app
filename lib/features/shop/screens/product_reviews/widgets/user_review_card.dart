@@ -22,7 +22,7 @@ class UserReviewCard extends StatelessWidget {
             Row(
               children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage(ImagesStrings.userProfileImage1),
+                  backgroundImage: AssetImage(ImagesStrings.userProfileImage2),
                 ),
                 SizedBox(width: Sizes.spaceBetweenItems),
                 Text('John Doe', style: Theme.of(context).textTheme.titleLarge),

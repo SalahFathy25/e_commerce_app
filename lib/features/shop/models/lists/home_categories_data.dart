@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/features/shop/models/home_category.dart';
+import 'package:e_commerce_app/features/shop/models/home_category_model.dart';
 
 import '../../../../utils/constants/images_strings.dart';
 

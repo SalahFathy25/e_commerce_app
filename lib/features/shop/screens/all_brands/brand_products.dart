@@ -4,12 +4,8 @@ import 'package:e_commerce_app/common/widgets/products/sortable/sortable_product
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
-import '../../models/vertical_product.dart';
-
 class BrandProducts extends StatelessWidget {
-  const BrandProducts({super.key, required this.product});
-
-  final VerticalProduct product;
+  const BrandProducts({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +19,7 @@ class BrandProducts extends StatelessWidget {
               BrandCard(showBorder: true),
               SizedBox(height: Sizes.spaceBetweenSections),
 
-              SortableProducts(product: product),
+              SortableProducts(),
             ],
           ),
         ),

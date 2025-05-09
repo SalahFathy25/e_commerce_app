@@ -1,5 +1,4 @@
 import 'package:e_commerce_app/features/personalization/screens/settings/settings_screen.dart';
-import 'package:e_commerce_app/features/shop/models/lists/vertical_products_data.dart';
 import 'package:e_commerce_app/features/shop/screens/home/home_screen.dart';
 import 'package:e_commerce_app/features/shop/screens/store/store_screen.dart';
 import 'package:e_commerce_app/features/shop/screens/wishlist/wishlist_screen.dart';
@@ -8,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'features/shop/models/vertical_product.dart';
 import 'utils/helpers/helper_functions.dart';
 
 class NavigationMenu extends StatelessWidget {
@@ -16,8 +14,7 @@ class NavigationMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final productData = verticalProductsData;
-    final controller = Get.put(NavigationController(productData[0]));
+    final controller = Get.put(NavigationController());
     final darkMode = HelperFunctions.isDarkMode(context);
     return Scaffold(
       bottomNavigationBar: Obx(
@@ -46,21 +43,11 @@ class NavigationMenu extends StatelessWidget {
 }
 
 class NavigationController extends GetxController {
-  late VerticalProduct product;
-
   final Rx<int> selectedIndex = 0.obs;
-  late final List<Widget> screens;
-
-  NavigationController(this.product);
-
-  @override
-  void onInit() {
-    super.onInit();
-    screens = [
-      HomeScreen(product: product),
-      StoreScreen(product: product),
-      WishlistScreen(product: product),
-      SettingsScreen(),
-    ];
-  }
+  final screens = [
+    HomeScreen(),
+    StoreScreen(),
+    WishlistScreen(),
+    SettingsScreen(),
+  ];
 }

@@ -1,7 +1,6 @@
 import 'package:e_commerce_app/common/widgets/custom_shapes/containers/circular_container.dart';
 import 'package:e_commerce_app/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import '../../../localization/generated/l10n.dart';
 import '../../../utils/constants/app_colors.dart';
 
 class CustomChoiceChip extends StatelessWidget {
@@ -33,7 +32,7 @@ class CustomChoiceChip extends StatelessWidget {
             isColor
                 ? const SizedBox()
                 : Text(
-                  'displayText',
+                  text,
                   textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
                 ),
         selected: isSelected,
