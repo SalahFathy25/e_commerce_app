@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:e_commerce_app/utils/constants/constants.dart';
 import 'package:e_commerce_app/utils/constants/images_strings.dart';
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:e_commerce_app/utils/constants/text_strings.dart';
@@ -46,10 +45,9 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
 
   void startEmailVerificationCheck() {
     emailCheckTimer = Timer.periodic(const Duration(seconds: 3), (_) async {
-      final session = Constants.supabase.auth.currentSession;
-      final user = session?.user;
+      final user = authServices.getCurrentUser();
 
-      await Constants.supabase.auth.refreshSession();
+      await authServices.refreshSession();
 
       if (user != null && user.emailConfirmedAt != null) {
         emailCheckTimer?.cancel();

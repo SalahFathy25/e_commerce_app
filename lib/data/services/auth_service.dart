@@ -8,16 +8,23 @@ class AuthService {
     String email,
     String password,
   ) async {
-    final response = await Supabase.instance.client.auth.signInWithPassword(
-      email: email,
-      password: password,
-    );
-    if (response.user == null) {
+    try {
+      final response = await Supabase.instance.client.auth.signInWithPassword(
+        email: email,
+        password: password,
+      );
+      if (response.user == null) {
+        ScaffoldMessenger.of(Get.context!).showSnackBar(
+          const SnackBar(content: Text('Sign in failed: No user found')),
+        );
+      }
+      return response;
+    } catch (e) {
       ScaffoldMessenger.of(
         Get.context!,
-      ).showSnackBar(const SnackBar(content: Text('Sign in failed')));
+      ).showSnackBar(SnackBar(content: Text('Sign in failed: $e')));
+      rethrow;
     }
-    return response;
   }
 
   Future<AuthResponse> signUpWithEmailAndPassword(
@@ -27,8 +34,9 @@ class AuthService {
     final response = await Supabase.instance.client.auth.signUp(
       email: email,
       password: password,
+      emailRedirectTo: 'io.supabase.flutterquickstart://login-callback/',
     );
-    if (response.user == null) {
+    if (response.user == null && response.session == null) {
       throw Exception('Sign up failed');
     }
     return response;
@@ -38,9 +46,18 @@ class AuthService {
     await Constants.supabase.auth.signOut();
   }
 
+  User? getCurrentUser() {
+    return Constants.supabase.auth.currentUser;
+  }
+
   String? getCurrentUserEmail() {
+    return Constants.supabase.auth.currentUser?.email;
+  }
+
+  Future<void> refreshSession() async {
     final session = Constants.supabase.auth.currentSession;
-    final user = session?.user;
-    return user?.email;
+    if (session != null) {
+      await Constants.supabase.auth.refreshSession();
+    }
   }
 }
