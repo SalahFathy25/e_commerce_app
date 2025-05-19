@@ -1,10 +1,8 @@
 import 'package:e_commerce_app/common/widgets/appbar/custom_appbar.dart';
 import 'package:e_commerce_app/common/widgets/custom_shapes/containers/primary_header_container.dart';
-import 'package:e_commerce_app/common/widgets/language&theme/change_language_button.dart';
 import 'package:e_commerce_app/common/widgets/language&theme/change_theme_button.dart';
 import 'package:e_commerce_app/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:e_commerce_app/common/widgets/texts/section_heading.dart';
-import 'package:e_commerce_app/features/shop/screens/home/home_screen.dart';
 import 'package:e_commerce_app/features/shop/screens/order/order_screen.dart';
 import 'package:e_commerce_app/utils/constants/app_colors.dart';
 import 'package:e_commerce_app/utils/constants/text_strings.dart';
@@ -13,6 +11,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/list_tiles/user_profile_tile.dart';
+import '../../../../data/services/auth_service.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../auth/screens/login/login_screen.dart';
 import '../address/address.dart';
@@ -23,6 +22,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authServices = AuthService();
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -42,20 +42,20 @@ class SettingsScreen extends StatelessWidget {
                   UserProfileTile(
                     onPressed: () => Get.to(() => const ProfileScreen()),
                   ),
-                  SizedBox(height: Sizes.spaceBetweenSections),
+                  const SizedBox(height: Sizes.spaceBetweenSections),
                 ],
               ),
             ),
 
             Padding(
-              padding: EdgeInsets.all(Sizes.defaultSpace),
+              padding: const EdgeInsets.all(Sizes.defaultSpace),
               child: Column(
                 children: [
                   SectionHeading(
                     title: TextStrings.accountSettings,
                     showActionButton: false,
                   ),
-                  SizedBox(height: Sizes.spaceBetweenItems),
+                  const SizedBox(height: Sizes.spaceBetweenItems),
 
                   SettingsMenuTile(
                     title: TextStrings.address,
@@ -105,12 +105,12 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.security_card,
                   ),
 
-                  SizedBox(height: Sizes.spaceBetweenSections),
+                  const SizedBox(height: Sizes.spaceBetweenSections),
                   SectionHeading(
                     title: TextStrings.appSettings,
                     showActionButton: false,
                   ),
-                  SizedBox(height: Sizes.spaceBetweenItems),
+                  const SizedBox(height: Sizes.spaceBetweenItems),
                   // SettingsMenuTile(
                   //   title: 'Load Data',
                   //   subtitle: 'Upload Data to your Cloud Firebase',
@@ -126,7 +126,7 @@ class SettingsScreen extends StatelessWidget {
                     title: TextStrings.theme,
                     subtitle: TextStrings.themeSubtitle,
                     icon: Iconsax.moon,
-                    trailing: ChangeThemeButton(),
+                    trailing: const ChangeThemeButton(),
                   ),
                   // SettingsMenuTile(
                   //   title: TextStrings.language,
@@ -147,15 +147,18 @@ class SettingsScreen extends StatelessWidget {
                     trailing: Switch(value: false, onChanged: (value) {}),
                   ),
 
-                  SizedBox(height: Sizes.spaceBetweenSections),
+                  const SizedBox(height: Sizes.spaceBetweenSections),
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: () => Get.offAll(() => const LoginScreen()),
+                      onPressed: () async {
+                        authServices.signOut();
+                        Get.offAll(() => const LoginScreen());
+                      },
                       child: Text(TextStrings.logOut),
                     ),
                   ),
-                  SizedBox(height: Sizes.spaceBetweenSections * 2.5),
+                  const SizedBox(height: Sizes.spaceBetweenSections * 2.5),
                 ],
               ),
             ),

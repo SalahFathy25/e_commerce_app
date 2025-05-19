@@ -55,7 +55,7 @@ class App extends StatelessWidget {
                 supportedLocales: S.delegate.supportedLocales,
                 locale: locale,
 
-                home: OnboardingScreen(),
+                home: const OnboardingScreen(),
               );
             },
           );

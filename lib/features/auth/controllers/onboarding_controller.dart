@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/features/auth/screens/login/login_screen.dart';
+import 'package:e_commerce_app/data/services/auth_gate.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,7 +31,7 @@ class OnboardingController extends GetxController {
         curve: Curves.easeInOut,
       );
     } else if (currentPageIndex.value == onboardingList.length - 1) {
-      Get.offAll(const LoginScreen());
+      Get.offAll(() => const AuthGate());
     } else {
       skipPage();
     }
@@ -39,6 +39,6 @@ class OnboardingController extends GetxController {
 
   void skipPage() {
     currentPageIndex.value = onboardingList.length - 1;
-    Get.offAll(const LoginScreen());
+    Get.offAll(() => const AuthGate());
   }
 }

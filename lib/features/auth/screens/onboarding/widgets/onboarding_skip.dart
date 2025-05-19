@@ -28,7 +28,7 @@ class OnBoardingSkip extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
+            const Row(
               children: [
                 ChangeThemeButton(),
                 // const SizedBox(width: 8),

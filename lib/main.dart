@@ -14,6 +14,7 @@ void main() async {
   await Supabase.initialize(
     url: Constants.supabaseUrl,
     anonKey: Constants.supabaseKey,
+    // authFlowType: AuthFlowType.pkce,
   );
   runApp(const App());
 }

@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/common/widgets/appbar/custom_appbar.dart';
 import 'package:e_commerce_app/common/widgets/images/circular_image.dart';
 import 'package:e_commerce_app/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce_app/data/services/auth_service.dart';
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:e_commerce_app/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authServices = AuthService();
     return Scaffold(
       appBar: CustomAppbar(
         showBackArrow: true,
@@ -30,7 +32,7 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    CircularImage(
+                    const CircularImage(
                       image: ImagesStrings.user,
                       width: 80,
                       height: 80,
@@ -43,14 +45,14 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: Sizes.spaceBetweenItems / 2),
-              Divider(),
-              SizedBox(height: Sizes.spaceBetweenItems),
+              const SizedBox(height: Sizes.spaceBetweenItems / 2),
+              const Divider(),
+              const SizedBox(height: Sizes.spaceBetweenItems),
               SectionHeading(
                 title: TextStrings.profileInformation,
                 showActionButton: false,
               ),
-              SizedBox(height: Sizes.spaceBetweenItems),
+              const SizedBox(height: Sizes.spaceBetweenItems),
 
               ProfileMenu(
                 title: TextStrings.name,
@@ -63,14 +65,14 @@ class ProfileScreen extends StatelessWidget {
                 onPressed: () {},
               ),
 
-              SizedBox(height: Sizes.spaceBetweenItems),
-              Divider(),
-              SizedBox(height: Sizes.spaceBetweenItems),
+              const SizedBox(height: Sizes.spaceBetweenItems),
+              const Divider(),
+              const SizedBox(height: Sizes.spaceBetweenItems),
               SectionHeading(
                 title: TextStrings.personalInformation,
                 showActionButton: false,
               ),
-              SizedBox(height: Sizes.spaceBetweenItems),
+              const SizedBox(height: Sizes.spaceBetweenItems),
 
               ProfileMenu(
                 title: TextStrings.userId,
@@ -99,15 +101,18 @@ class ProfileScreen extends StatelessWidget {
                 onPressed: () {},
               ),
 
-              Divider(),
-              SizedBox(height: Sizes.spaceBetweenItems),
+              const Divider(),
+              const SizedBox(height: Sizes.spaceBetweenItems),
 
               Center(
                 child: TextButton(
-                  onPressed: () => Get.offAll(() => const LoginScreen()),
+                  onPressed: () async {
+                    authServices.signOut();
+                    Get.offAll(() => const LoginScreen());
+                  },
                   child: Text(
                     TextStrings.logOut,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.red,
                       fontWeight: FontWeight.w600,
                       fontSize: 18,

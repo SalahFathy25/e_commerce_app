@@ -26,9 +26,9 @@ class OnboardingScreen extends StatelessWidget {
                 (context, index) =>
                     OnBoardingPage(onboardingModel: onboardingList[index]),
           ),
-          OnBoardingSkip(),
-          OnBoardingDotNavigation(),
-          OnBoardingNextButton(),
+          const OnBoardingSkip(),
+          const OnBoardingDotNavigation(),
+          const OnBoardingNextButton(),
         ],
       ),
     );

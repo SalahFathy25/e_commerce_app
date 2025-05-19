@@ -5,9 +5,16 @@ import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 
-class TermsAndConditionCheckBox extends StatelessWidget {
+class TermsAndConditionCheckBox extends StatefulWidget {
   const TermsAndConditionCheckBox({super.key});
 
+  @override
+  State<TermsAndConditionCheckBox> createState() =>
+      _TermsAndConditionCheckBoxState();
+}
+
+class _TermsAndConditionCheckBoxState extends State<TermsAndConditionCheckBox> {
+  bool _terms = true;
   @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
@@ -16,9 +23,16 @@ class TermsAndConditionCheckBox extends StatelessWidget {
         SizedBox(
           width: 24,
           height: 24,
-          child: Checkbox(value: true, onChanged: (value) {}),
+          child: Checkbox(
+            value: _terms,
+            onChanged: (value) {
+              setState(() {
+                _terms = value!;
+              });
+            },
+          ),
         ),
-        SizedBox(width: Sizes.spaceBetweenItems),
+        const SizedBox(width: Sizes.spaceBetweenItems),
         Text.rich(
           TextSpan(
             children: [

@@ -25,8 +25,8 @@ class OnBoardingNextButton extends StatelessWidget {
         ),
         child:
             ar
-                ? Icon(Icons.keyboard_arrow_left_rounded, size: 30)
-                : Icon(Icons.keyboard_arrow_right_rounded, size: 30),
+                ? const Icon(Icons.keyboard_arrow_left_rounded, size: 30)
+                : const Icon(Icons.keyboard_arrow_right_rounded, size: 30),
       ),
     );
   }
