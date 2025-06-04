@@ -152,22 +152,22 @@ class ProductCardVertical extends StatelessWidget {
                       topLeft:
                           isRTL
                               ? Radius.zero
-                              : Radius.circular(Sizes.mdCardRadius),
+                              : const Radius.circular(Sizes.mdCardRadius),
                       topRight:
                           isRTL
-                              ? Radius.circular(Sizes.mdCardRadius)
+                              ? const Radius.circular(Sizes.mdCardRadius)
                               : Radius.zero,
                       bottomLeft:
                           isRTL
-                              ? Radius.circular(Sizes.productImageRadius)
+                              ? const Radius.circular(Sizes.productImageRadius)
                               : Radius.zero,
                       bottomRight:
                           isRTL
                               ? Radius.zero
-                              : Radius.circular(Sizes.productImageRadius),
+                              : const Radius.circular(Sizes.productImageRadius),
                     ),
                   ),
-                  child: SizedBox(
+                  child: const SizedBox(
                     width: Sizes.lgIcon * 1.2,
                     height: Sizes.lgIcon * 1.2,
                     child: Center(

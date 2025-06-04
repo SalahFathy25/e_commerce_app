@@ -27,7 +27,7 @@ class OrderListItems extends StatelessWidget {
             /// Row 1
             Row(
               children: [
-                Icon(Iconsax.ship),
+                const Icon(Iconsax.ship),
                 const SizedBox(width: Sizes.spaceBetweenItems / 2),
 
                 Expanded(
@@ -65,7 +65,7 @@ class OrderListItems extends StatelessWidget {
                 Expanded(
                   child: Row(
                     children: [
-                      Icon(Iconsax.ship),
+                      const Icon(Iconsax.ship),
                       const SizedBox(width: Sizes.spaceBetweenItems / 2),
 
                       Expanded(
@@ -91,7 +91,7 @@ class OrderListItems extends StatelessWidget {
                 Expanded(
                   child: Row(
                     children: [
-                      Icon(Iconsax.calendar),
+                      const Icon(Iconsax.calendar),
                       const SizedBox(width: Sizes.spaceBetweenItems / 2),
 
                       Expanded(

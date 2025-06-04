@@ -38,7 +38,7 @@ class BrandCard extends StatelessWidget {
                 padding: Sizes.sm,
               ),
             ),
-            SizedBox(width: Sizes.spaceBetweenItems / 2),
+            const SizedBox(width: Sizes.spaceBetweenItems / 2),
 
             // Brand Info
             Expanded(
@@ -49,7 +49,7 @@ class BrandCard extends StatelessWidget {
                         ? CrossAxisAlignment.end
                         : CrossAxisAlignment.start, // RTL alignment
                 children: [
-                  BrandTitleWithVerifiedIcon(
+                  const BrandTitleWithVerifiedIcon(
                     title: 'Nike',
                     brandTextSize: TextSizes.large,
                   ),

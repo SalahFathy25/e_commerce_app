@@ -45,7 +45,7 @@ class ProductCardHorizontal extends StatelessWidget {
               child: Stack(
                 children: [
                   // Product Image
-                  SizedBox(
+                  const SizedBox(
                     width: 120,
                     height: 120,
                     child: RoundedImage(
@@ -80,7 +80,7 @@ class ProductCardHorizontal extends StatelessWidget {
                     top: 0,
                     left: isRTL ? 0 : null,
                     right: isRTL ? null : 0,
-                    child: CircularIcon(
+                    child: const CircularIcon(
                       icon: Iconsax.heart5,
                       color: Colors.red,
                     ),
@@ -102,15 +102,15 @@ class ProductCardHorizontal extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Product Title and Brand
-                    Column(
+                    const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ProductTitleText(
                           title: 'Product Name',
                           smallSize: true,
                         ),
-                        const SizedBox(height: Sizes.spaceBetweenItems / 2),
-                        const BrandTitleWithVerifiedIcon(title: 'Nike'),
+                        SizedBox(height: Sizes.spaceBetweenItems / 2),
+                        BrandTitleWithVerifiedIcon(title: 'Nike'),
                       ],
                     ),
 
@@ -120,7 +120,7 @@ class ProductCardHorizontal extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Flexible(child: ProductPriceText(price: '120.0')),
+                        const Flexible(child: ProductPriceText(price: '120.0')),
 
                         // Add to Cart Button
                         Container(
@@ -130,26 +130,26 @@ class ProductCardHorizontal extends StatelessWidget {
                               topLeft:
                                   isRTL
                                       ? Radius.zero
-                                      : Radius.circular(Sizes.mdCardRadius),
+                                      : const Radius.circular(Sizes.mdCardRadius),
                               topRight:
                                   isRTL
-                                      ? Radius.circular(Sizes.mdCardRadius)
+                                      ? const Radius.circular(Sizes.mdCardRadius)
                                       : Radius.zero,
                               bottomLeft:
                                   isRTL
-                                      ? Radius.circular(
+                                      ? const Radius.circular(
                                         Sizes.productImageRadius,
                                       )
                                       : Radius.zero,
                               bottomRight:
                                   isRTL
                                       ? Radius.zero
-                                      : Radius.circular(
+                                      : const Radius.circular(
                                         Sizes.productImageRadius,
                                       ),
                             ),
                           ),
-                          child: SizedBox(
+                          child: const SizedBox(
                             width: Sizes.lgIcon * 1.2,
                             height: Sizes.lgIcon * 1.2,
                             child: Center(

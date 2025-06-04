@@ -9,11 +9,11 @@ class BrandProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: CustomAppbar(title: Text('Nike'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(Sizes.defaultSpace),
+          padding: EdgeInsets.all(Sizes.defaultSpace),
           child: Column(
             children: [
               BrandCard(showBorder: true),

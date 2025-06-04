@@ -5,7 +5,7 @@ import '../../../utils/constants/sizes.dart';
 import '../constants/app_colors.dart';
 
 /// A widget for displaying an animated loading indicator with optional text and action button.
-class TAnimationLoaderWidget extends StatelessWidget {
+class AnimationLoaderWidget extends StatelessWidget {
   /// Default constructor for the TAnimationLoaderWidget.
   ///
   /// Parameters:
@@ -14,7 +14,7 @@ class TAnimationLoaderWidget extends StatelessWidget {
   ///   - showAction: Whether to show an action button below the text.
   ///   - actionText: The text to be displayed on the action button.
   ///   - onActionPressed: Callback function to be executed when the action button is pressed.
-  const TAnimationLoaderWidget({
+  const AnimationLoaderWidget({
     super.key,
     required this.text,
     required this.animation,

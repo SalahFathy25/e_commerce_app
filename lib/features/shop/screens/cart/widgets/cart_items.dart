@@ -14,17 +14,17 @@ class CartItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       shrinkWrap: true,
-      separatorBuilder: (_, __) => SizedBox(height: Sizes.spaceBetweenSections),
+      separatorBuilder: (_, __) => const SizedBox(height: Sizes.spaceBetweenSections),
       itemCount: 2,
       itemBuilder:
           (_, index) => Column(
             children: [
-              CartItem(),
+              const CartItem(),
               if (showAddRemoveButtons)
                 const SizedBox(height: Sizes.spaceBetweenItems),
 
               if (showAddRemoveButtons)
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(

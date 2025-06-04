@@ -1,7 +1,6 @@
-import 'package:e_commerce_app/features/auth/controllers/onboarding_controller.dart';
+import 'package:e_commerce_app/features/auth/controllers/onboarding/onboarding_controller.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../common/widgets/language&theme/change_language_button.dart';
 
 import '../../../../../common/widgets/language&theme/change_theme_button.dart';
 import '../../../../../utils/constants/sizes.dart';

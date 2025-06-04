@@ -5,7 +5,7 @@ import '../helpers/helper_functions.dart';
 import '../loaders/animation_loader.dart';
 
 /// A utility class for managing a full-screen loading dialog.
-class TFullScreenLoader {
+class FullScreenLoader {
   /// Open a full-screen loading dialog with a given text and animation.
   /// This method doesn't return anything.
   ///
@@ -25,7 +25,7 @@ class TFullScreenLoader {
           child: Column(
             children: [
               const SizedBox(height: 250), // Adjust the spacing as needed
-              TAnimationLoaderWidget(text: text, animation: animation),
+              AnimationLoaderWidget(text: text, animation: animation),
             ],
           ),
         ),

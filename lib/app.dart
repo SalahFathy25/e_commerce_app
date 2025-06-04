@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/bindings/general_bindings.dart';
 import 'package:e_commerce_app/domain/app_language_cubit/change_language_cubit.dart';
 import 'package:e_commerce_app/features/auth/screens/onboarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
@@ -54,6 +55,7 @@ class App extends StatelessWidget {
                 ],
                 supportedLocales: S.delegate.supportedLocales,
                 locale: locale,
+                initialBinding: GeneralBindings(),
 
                 home: const OnboardingScreen(),
               );

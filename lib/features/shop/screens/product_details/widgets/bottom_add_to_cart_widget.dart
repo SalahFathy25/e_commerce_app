@@ -19,7 +19,7 @@ class BottomAddToCart extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: dark ? AppColors.darkerGrey : AppColors.light,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(Sizes.lgCardRadius),
           topRight: Radius.circular(Sizes.lgCardRadius),
         ),
@@ -29,7 +29,7 @@ class BottomAddToCart extends StatelessWidget {
         children: [
           Row(
             children: [
-              CircularIcon(
+              const CircularIcon(
                 icon: Iconsax.minus,
                 backgroundColor: AppColors.darkGrey,
                 width: 40,
@@ -39,7 +39,7 @@ class BottomAddToCart extends StatelessWidget {
               const SizedBox(width: Sizes.spaceBetweenItems),
               Text('1', style: Theme.of(context).textTheme.titleSmall),
               const SizedBox(width: Sizes.spaceBetweenItems),
-              CircularIcon(
+              const CircularIcon(
                 icon: Iconsax.add,
                 backgroundColor: AppColors.black,
                 width: 40,
@@ -54,13 +54,13 @@ class BottomAddToCart extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.all(Sizes.md),
               backgroundColor: AppColors.black,
-              side: BorderSide(color: AppColors.black),
+              side: const BorderSide(color: AppColors.black),
             ),
-            child: Row(
+            child: const Row(
               children: [
-                const Icon(Iconsax.shopping_bag, size: 18),
-                const SizedBox(width: Sizes.sm),
-                const Text('Add to Bag'),
+                Icon(Iconsax.shopping_bag, size: 18),
+                SizedBox(width: Sizes.sm),
+                Text('Add to Bag'),
               ],
             ),
           ),

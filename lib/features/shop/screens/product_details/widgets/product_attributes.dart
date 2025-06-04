@@ -24,13 +24,13 @@ class ProductAttributes extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  SectionHeading(title: 'variation', showActionButton: false),
-                  SizedBox(width: Sizes.spaceBetweenItems),
+                  const SectionHeading(title: 'variation', showActionButton: false),
+                  const SizedBox(width: Sizes.spaceBetweenItems),
 
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ProductTitleText(title: 'Price : ', smallSize: true),
+                      const ProductTitleText(title: 'Price : ', smallSize: true),
                       Row(
                         children: [
                           Text(
@@ -38,14 +38,14 @@ class ProductAttributes extends StatelessWidget {
                             style: Theme.of(context).textTheme.titleSmall!
                                 .apply(decoration: TextDecoration.lineThrough),
                           ),
-                          SizedBox(width: Sizes.spaceBetweenItems),
-                          ProductPriceText(price: '20'),
+                          const SizedBox(width: Sizes.spaceBetweenItems),
+                          const ProductPriceText(price: '20'),
                         ],
                       ),
 
                       Row(
                         children: [
-                          ProductTitleText(title: 'Stock : ', smallSize: true),
+                          const ProductTitleText(title: 'Stock : ', smallSize: true),
                           Text(
                             'In stock',
                             style: Theme.of(context).textTheme.titleMedium,
@@ -64,7 +64,7 @@ class ProductAttributes extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SectionHeading(title: 'Colors', showActionButton: false),
+            const SectionHeading(title: 'Colors', showActionButton: false),
             const SizedBox(height: Sizes.spaceBetweenItems / 2),
             Wrap(
               spacing: 8,
@@ -93,7 +93,7 @@ class ProductAttributes extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SectionHeading(title: 'Size', showActionButton: false),
+            const SectionHeading(title: 'Size', showActionButton: false),
             const SizedBox(height: Sizes.spaceBetweenItems / 2),
             Wrap(
               spacing: 8,

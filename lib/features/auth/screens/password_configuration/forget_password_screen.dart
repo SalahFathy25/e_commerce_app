@@ -11,6 +11,7 @@ class ForgetPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -40,11 +41,13 @@ class ForgetPasswordScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed:
-                    () => Get.off(
-                      () => const ResetPasswordScreen(),
-                      transition: Transition.rightToLeft,
-                    ),
+                onPressed: () {
+
+                  Get.off(
+                    () => const ResetPasswordScreen(),
+                    transition: Transition.rightToLeft,
+                  );
+                },
                 child: Text(TextStrings.submit),
               ),
             ),

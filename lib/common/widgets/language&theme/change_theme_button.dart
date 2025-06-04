@@ -102,7 +102,7 @@ class _ChangeThemeButtonState extends State<ChangeThemeButton> {
                             )
                             : Icon(
                               Icons.wb_sunny,
-                              key: ValueKey('sun'),
+                              key: const ValueKey('sun'),
                               size: 16,
                               color: Colors.orange[800],
                             ),

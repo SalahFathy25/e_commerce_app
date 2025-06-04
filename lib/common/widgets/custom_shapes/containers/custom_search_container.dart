@@ -46,7 +46,7 @@ class CustomSearchContainer extends StatelessWidget {
           child: Row(
             children: [
               Icon(icon, color: AppColors.darkerGrey),
-              SizedBox(width: Sizes.spaceBetweenItems),
+              const SizedBox(width: Sizes.spaceBetweenItems),
               Text(text, style: Theme.of(context).textTheme.bodySmall),
             ],
           ),

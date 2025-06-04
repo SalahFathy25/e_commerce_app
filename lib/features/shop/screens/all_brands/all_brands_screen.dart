@@ -14,14 +14,14 @@ class AllBrandsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(title: Text('Brand'), showBackArrow: true),
+      appBar: const CustomAppbar(title: Text('Brand'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(Sizes.defaultSpace),
           child: Column(
             children: [
-              SectionHeading(title: 'Brands', showActionButton: false),
-              SizedBox(height: Sizes.spaceBetweenItems),
+              const SectionHeading(title: 'Brands', showActionButton: false),
+              const SizedBox(height: Sizes.spaceBetweenItems),
 
               GridLayout(
                 itemCount: 12,

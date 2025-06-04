@@ -20,7 +20,7 @@ class BillingPaymentSection extends StatelessWidget {
           buttonTitle: 'Change',
           onPressed: () {},
         ),
-        SizedBox(height: Sizes.spaceBetweenItems / 2),
+        const SizedBox(height: Sizes.spaceBetweenItems / 2),
         Row(
           children: [
             RoundedContainer(
@@ -28,7 +28,7 @@ class BillingPaymentSection extends StatelessWidget {
               height: 35,
               backgroundColor: dark ? AppColors.light : AppColors.white,
               padding: const EdgeInsets.all(Sizes.sm),
-              child: Image(
+              child: const Image(
                 image: AssetImage(ImagesStrings.paypal),
                 fit: BoxFit.contain,
               ),

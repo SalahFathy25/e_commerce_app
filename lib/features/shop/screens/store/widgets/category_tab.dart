@@ -20,27 +20,27 @@ class CategoryTab extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       children: [
         Padding(
-          padding: EdgeInsets.all(Sizes.defaultSpace),
+          padding: const EdgeInsets.all(Sizes.defaultSpace),
           child: Column(
             children: [
-              BrandShowCase(
+              const BrandShowCase(
                 images: [
                   ImagesStrings.productImage1,
                   ImagesStrings.productImage2,
                   ImagesStrings.productImage3,
                 ],
               ),
-              BrandShowCase(
+              const BrandShowCase(
                 images: [
                   ImagesStrings.productImage1,
                   ImagesStrings.productImage2,
                   ImagesStrings.productImage3,
                 ],
               ),
-              SizedBox(height: Sizes.spaceBetweenItems),
+              const SizedBox(height: Sizes.spaceBetweenItems),
 
               SectionHeading(title: 'You might like', onPressed: () {}),
-              SizedBox(height: Sizes.spaceBetweenItems),
+              const SizedBox(height: Sizes.spaceBetweenItems),
 
               GridLayout(
                 itemCount: 4,
@@ -48,7 +48,7 @@ class CategoryTab extends StatelessWidget {
                   return ProductCardVertical(product: product);
                 },
               ),
-              SizedBox(height: Sizes.spaceBetweenSections),
+              const SizedBox(height: Sizes.spaceBetweenSections),
             ],
           ),
         ),

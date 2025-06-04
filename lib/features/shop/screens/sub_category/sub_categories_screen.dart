@@ -12,14 +12,14 @@ class SubCategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(title: Text('Sports'), showBackArrow: true),
+      appBar: const CustomAppbar(title: Text('Sports'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(Sizes.defaultSpace),
           child: Column(
             children: [
               /// Banner
-              RoundedImage(
+              const RoundedImage(
                 image: ImagesStrings.promoBanner1,
                 width: double.infinity,
                 height: null,
@@ -42,7 +42,7 @@ class SubCategoriesScreen extends StatelessWidget {
                       separatorBuilder:
                           (context, index) =>
                               const SizedBox(width: Sizes.spaceBetweenItems),
-                      itemBuilder: (context, index) => ProductCardHorizontal(),
+                      itemBuilder: (context, index) => const ProductCardHorizontal(),
                     ),
                   ),
                 ],
@@ -63,7 +63,7 @@ class SubCategoriesScreen extends StatelessWidget {
                       separatorBuilder:
                           (context, index) =>
                               const SizedBox(width: Sizes.spaceBetweenItems),
-                      itemBuilder: (context, index) => ProductCardHorizontal(),
+                      itemBuilder: (context, index) => const ProductCardHorizontal(),
                     ),
                   ),
                 ],
@@ -84,7 +84,7 @@ class SubCategoriesScreen extends StatelessWidget {
                       separatorBuilder:
                           (context, index) =>
                               const SizedBox(width: Sizes.spaceBetweenItems),
-                      itemBuilder: (context, index) => ProductCardHorizontal(),
+                      itemBuilder: (context, index) => const ProductCardHorizontal(),
                     ),
                   ),
                 ],

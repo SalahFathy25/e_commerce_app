@@ -29,7 +29,7 @@ class AddNewAddress extends StatelessWidget {
                 TextFormField(
                   textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Iconsax.user),
+                    prefixIcon: const Icon(Iconsax.user),
                     labelText: TextStrings.name,
                   ),
                 ),
@@ -40,7 +40,7 @@ class AddNewAddress extends StatelessWidget {
                   textDirection: TextDirection.ltr,
                   keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Iconsax.mobile),
+                    prefixIcon: const Icon(Iconsax.mobile),
                     labelText: TextStrings.phoneNo,
                   ),
                 ),
@@ -55,17 +55,17 @@ class AddNewAddress extends StatelessWidget {
                         textDirection:
                             isRTL ? TextDirection.rtl : TextDirection.ltr,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Iconsax.building_31),
+                          prefixIcon: const Icon(Iconsax.building_31),
                           labelText: TextStrings.street,
                         ),
                       ),
                     ),
-                    SizedBox(width: Sizes.spaceBetweenInputFields),
+                    const SizedBox(width: Sizes.spaceBetweenInputFields),
                     Expanded(
                       child: TextFormField(
                         textDirection: TextDirection.ltr,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Iconsax.code),
+                          prefixIcon: const Icon(Iconsax.code),
                           labelText: TextStrings.postalCode,
                         ),
                       ),
@@ -83,18 +83,18 @@ class AddNewAddress extends StatelessWidget {
                         textDirection:
                             isRTL ? TextDirection.rtl : TextDirection.ltr,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Iconsax.building),
+                          prefixIcon: const Icon(Iconsax.building),
                           labelText: TextStrings.city,
                         ),
                       ),
                     ),
-                    SizedBox(width: Sizes.spaceBetweenInputFields),
+                    const SizedBox(width: Sizes.spaceBetweenInputFields),
                     Expanded(
                       child: TextFormField(
                         textDirection:
                             isRTL ? TextDirection.rtl : TextDirection.ltr,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Iconsax.activity),
+                          prefixIcon: const Icon(Iconsax.activity),
                           labelText: TextStrings.state,
                         ),
                       ),
@@ -107,7 +107,7 @@ class AddNewAddress extends StatelessWidget {
                 TextFormField(
                   textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Iconsax.global),
+                    prefixIcon: const Icon(Iconsax.global),
                     labelText: TextStrings.country,
                   ),
                 ),

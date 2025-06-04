@@ -1,7 +1,6 @@
 import 'package:e_commerce_app/common/widgets/appbar/custom_appbar.dart';
 import 'package:e_commerce_app/common/widgets/images/circular_image.dart';
 import 'package:e_commerce_app/common/widgets/texts/section_heading.dart';
-import 'package:e_commerce_app/data/services/auth_service.dart';
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:e_commerce_app/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,6 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authServices = AuthService();
     return Scaffold(
       appBar: CustomAppbar(
         showBackArrow: true,
@@ -107,7 +105,6 @@ class ProfileScreen extends StatelessWidget {
               Center(
                 child: TextButton(
                   onPressed: () async {
-                    authServices.signOut();
                     Get.offAll(() => const LoginScreen());
                   },
                   child: Text(

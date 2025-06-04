@@ -25,7 +25,7 @@ class CouponCode extends StatelessWidget {
         children: [
           Flexible(
             child: TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Have a Promo Code? Enter here',
                 border: InputBorder.none,
                 focusedBorder: InputBorder.none,
@@ -47,7 +47,7 @@ class CouponCode extends StatelessWidget {
                 backgroundColor: Colors.grey.withOpacity(0.2),
                 side: BorderSide(color: Colors.grey.withOpacity(0.1)),
               ),
-              child: Text('Apply'),
+              child: const Text('Apply'),
             ),
           ),
         ],

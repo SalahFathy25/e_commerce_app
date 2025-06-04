@@ -36,7 +36,7 @@ class ProductMetaData extends StatelessWidget {
                 ).textTheme.labelLarge!.apply(color: AppColors.black),
               ),
             ),
-            SizedBox(width: Sizes.spaceBetweenItems),
+            const SizedBox(width: Sizes.spaceBetweenItems),
 
             Text(
               '\$250.00',
@@ -44,24 +44,24 @@ class ProductMetaData extends StatelessWidget {
                 decoration: TextDecoration.lineThrough,
               ),
             ),
-            SizedBox(width: Sizes.spaceBetweenItems),
-            ProductPriceText(price: '175', isLarge: true),
+            const SizedBox(width: Sizes.spaceBetweenItems),
+            const ProductPriceText(price: '175', isLarge: true),
           ],
         ),
 
-        SizedBox(height: Sizes.spaceBetweenItems / 1.5),
+        const SizedBox(height: Sizes.spaceBetweenItems / 1.5),
 
-        ProductTitleText(title: 'Green Nike Sports Shirt'),
-        SizedBox(height: Sizes.spaceBetweenItems / 1.5),
+        const ProductTitleText(title: 'Green Nike Sports Shirt'),
+        const SizedBox(height: Sizes.spaceBetweenItems / 1.5),
 
         Row(
           children: [
-            ProductTitleText(title: 'Status : '),
-            SizedBox(height: Sizes.spaceBetweenItems),
+            const ProductTitleText(title: 'Status : '),
+            const SizedBox(height: Sizes.spaceBetweenItems),
             Text('In Stock', style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
-        SizedBox(height: Sizes.spaceBetweenItems / 1.5),
+        const SizedBox(height: Sizes.spaceBetweenItems / 1.5),
 
         Row(
           children: [
@@ -71,7 +71,7 @@ class ProductMetaData extends StatelessWidget {
               height: 32,
               overlayColor: dark ? AppColors.white : AppColors.black,
             ),
-            BrandTitleWithVerifiedIcon(
+            const BrandTitleWithVerifiedIcon(
               title: 'Nike',
               brandTextSize: TextSizes.medium,
             ),

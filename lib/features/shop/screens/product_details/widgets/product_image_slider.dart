@@ -22,10 +22,10 @@ class ProductImageSlider extends StatelessWidget {
         child: Stack(
           // Main Large Image
           children: [
-            SizedBox(
+            const SizedBox(
               height: 400,
               child: Padding(
-                padding: const EdgeInsets.all(Sizes.productImageRadius * 2),
+                padding: EdgeInsets.all(Sizes.productImageRadius * 2),
                 child: Center(
                   child: Image(image: AssetImage(ImagesStrings.productImage1)),
                 ),
@@ -61,7 +61,7 @@ class ProductImageSlider extends StatelessWidget {
             ),
 
             // AppBar Icons
-            CustomAppbar(
+            const CustomAppbar(
               showBackArrow: true,
               actions: [CircularIcon(icon: Iconsax.heart5, color: Colors.red)],
             ),

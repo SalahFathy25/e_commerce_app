@@ -20,11 +20,11 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              LoginHeader(),
-              LoginForm(),
+              const LoginHeader(),
+              const LoginForm(),
               FormDivider(dividerText: TextStrings.orSignInWith),
-              SizedBox(height: Sizes.spaceBetweenSections),
-              SocialButtons(),
+              const SizedBox(height: Sizes.spaceBetweenSections),
+              const SocialButtons(),
             ],
           ),
         ),

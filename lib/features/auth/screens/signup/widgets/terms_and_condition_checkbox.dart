@@ -1,35 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../../utils/constants/app_colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
+import '../../../controllers/signup/signup_controller.dart';
 
-class TermsAndConditionCheckBox extends StatefulWidget {
+class TermsAndConditionCheckBox extends StatelessWidget {
   const TermsAndConditionCheckBox({super.key});
 
   @override
-  State<TermsAndConditionCheckBox> createState() =>
-      _TermsAndConditionCheckBoxState();
-}
-
-class _TermsAndConditionCheckBoxState extends State<TermsAndConditionCheckBox> {
-  bool _terms = true;
-  @override
   Widget build(BuildContext context) {
     final dark = HelperFunctions.isDarkMode(context);
+    final controller = SignupController.instance;
     return Row(
       children: [
         SizedBox(
           width: 24,
           height: 24,
-          child: Checkbox(
-            value: _terms,
-            onChanged: (value) {
-              setState(() {
-                _terms = value!;
-              });
-            },
+          child: Obx(
+            () => Checkbox(
+              value: controller.privacyPolicy.value,
+              onChanged:
+                  (value) =>
+                      controller.privacyPolicy.value =
+                          !controller.privacyPolicy.value,
+            ),
           ),
         ),
         const SizedBox(width: Sizes.spaceBetweenItems),

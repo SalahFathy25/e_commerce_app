@@ -5,7 +5,7 @@ import 'package:iconsax/iconsax.dart';
 import '../constants/app_colors.dart';
 import '../helpers/helper_functions.dart';
 
-class TLoaders {
+class Loaders {
   static hideSnackBar() =>
       ScaffoldMessenger.of(Get.context!).hideCurrentSnackBar();
 

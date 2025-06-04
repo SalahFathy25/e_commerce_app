@@ -24,7 +24,7 @@ class BillingAddressSection extends StatelessWidget {
 
         Row(
           children: [
-            Icon(Icons.phone, color: Colors.grey, size: 16),
+            const Icon(Icons.phone, color: Colors.grey, size: 16),
             const SizedBox(width: Sizes.spaceBetweenItems),
             Text(
               '+1 234 567 890',
@@ -36,7 +36,7 @@ class BillingAddressSection extends StatelessWidget {
 
         Row(
           children: [
-            Icon(Icons.location_history, color: Colors.grey, size: 16),
+            const Icon(Icons.location_history, color: Colors.grey, size: 16),
             const SizedBox(width: Sizes.spaceBetweenItems),
             Text(
               '123 Main St, Springfield',

@@ -18,12 +18,12 @@ class UserAddressScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed:
             () => Get.to(
-              () => AddNewAddress(),
+              () => const AddNewAddress(),
               transition: Transition.rightToLeft,
               duration: const Duration(milliseconds: 500),
             ),
         backgroundColor: AppColors.primary,
-        child: Icon(Iconsax.add, color: AppColors.white),
+        child: const Icon(Iconsax.add, color: AppColors.white),
       ),
       appBar: CustomAppbar(
         showBackArrow: true,
@@ -32,9 +32,9 @@ class UserAddressScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(Sizes.defaultSpace),
+          padding: EdgeInsets.all(Sizes.defaultSpace),
           child: Column(
             children: [
               SingleAddress(selectedAddress: true),

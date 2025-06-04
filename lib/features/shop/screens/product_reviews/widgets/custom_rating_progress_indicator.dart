@@ -30,7 +30,7 @@ class CustomRatingProgressIndicator extends StatelessWidget {
               minHeight: 11,
               backgroundColor: Colors.grey,
               borderRadius: BorderRadius.circular(7),
-              valueColor: AlwaysStoppedAnimation(AppColors.primary),
+              valueColor: const AlwaysStoppedAnimation(AppColors.primary),
             ),
           ),
         ),

@@ -29,7 +29,7 @@ class PromoSlider extends StatelessWidget {
             onPageChanged: (index, _) => controller.updatePageIndicator(index),
           ),
         ),
-        SizedBox(height: Sizes.spaceBetweenItems),
+        const SizedBox(height: Sizes.spaceBetweenItems),
         Center(
           child: Obx(
             () => Row(

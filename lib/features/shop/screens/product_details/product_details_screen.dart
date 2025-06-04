@@ -22,11 +22,11 @@ class ProductDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomAddToCart(),
+      bottomNavigationBar: const BottomAddToCart(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ProductImageSlider(),
+            const ProductImageSlider(),
             Padding(
               padding: const EdgeInsets.only(
                 right: Sizes.defaultSpace,
@@ -40,10 +40,10 @@ class ProductDetailsScreen extends StatelessWidget {
                     reviewCount: product.reviewCount,
                   ),
 
-                  ProductMetaData(),
+                  const ProductMetaData(),
 
                   if (product.sizes != null || product.colors != null)
-                    ProductAttributes(),
+                    const ProductAttributes(),
                   const SizedBox(height: Sizes.spaceBetweenSections),
 
                   SizedBox(
@@ -91,7 +91,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       IconButton(
                         onPressed:
                             () => Get.to(
-                              () => ProductReviewScreen(),
+                              () => const ProductReviewScreen(),
                               transition: Transition.rightToLeft,
                             ),
                         icon: const Icon(Iconsax.arrow_right_3, size: 18),

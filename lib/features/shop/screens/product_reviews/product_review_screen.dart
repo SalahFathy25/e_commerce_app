@@ -12,7 +12,7 @@ class ProductReviewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(
+      appBar: const CustomAppbar(
         title: Text('Reviews & Ratings'),
         showBackArrow: true,
       ),
@@ -23,22 +23,22 @@ class ProductReviewScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Rating and Reviews are very important for us to improve our products and services.',
               ),
               const SizedBox(height: Sizes.spaceBetweenItems),
 
               // Overall Product Ratings
-              OverallProductRating(),
-              CustomRatingBarIndicator(rating: 3.5),
+              const OverallProductRating(),
+              const CustomRatingBarIndicator(rating: 3.5),
               Text('12,666', style: Theme.of(context).textTheme.bodySmall),
               const SizedBox(height: Sizes.spaceBetweenSections),
 
               // User Reviews List
-              UserReviewCard(),
-              UserReviewCard(),
-              UserReviewCard(),
-              UserReviewCard(),
+              const UserReviewCard(),
+              const UserReviewCard(),
+              const UserReviewCard(),
+              const UserReviewCard(),
             ],
           ),
         ),

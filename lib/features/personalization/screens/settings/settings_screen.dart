@@ -11,7 +11,6 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/list_tiles/user_profile_tile.dart';
-import '../../../../data/services/auth_service.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../auth/screens/login/login_screen.dart';
 import '../address/address.dart';
@@ -22,7 +21,6 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authServices = AuthService();
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -152,7 +150,6 @@ class SettingsScreen extends StatelessWidget {
                     width: double.infinity,
                     child: OutlinedButton(
                       onPressed: () async {
-                        authServices.signOut();
                         Get.offAll(() => const LoginScreen());
                       },
                       child: Text(TextStrings.logOut),

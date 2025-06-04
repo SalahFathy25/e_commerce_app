@@ -21,7 +21,7 @@ class CartItem extends StatelessWidget {
           image: ImagesStrings.productImage1,
           width: 60,
           height: 60,
-          padding: EdgeInsets.all(Sizes.sm),
+          padding: const EdgeInsets.all(Sizes.sm),
           backgroundColor: dark ? AppColors.darkerGrey : AppColors.light,
         ),
         const SizedBox(width: Sizes.spaceBetweenItems),
@@ -32,8 +32,8 @@ class CartItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              BrandTitleWithVerifiedIcon(title: 'Nike'),
-              Flexible(
+              const BrandTitleWithVerifiedIcon(title: 'Nike'),
+              const Flexible(
                 child: ProductTitleText(
                   title: 'Air Max 270 React',
                   maxLines: 1,

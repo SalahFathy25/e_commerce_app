@@ -16,8 +16,8 @@ class CartScreen extends StatelessWidget {
         showBackArrow: true,
         title: Text('Cart', style: Theme.of(context).textTheme.headlineSmall),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(Sizes.defaultSpace),
+      body: const Padding(
+        padding: EdgeInsets.all(Sizes.defaultSpace),
         child: CartItems(),
       ),
       bottomNavigationBar: Padding(
@@ -28,7 +28,7 @@ class CartScreen extends StatelessWidget {
                 () => const CheckoutScreen(),
                 transition: Transition.rightToLeft,
               ),
-          child: Text('Checkout \$256.0'),
+          child: const Text('Checkout \$256.0'),
         ),
       ),
     );

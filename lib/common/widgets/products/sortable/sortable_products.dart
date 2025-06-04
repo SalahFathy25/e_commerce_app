@@ -17,7 +17,7 @@ class SortableProducts extends StatelessWidget {
       children: [
         /// Dropdown
         DropdownButtonFormField(
-          decoration: InputDecoration(prefixIcon: const Icon(Iconsax.sort)),
+          decoration: const InputDecoration(prefixIcon: Icon(Iconsax.sort)),
           items:
               ['A to Z', 'Z to A']
                   .map(
@@ -27,7 +27,7 @@ class SortableProducts extends StatelessWidget {
                   .toList(),
           onChanged: (_) {},
         ),
-        SizedBox(height: Sizes.spaceBetweenSections),
+        const SizedBox(height: Sizes.spaceBetweenSections),
 
         /// all products
         GridLayout(

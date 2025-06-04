@@ -3,9 +3,9 @@ class ImagesStrings {
   static const String darkAppLogo = 'assets/logos/app_logos/dark_logo.png';
   static const String lightAppLogo = 'assets/logos/app_logos/light_logo.png';
 
-  // Social Media Logos
-  static const String facebookLogo = 'assets/logos/social_media_logos/facebook.png';
-  static const String googleLogo = 'assets/logos/social_media_logos/google.png';
+  // -- Social Logos
+  static const String google = "assets/logos/google-icon.png";
+  static const String facebook = "assets/logos/facebook-icon.png";
 
   // -- Category Icons
   static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";

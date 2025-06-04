@@ -35,19 +35,19 @@ class CheckoutScreen extends StatelessWidget {
           child: Column(
             children: [
               // Item In Cart
-              CartItems(showAddRemoveButtons: false),
-              SizedBox(height: Sizes.spaceBetweenSections),
+              const CartItems(showAddRemoveButtons: false),
+              const SizedBox(height: Sizes.spaceBetweenSections),
 
               // Coupon Code
-              CouponCode(),
-              SizedBox(height: Sizes.spaceBetweenSections),
+              const CouponCode(),
+              const SizedBox(height: Sizes.spaceBetweenSections),
 
               // Billing Section
               RoundedContainer(
                 padding: const EdgeInsets.all(Sizes.md),
                 showBorder: true,
                 backgroundColor: dark ? AppColors.black : AppColors.white,
-                child: Column(
+                child: const Column(
                   children: [
                     BillingAmountSection(),
                     SizedBox(height: Sizes.spaceBetweenItems),
@@ -80,7 +80,7 @@ class CheckoutScreen extends StatelessWidget {
                 ),
                 transition: Transition.rightToLeft,
               ),
-          child: Text('Checkout \$256.0'),
+          child: const Text('Checkout \$256.0'),
         ),
       ),
     );

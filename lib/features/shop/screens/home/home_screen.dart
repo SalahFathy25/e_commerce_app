@@ -11,7 +11,6 @@ import '../../../../common/widgets/products/product_cards/product_card_vertical.
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/images_strings.dart';
 import '../../models/lists/vertical_products_data.dart';
-import '../../models/vertical_product.dart';
 import 'widgets/home_appbar.dart';
 import 'widgets/home_categories.dart';
 import 'widgets/promo_slider.dart';
@@ -21,7 +20,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    VerticalProduct product;
+    // VerticalProduct product;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -29,7 +28,7 @@ class HomeScreen extends StatelessWidget {
             PrimaryHeaderContainer(
               child: Column(
                 children: [
-                  HomeAppBar(),
+                  const HomeAppBar(),
                   const SizedBox(height: Sizes.spaceBetweenSections),
                   CustomSearchContainer(text: TextStrings.searchInStore),
                   const SizedBox(height: Sizes.spaceBetweenSections),
@@ -46,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                           textColor: Colors.white,
                         ),
                         const SizedBox(height: Sizes.spaceBetweenItems),
-                        HomeCategories(),
+                        const HomeCategories(),
                       ],
                     ),
                   ),
@@ -58,19 +57,19 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(Sizes.defaultSpace),
               child: Column(
                 children: [
-                  PromoSlider(
+                  const PromoSlider(
                     banners: [
                       ImagesStrings.promoBanner1,
                       ImagesStrings.promoBanner2,
                       ImagesStrings.promoBanner3,
                     ],
                   ),
-                  SizedBox(height: Sizes.spaceBetweenSections),
+                  const SizedBox(height: Sizes.spaceBetweenSections),
                   SectionHeading(
                     title: TextStrings.popularProducts,
                     onPressed:
                         () => Get.to(
-                          () => AllProductsScreen(),
+                          () => const AllProductsScreen(),
                           transition: Transition.rightToLeft,
                           duration: const Duration(milliseconds: 300),
                         ),
