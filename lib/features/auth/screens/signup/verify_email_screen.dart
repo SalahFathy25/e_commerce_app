@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 
 import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../controllers/signup/verify_email_controller.dart';
-import 'signup_screen.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({super.key, this.email});
