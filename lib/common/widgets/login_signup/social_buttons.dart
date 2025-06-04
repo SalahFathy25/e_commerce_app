@@ -20,7 +20,7 @@ class SocialButtons extends StatelessWidget {
           child: IconButton(
             onPressed: () {},
             icon: const Image(
-              image: AssetImage(ImagesStrings.googleLogo),
+              image: AssetImage(ImagesStrings.google),
               width: Sizes.mdIcon,
               height: Sizes.mdIcon,
             ),
@@ -35,7 +35,7 @@ class SocialButtons extends StatelessWidget {
           child: IconButton(
             onPressed: () {},
             icon: const Image(
-              image: AssetImage(ImagesStrings.facebookLogo),
+              image: AssetImage(ImagesStrings.facebook),
               width: Sizes.mdIcon,
               height: Sizes.mdIcon,
             ),
