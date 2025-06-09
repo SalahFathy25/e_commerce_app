@@ -12,12 +12,20 @@ import '../../../../utils/constants/text_strings.dart';
 class VerifyEmailController extends GetxController {
   static VerifyEmailController get instance => Get.find();
 
+  late Timer _timer;
+
   // Send Email whenever Verify screen appears & set Timer for auto redirect
   @override
   void onInit() {
     sendEmailVerification();
     setTimerForAutoRedirect();
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    _timer.cancel();
+    super.onClose();
   }
 
   // send verification email link
@@ -35,7 +43,7 @@ class VerifyEmailController extends GetxController {
 
   // timer to automatically redirect on email verification
   setTimerForAutoRedirect() async {
-    Timer.periodic(const Duration(seconds: 1), (timer) async {
+    _timer = Timer.periodic(const Duration(seconds: 5), (timer) async {
       await FirebaseAuth.instance.currentUser?.reload();
       final user = FirebaseAuth.instance.currentUser;
       if (user?.emailVerified ?? false) {

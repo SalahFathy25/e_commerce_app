@@ -24,6 +24,17 @@ class SignupController extends GetxController {
   final hidePassword = true.obs;
   final privacyPolicy = true.obs;
 
+  @override
+  void onClose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    usernameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    phoneController.dispose();
+    super.onClose();
+  }
+
   //-- signup
   void signup() async {
     try {
@@ -42,13 +53,14 @@ class SignupController extends GetxController {
       }
 
       // Form Validation
-      if (!signUpFormKey.currentState!.validate()) {
+      if (signUpFormKey.currentState == null || !signUpFormKey.currentState!.validate()) {
         FullScreenLoader.stopLoading();
         return;
       }
 
       // Privacy Policy Check
       if (!privacyPolicy.value) {
+        FullScreenLoader.stopLoading();
         Loaders.warningSnackBar(
           title: 'Accept Privacy Policy',
           message:
@@ -64,9 +76,14 @@ class SignupController extends GetxController {
             passwordController.text.trim(),
           );
 
+      final firebaseUser = userCredential.user;
+      if (firebaseUser == null) {
+        throw Exception('User registration failed. Please try again.');
+      }
+
       // Save authentication user data in Firestore
       final newUser = UserModel(
-        id: userCredential.user!.uid,
+        id: firebaseUser.uid,
         firstName: firstNameController.text.trim(),
         lastName: lastNameController.text.trim(),
         username: usernameController.text.trim(),
