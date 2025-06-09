@@ -1,4 +1,6 @@
+import 'package:e_commerce_app/features/auth/controllers/login/login_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../utils/constants/app_colors.dart';
 import '../../../utils/constants/images_strings.dart';
@@ -9,6 +11,7 @@ class SocialButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

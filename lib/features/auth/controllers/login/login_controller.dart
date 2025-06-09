@@ -7,6 +7,7 @@ import 'package:get_storage/get_storage.dart';
 import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../utils/network/network_manager.dart';
 import '../../../../utils/popups/loaders.dart';
+import '../../../personalization/controllers/user_controller.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();
@@ -67,6 +68,40 @@ class LoginController extends GetxController {
       // Remove Loader
       FullScreenLoader.stopLoading();
       // Show some Generic Error to the user
+      Loaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+    }
+  }
+
+  /// -- Google SignIn Authentication --
+  Future<void> googleSignIn() async {
+    try {
+      // Start Loading
+      FullScreenLoader.openLoadingDialog(
+        'Logging You In...',
+        ImagesStrings.loading,
+      );
+
+      //Check Internet Connection
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        FullScreenLoader.stopLoading();
+        return;
+      }
+      // Google Authentication
+      final userCredential =
+          await AuthenticationRepository.instance.googleSignIn();
+
+      // Save User Record
+      await UserController.instance.saveUserRecord(userCredential);
+
+      // Remove Loader
+      FullScreenLoader.stopLoading();
+
+      // Redirect
+      AuthenticationRepository.instance.screenRedirect();
+    } catch (e) {
+      // Remove Loader
+      FullScreenLoader.stopLoading();
       Loaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
     }
   }

@@ -41,8 +41,7 @@ class SignupController extends GetxController {
       //Start Loading
       FullScreenLoader.openLoadingDialog(
         'We Are Processing Your information...',
-        // ImagesStrings.docerAnimation,
-        ImagesStrings.animalIcon,
+        ImagesStrings.loading,
       );
 
       //Check Internet Connection

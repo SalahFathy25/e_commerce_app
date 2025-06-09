@@ -50,8 +50,7 @@ class VerifyEmailController extends GetxController {
         timer.cancel();
         Get.off(
           () => SuccessScreen(
-            // image: ImagesStrings.successfullyRegisterAnimation,
-            image: ImagesStrings.animalIcon,
+            image: ImagesStrings.successfullyRegisterAnimation,
             title: TextStrings.yourAccountCreatedTitle,
             subTitle: TextStrings.yourAccountCreatedSubTitle,
             onPressed: () => AuthenticationRepository.instance.screenRedirect(),
@@ -67,8 +66,7 @@ class VerifyEmailController extends GetxController {
     if (currentUser != null && currentUser.emailVerified) {
       Get.off(
         () => SuccessScreen(
-          image: ImagesStrings.staticSuccessIllustration,
-          // image: ImagesStrings.staticSuccessIllustration,
+          image: ImagesStrings.successfullyRegisterAnimation,
           title: TextStrings.yourAccountCreatedTitle,
           subTitle: TextStrings.yourAccountCreatedSubTitle,
           onPressed: () => AuthenticationRepository.instance.screenRedirect(),
