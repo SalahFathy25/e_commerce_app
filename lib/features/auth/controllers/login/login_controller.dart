@@ -87,6 +87,7 @@ class LoginController extends GetxController {
         FullScreenLoader.stopLoading();
         return;
       }
+
       // Google Authentication
       final userCredential =
           await AuthenticationRepository.instance.googleSignIn();

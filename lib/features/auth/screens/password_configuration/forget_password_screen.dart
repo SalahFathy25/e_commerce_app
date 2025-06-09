@@ -1,16 +1,18 @@
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:e_commerce_app/utils/constants/text_strings.dart';
+import 'package:e_commerce_app/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'reset_password_screen.dart';
+import '../../controllers/forget_password/forget_password_controller.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgetPasswordController());
     TextEditingController emailController = TextEditingController();
     return Scaffold(
       appBar: AppBar(),
@@ -30,10 +32,15 @@ class ForgetPasswordScreen extends StatelessWidget {
             ),
             const SizedBox(height: Sizes.spaceBetweenSections * 2),
 
-            TextFormField(
-              decoration: InputDecoration(
-                labelText: TextStrings.email,
-                prefixIcon: const Icon(Iconsax.direct_right),
+            Form(
+              key: controller.forgetPasswordFormKey,
+              child: TextFormField(
+                controller: controller.email,
+                validator: Validator.validateEmail,
+                decoration: InputDecoration(
+                  labelText: TextStrings.email,
+                  prefixIcon: const Icon(Iconsax.direct_right),
+                ),
               ),
             ),
             const SizedBox(height: Sizes.spaceBetweenSections),
@@ -41,13 +48,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-
-                  Get.off(
-                    () => const ResetPasswordScreen(),
-                    transition: Transition.rightToLeft,
-                  );
-                },
+                onPressed: () => controller.sendPasswordResetEmail(),
                 child: Text(TextStrings.submit),
               ),
             ),
