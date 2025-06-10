@@ -6,7 +6,7 @@ import '../../../../../common/widgets/appbar/custom_appbar.dart';
 import '../../../../../common/widgets/products/cart/cart_menu_icon.dart';
 import '../../../../../utils/constants/app_colors.dart';
 import '../../../../../utils/constants/text_strings.dart';
-import '../../../../../utils/shimmers/shimmer_effect.dart';
+import '../../../../../common/widgets/shimmers/shimmer_effect.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});

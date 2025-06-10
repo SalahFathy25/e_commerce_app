@@ -2,7 +2,7 @@ import 'package:e_commerce_app/utils/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../helpers/helper_functions.dart';
+import '../../../utils/helpers/helper_functions.dart';
 
 class ShimmerEffect extends StatelessWidget {
   const ShimmerEffect({
