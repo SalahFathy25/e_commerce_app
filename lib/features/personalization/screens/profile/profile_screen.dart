@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/common/widgets/appbar/custom_appbar.dart';
 import 'package:e_commerce_app/common/widgets/images/circular_image.dart';
 import 'package:e_commerce_app/common/widgets/texts/section_heading.dart';
+import 'package:e_commerce_app/features/personalization/controllers/user_controller.dart';
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:e_commerce_app/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/images_strings.dart';
-import '../../../auth/screens/login/login_screen.dart';
+import 'change_name_screen.dart';
 import 'widgets/profile_menu.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -16,6 +17,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       appBar: CustomAppbar(
         showBackArrow: true,
@@ -54,12 +56,12 @@ class ProfileScreen extends StatelessWidget {
 
               ProfileMenu(
                 title: TextStrings.name,
-                value: 'Salah Fathy',
-                onPressed: () {},
+                value: controller.user.value.fullName,
+                onPressed: () => Get.to(() => const ChangeNameScreen()),
               ),
               ProfileMenu(
                 title: TextStrings.username,
-                value: 'salah_fathy',
+                value: controller.user.value.username,
                 onPressed: () {},
               ),
 
@@ -74,18 +76,18 @@ class ProfileScreen extends StatelessWidget {
 
               ProfileMenu(
                 title: TextStrings.userId,
-                value: '12345',
+                value: controller.user.value.id,
                 icon: Iconsax.copy,
                 onPressed: () {},
               ),
               ProfileMenu(
                 title: TextStrings.email,
-                value: 'salah_fathy',
+                value: controller.user.value.email,
                 onPressed: () {},
               ),
               ProfileMenu(
                 title: TextStrings.phoneNo,
-                value: '+20123456789',
+                value: controller.user.value.phoneNumber,
                 onPressed: () {},
               ),
               ProfileMenu(
@@ -104,12 +106,10 @@ class ProfileScreen extends StatelessWidget {
 
               Center(
                 child: TextButton(
-                  onPressed: () async {
-                    Get.offAll(() => const LoginScreen());
-                  },
-                  child: Text(
-                    TextStrings.logOut,
-                    style: const TextStyle(
+                  onPressed: () async => controller.deleteAccountWarningPopup(),
+                  child: const Text(
+                    "Delete Account",
+                    style: TextStyle(
                       color: Colors.red,
                       fontWeight: FontWeight.w600,
                       fontSize: 18,

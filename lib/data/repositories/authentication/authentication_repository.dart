@@ -10,12 +10,17 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../user/user_repository.dart';
+
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
 
   // Variables
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
+
+  /// Get Authentication User Data
+  User? get authUser => _auth.currentUser;
 
   // called from main.dart on app launch
   @override
@@ -90,6 +95,26 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// [Re-Authenticate] - Re-Authenticate User
+  Future<void> reAuthWithEmailAndPassword(String email, String password) async {
+    try {
+      // create a credential
+      AuthCredential credential = EmailAuthProvider.credential(
+        email: email,
+        password: password,
+      );
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw FirebaseAuthException(code: e.code);
+    } on FirebaseException catch (e) {
+      throw FirebaseException(code: e.code, plugin: 'firebase_auth');
+    } on FormatException catch (_) {
+      throw FormatException;
+    } on PlatformException catch (e) {
+      throw PlatformException(code: e.code);
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 
   /// [EmailVerification] - Email Verification
   Future<void> sendEmailVerification() async {
@@ -180,4 +205,20 @@ class AuthenticationRepository extends GetxController {
   }
 
   /// [Delete User] - Remove User auth and firestore account
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+    } on FirebaseAuthException catch (e) {
+      throw FirebaseAuthException(code: e.code);
+    } on FirebaseException catch (e) {
+      throw FirebaseException(code: e.code, plugin: 'firebase_auth');
+    } on FormatException catch (_) {
+      throw FormatException;
+    } on PlatformException catch (e) {
+      throw PlatformException(code: e.code);
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 }

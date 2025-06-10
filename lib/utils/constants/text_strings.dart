@@ -57,7 +57,6 @@ class TextStrings {
 
   // -- Home
   static String homeAppbarTitle = S.current.homeAppbarTitle;
-  static String homeAppbarSubTitle = S.current.homeAppbarSubTitle;
   static String searchInStore = S.current.searchInStore;
   static String popularCategories = 'Popular Categories';
   static String viewAll = 'View All';

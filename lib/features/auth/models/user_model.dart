@@ -48,7 +48,6 @@ class UserModel {
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
       'firstName': firstName,
       'lastName': lastName,
       'username': username,
@@ -58,7 +57,9 @@ class UserModel {
     };
   }
 
-  factory UserModel.fromJson(DocumentSnapshot<Map<String, dynamic>> document) {
+  factory UserModel.fromSnapshot(
+    DocumentSnapshot<Map<String, dynamic>> document,
+  ) {
     if (document.data() != null) {
       final data = document.data()!;
       return UserModel(
@@ -70,7 +71,8 @@ class UserModel {
         phoneNumber: data['phoneNumber'] ?? '',
         profilePicture: data['profilePicture'] ?? '',
       );
+    } else {
+      return UserModel.empty();
     }
-    throw Exception('User data is null');
   }
 }
