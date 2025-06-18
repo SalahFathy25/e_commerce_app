@@ -24,7 +24,6 @@ class ChangeLanguageCubit extends Cubit<ChangeLanguageState> {
   }
 
   void changeLanguage(LanguageState languageState) async {
-    print('Changing language to: $languageState');
     if (!prefs.containsKey('language')) {
       await initialize();
     }

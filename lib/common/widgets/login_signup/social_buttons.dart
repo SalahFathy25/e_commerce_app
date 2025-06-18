@@ -21,7 +21,7 @@ class SocialButtons extends StatelessWidget {
             borderRadius: BorderRadius.circular(100),
           ),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () => controller.googleSignIn(),
             icon: const Image(
               image: AssetImage(ImagesStrings.google),
               width: Sizes.mdIcon,

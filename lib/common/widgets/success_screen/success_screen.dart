@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/common/styles/spacing_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/constants/text_strings.dart';
@@ -25,8 +26,8 @@ class SuccessScreen extends StatelessWidget {
           padding: SpacingStyles.paddingWithAppBarHeight * 2,
           child: Column(
             children: [
-              Image(
-                image: AssetImage(image),
+              Lottie.asset(
+                image,
                 width: HelperFunctions.screenWidth() * 0.6,
               ),
               const SizedBox(height: Sizes.spaceBetweenSections),

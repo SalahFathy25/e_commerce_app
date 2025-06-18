@@ -53,6 +53,7 @@ dependencies:
   shimmer: ^3.0.0
   image_picker: ^1.1.2
   cached_network_image: ^3.4.1
+  flutter_facebook_auth: ^7.1.2
 
 flutter_intl:
   enabled: true
