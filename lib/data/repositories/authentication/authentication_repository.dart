@@ -178,8 +178,9 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw PlatformException(code: e.code);
     } catch (e) {
-      if (kDebugMode)
+      if (kDebugMode) {
         print('Google SignIn Error: $e\nStackTrace: ${StackTrace.current}');
+      }
     }
     return null;
   }

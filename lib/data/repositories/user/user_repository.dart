@@ -131,7 +131,7 @@ class UserRepository extends GetxController {
 
       final userId = FirebaseAuth.instance.currentUser!.uid;
       final fileName =
-          '$userId/profile_${DateTime.now().millisecondsSinceEpoch}.jpg';
+          '$userId/${DateTime.now().millisecondsSinceEpoch}.jpg';
 
       final result = await storage
           .from('profiles')
