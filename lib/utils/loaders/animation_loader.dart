@@ -39,7 +39,7 @@ class AnimationLoaderWidget extends StatelessWidget {
           const SizedBox(height: Sizes.defaultSpace),
           Text(
             text,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.bodyLarge,
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: Sizes.defaultSpace),

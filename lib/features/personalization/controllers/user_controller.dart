@@ -94,7 +94,10 @@ class UserController extends GetxController {
       middleText:
           'Are you sure you want to delete your account permanently? This action is not reversible and all of your data will be removed permanently.',
       confirm: ElevatedButton(
-        onPressed: () async => deleteUserAccount(),
+        onPressed: () async {
+          deleteUserAccount();
+          Get.back();
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.red,
           side: const BorderSide(color: Colors.red),
@@ -106,7 +109,7 @@ class UserController extends GetxController {
         ),
       ),
       cancel: OutlinedButton(
-        onPressed: () => Navigator.of(Get.context!).pop(),
+        onPressed: () => Get.back(),
         child: const Text('Cancel'),
       ),
     );
@@ -122,23 +125,39 @@ class UserController extends GetxController {
 
       // First reauthenticate the user
       final auth = AuthenticationRepository.instance;
-      final provider =
-          auth.authUser!.providerData.map((e) => e.providerId).toList();
-      if (provider.isNotEmpty) {
+      final user = auth.authUser;
+
+      if (user == null) {
+        FullScreenLoader.stopLoading();
+        Loaders.errorSnackBar(title: 'Error', message: 'User not logged in.');
+        return;
+      }
+
+      final providers = user.providerData.map((e) => e.providerId).toList();
+      if (providers.isNotEmpty) {
         // Re Verify Auth Email
-        if (provider == 'google.com') {
+        if (providers.contains('google.com')) {
           await auth.googleSignIn();
           await auth.deleteAccount();
           FullScreenLoader.stopLoading();
           Get.offAll(() => const LoginScreen());
-        } else if (provider == 'password') {
+        } else if (providers.contains('password')) {
           FullScreenLoader.stopLoading();
           Get.offAll(() => const ReAuthUserLoginForm());
+        } else {
+          // Unknown provider
+          FullScreenLoader.stopLoading();
+          Loaders.errorSnackBar(
+            title: 'Error',
+            message: 'Unsupported authentication provider.',
+          );
         }
       }
     } catch (e) {
       FullScreenLoader.stopLoading();
       Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    } finally {
+      await FullScreenLoader.stopLoading();
     }
   }
 
@@ -187,11 +206,12 @@ class UserController extends GetxController {
         maxHeight: 512,
         maxWidth: 512,
       );
+
       if (image != null) {
         imageUploading.value = true;
-        final path = 'user_${DateTime.now().millisecondsSinceEpoch}.jpg';
+
         // Upload Image
-        final imageUrl = await userRepository.uploadImage(path, image);
+        final imageUrl = await userRepository.uploadImage(image);
 
         // Update User Image Record
         Map<String, dynamic> json = {'ProfilePicture': imageUrl};
@@ -206,7 +226,7 @@ class UserController extends GetxController {
       }
     } catch (e) {
       Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    }finally{
+    } finally {
       imageUploading.value = false;
     }
   }

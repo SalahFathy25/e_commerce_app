@@ -156,14 +156,15 @@ class AuthenticationRepository extends GetxController {
     try {
       // Trigger the authentication flow
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) return null;
       // Obtain the auth details from the request
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
 
       // Create a new credential
       final credentials = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
       );
 
       // Once signed in, return the UserCredential
@@ -177,7 +178,8 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw PlatformException(code: e.code);
     } catch (e) {
-      if (kDebugMode) print('Google SignIn Error: $e');
+      if (kDebugMode)
+        print('Google SignIn Error: $e\nStackTrace: ${StackTrace.current}');
     }
     return null;
   }
@@ -207,8 +209,27 @@ class AuthenticationRepository extends GetxController {
   /// [Delete User] - Remove User auth and firestore account
   Future<void> deleteAccount() async {
     try {
-      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
-      await _auth.currentUser?.delete();
+      final user = _auth.currentUser;
+
+      if (user == null) throw 'No authenticated user found';
+
+      final providers = user.providerData.map((e) => e.providerId).toList();
+
+      if (providers.contains('google.com')) {
+        // Reauthenticate with Google
+        final googleUser = await GoogleSignIn().signIn();
+        final googleAuth = await googleUser!.authentication;
+
+        final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
+
+        await user.reauthenticateWithCredential(credential);
+      }
+
+      await UserRepository.instance.removeUserRecord(user.uid);
+      await user.delete();
     } on FirebaseAuthException catch (e) {
       throw FirebaseAuthException(code: e.code);
     } on FirebaseException catch (e) {

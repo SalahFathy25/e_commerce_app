@@ -1,8 +1,11 @@
 import 'package:e_commerce_app/utils/constants/images_strings.dart';
 import 'package:e_commerce_app/utils/popups/full_screen_loader.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../data/repositories/authentication/authentication_repository.dart';
 import '../../../../utils/network/network_manager.dart';
@@ -20,6 +23,9 @@ class LoginController extends GetxController {
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
+  final UserController _userController = Get.find<UserController>();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   void onInit() {
     email.text = localStorage.read('REMEMBER_ME_EMAIL') ?? '';
@@ -33,7 +39,7 @@ class LoginController extends GetxController {
       // Start Loading
       FullScreenLoader.openLoadingDialog(
         'Logging You In...',
-        ImagesStrings.adidasLogo,
+        ImagesStrings.loading,
       );
 
       //Check Internet Connection
@@ -89,11 +95,18 @@ class LoginController extends GetxController {
       }
 
       // Google Authentication
-      final userCredential =
-          await AuthenticationRepository.instance.googleSignIn();
+      final userCredential = await _performGoogleSignIn();
+      if (userCredential == null) {
+        FullScreenLoader.stopLoading();
+        Loaders.errorSnackBar(
+          title: 'Login cancelled',
+          message: 'Google Sign-In was cancelled.',
+        );
+        return;
+      }
 
       // Save User Record
-      await UserController.instance.saveUserRecord(userCredential);
+      await _userController.saveUserRecord(userCredential);
 
       // Remove Loader
       FullScreenLoader.stopLoading();
@@ -103,7 +116,34 @@ class LoginController extends GetxController {
     } catch (e) {
       // Remove Loader
       FullScreenLoader.stopLoading();
-      Loaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+
+      String errorMsg = 'Something went wrong. Please try again.';
+      if (e is FirebaseAuthException) {
+        errorMsg = e.message ?? errorMsg;
+      } else if (e is PlatformException) {
+        errorMsg = e.message ?? errorMsg;
+      }
+
+      Loaders.errorSnackBar(title: 'Oh snap!', message: errorMsg);
+    }
+  }
+
+  Future<UserCredential?> _performGoogleSignIn() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) return null;
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      return await _auth.signInWithCredential(credential);
+    } catch (e) {
+      rethrow;
     }
   }
 }

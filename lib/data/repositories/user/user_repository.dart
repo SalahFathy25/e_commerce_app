@@ -81,10 +81,15 @@ class UserRepository extends GetxController {
   // Function to Update any field in specific Users Collection
   Future<void> updateSingleField(Map<String, dynamic> json) async {
     try {
-      await _db
-          .collection('users')
-          .doc(AuthenticationRepository.instance.authUser!.uid)
-          .update(json);
+      final uid = AuthenticationRepository.instance.authUser?.uid;
+      if (uid == null) {
+        throw FirebaseAuthException(
+          code: 'no-user',
+          message: 'User is not logged in',
+        );
+      }
+
+      await _db.collection('users').doc(uid).update(json);
     } on FirebaseAuthException catch (e) {
       throw FirebaseAuthException(code: e.code);
     } on FirebaseException catch (e) {
@@ -116,7 +121,7 @@ class UserRepository extends GetxController {
   }
 
   // Upload any Image for Supabase Storage
-  Future<String> uploadImage(String path, XFile image) async {
+  Future<String> uploadImage( XFile image) async {
     final storage = Constants.supabase.storage;
     try {
       final Uint8List data = await image.readAsBytes();
@@ -124,12 +129,15 @@ class UserRepository extends GetxController {
       // Get Firebase Auth user ID
       final firebaseUser = FirebaseAuth.instance.currentUser;
 
-      final fileName = '${firebaseUser?.uid}.jpg';
-      final path = 'profiles/$fileName'; // Optional folder in bucket
+      final userId = FirebaseAuth.instance.currentUser!.uid;
+      final fileName =
+          '$userId/profile_${DateTime.now().millisecondsSinceEpoch}.jpg';
 
-      final result = await storage.from('profiles').uploadBinary(path, data);
+      final result = await storage
+          .from('profiles')
+          .uploadBinary(fileName, data);
 
-      final publicUrl = storage.from('profiles').getPublicUrl(path);
+      final publicUrl = storage.from('profiles').getPublicUrl(fileName);
       return publicUrl;
     } on StorageException catch (e) {
       throw Exception('Storage error: ${e.message}');

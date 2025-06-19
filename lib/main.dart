@@ -7,16 +7,19 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'data/repositories/authentication/authentication_repository.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'features/personalization/controllers/user_controller.dart';
 import 'firebase_options.dart';
 
 import 'app.dart';
 
 Future<void> main() async {
-  final WidgetsBinding binding = WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
 
   await GetStorage.init();
 
-  FlutterNativeSplash.preserve(widgetsBinding: binding);
+  FlutterNativeSplash.preserve(
+    widgetsBinding: WidgetsFlutterBinding.ensureInitialized(),
+  );
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -26,6 +29,8 @@ Future<void> main() async {
     url: Constants.supabaseUrl,
     anonKey: Constants.supabaseAnonKey,
   );
+
+  Get.put(UserController());
 
   runApp(const App());
 }

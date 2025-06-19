@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/features/auth/controllers/login/login_controller.dart';
+import 'package:e_commerce_app/features/personalization/controllers/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -35,9 +36,9 @@ class SocialButtons extends StatelessWidget {
             border: Border.all(color: AppColors.grey),
             borderRadius: BorderRadius.circular(100),
           ),
-          child: IconButton(
-            onPressed: () {},
-            icon: const Image(
+          child: const IconButton(
+            onPressed: null,
+            icon: Image(
               image: AssetImage(ImagesStrings.facebook),
               width: Sizes.mdIcon,
               height: Sizes.mdIcon,
