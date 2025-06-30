@@ -4,7 +4,6 @@ import 'package:e_commerce_app/common/widgets/images/rounded_image.dart';
 import 'package:e_commerce_app/common/widgets/texts/brand_title_with_verified_icon.dart';
 import 'package:e_commerce_app/common/widgets/texts/product_price_text.dart';
 import 'package:e_commerce_app/common/widgets/texts/product_title_text.dart';
-import 'package:e_commerce_app/features/shop/models/vertical_product.dart';
 import 'package:e_commerce_app/features/shop/screens/product_details/product_details_screen.dart';
 import 'package:e_commerce_app/utils/constants/images_strings.dart';
 import 'package:e_commerce_app/utils/constants/sizes.dart';
@@ -12,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../features/shop/models/lists/vertical_products_data.dart';
 import '../../../../utils/constants/app_colors.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
@@ -21,12 +19,11 @@ class ProductCardHorizontal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final VerticalProduct product = verticalProductsData[0];
     final dark = HelperFunctions.isDarkMode(context);
     final isRTL = HelperFunctions.isRTL(context);
 
     return GestureDetector(
-      onTap: () => Get.to(() => ProductDetailsScreen(product: product)),
+      onTap: () => Get.to(() => ProductDetailsScreen()),
       child: Container(
         width: 310,
         padding: const EdgeInsets.all(1),

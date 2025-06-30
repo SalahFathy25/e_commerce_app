@@ -10,7 +10,6 @@ import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/images_strings.dart';
-import '../../models/lists/vertical_products_data.dart';
 import 'widgets/home_appbar.dart';
 import 'widgets/home_categories.dart';
 import 'widgets/promo_slider.dart';
@@ -75,10 +74,9 @@ class HomeScreen extends StatelessWidget {
                         ),
                   ),
                   GridLayout(
-                    itemCount: verticalProductsData.length,
+                    itemCount: 4,
                     itemBuilder:
                         (context, index) => ProductCardVertical(
-                          product: verticalProductsData[index],
                         ),
                   ),
                 ],

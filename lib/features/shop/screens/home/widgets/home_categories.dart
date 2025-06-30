@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/features/shop/models/lists/home_categories_data.dart';
+import 'package:e_commerce_app/utils/constants/images_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,22 +12,15 @@ class HomeCategories extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 80,
-      child: ListView.builder(
-        itemCount: homeCategoriesData.length,
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        itemBuilder: (_, index) {
-          return VerticalImageText(
-            image: homeCategoriesData[index].image,
-            title: homeCategoriesData[index].title,
-            onTap:
-                () => Get.to(
-                  () => const SubCategoriesScreen(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(milliseconds: 300),
-                ),
-          );
-        },
+      child: VerticalImageText(
+        image: ImagesStrings.cosmeticsIcon,
+        title: 'shop',
+        onTap:
+            () => Get.to(
+              () => const SubCategoriesScreen(),
+              transition: Transition.rightToLeft,
+              duration: const Duration(milliseconds: 300),
+            ),
       ),
     );
   }

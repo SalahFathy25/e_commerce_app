@@ -8,15 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../models/lists/vertical_products_data.dart';
-import '../../models/vertical_product.dart';
+
 
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    VerticalProduct product = verticalProductsData[0];
     return Scaffold(
       appBar: CustomAppbar(
         title: Text(
@@ -38,7 +36,7 @@ class WishlistScreen extends StatelessWidget {
               GridLayout(
                 itemCount: 5,
                 itemBuilder:
-                    (_, index) => ProductCardVertical(product: product),
+                    (_, index) => ProductCardVertical(),
               ),
             ],
           ),

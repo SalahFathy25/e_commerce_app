@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
-import '../../models/vertical_product.dart';
 import '../checkout/checkout_screen.dart';
 import '../product_reviews/product_review_screen.dart';
 import 'widgets/bottom_add_to_cart_widget.dart';
@@ -15,9 +14,7 @@ import 'widgets/product_image_slider.dart';
 import 'widgets/rating_share_widget.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key, required this.product});
-
-  final VerticalProduct product;
+  const ProductDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +33,12 @@ class ProductDetailsScreen extends StatelessWidget {
               child: Column(
                 children: [
                   RatingAndShare(
-                    rating: product.rating,
-                    reviewCount: product.reviewCount,
+                    rating: 4.5,
+                    reviewCount: 100,
                   ),
 
                   const ProductMetaData(),
 
-                  if (product.sizes != null || product.colors != null)
                     const ProductAttributes(),
                   const SizedBox(height: Sizes.spaceBetweenSections),
 
@@ -65,7 +61,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: Sizes.spaceBetweenItems),
                   ReadMoreText(
-                    product.description,
+                    '.,vnsdldhdkgbdfkfgb',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' Show more',
@@ -85,7 +81,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   Row(
                     children: [
                       SectionHeading(
-                        title: 'Reviews(${product.reviewCount})',
+                        title: 'Reviews(100)',
                         showActionButton: false,
                       ),
                       IconButton(

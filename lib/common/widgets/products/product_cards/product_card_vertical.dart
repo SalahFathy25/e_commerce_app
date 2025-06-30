@@ -2,12 +2,12 @@ import 'package:e_commerce_app/common/styles/shadow_style.dart';
 import 'package:e_commerce_app/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:e_commerce_app/common/widgets/images/rounded_image.dart';
 import 'package:e_commerce_app/utils/constants/app_colors.dart';
+import 'package:e_commerce_app/utils/constants/images_strings.dart';
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../features/shop/models/vertical_product.dart';
 import '../../../../features/shop/screens/product_details/product_details_screen.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 import '../../icons/circular_icon.dart';
@@ -16,9 +16,8 @@ import '../../texts/product_price_text.dart';
 import '../../texts/product_title_text.dart';
 
 class ProductCardVertical extends StatelessWidget {
-  const ProductCardVertical({super.key, required this.product});
+  const ProductCardVertical({super.key});
 
-  final VerticalProduct product;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class ProductCardVertical extends StatelessWidget {
     final isRTL = HelperFunctions.isRTL(context);
 
     return GestureDetector(
-      onTap: () => Get.to(() => ProductDetailsScreen(product: product)),
+      onTap: () => Get.to(() => ProductDetailsScreen()),
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -48,12 +47,11 @@ class ProductCardVertical extends StatelessWidget {
                   children: [
                     /// Product Image
                     RoundedImage(
-                      image: product.imageUrl,
+                      image: ImagesStrings.productImage1,
                       applyImageRadius: true,
                     ),
 
                     /// Discount Tag
-                    if (product.hasDiscount)
                       Positioned(
                         top: 12,
                         left: isRTL ? null : Sizes.sm,
@@ -66,7 +64,7 @@ class ProductCardVertical extends StatelessWidget {
                             vertical: Sizes.xs,
                           ),
                           child: Text(
-                            '${product.discountPercent?.round()}%',
+                            '${100}%',
                             style: Theme.of(context).textTheme.labelLarge!
                                 .apply(color: AppColors.black),
                           ),
@@ -80,11 +78,10 @@ class ProductCardVertical extends StatelessWidget {
                       right: isRTL ? null : 0,
                       child: CircularIcon(
                         icon:
-                            product.isFavorite ? Iconsax.heart5 : Iconsax.heart,
+                             Iconsax.heart,
                         color:
-                            product.isFavorite
-                                ? Colors.red
-                                : AppColors.darkGrey,
+                            
+                                 AppColors.darkGrey,
                       ),
                     ),
                   ],
@@ -103,9 +100,9 @@ class ProductCardVertical extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ProductTitleText(title: product.title, smallSize: true),
+                  ProductTitleText(title: 'title', smallSize: true),
                   const SizedBox(height: Sizes.spaceBetweenItems / 2),
-                  BrandTitleWithVerifiedIcon(title: product.brand),
+                  BrandTitleWithVerifiedIcon(title: 'nike'),
                 ],
               ),
             ),
@@ -125,9 +122,8 @@ class ProductCardVertical extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (product.hasDiscount)
                         Text(
-                          '\$${product.price.toStringAsFixed(2)}',
+                          '\$${100}',
                           style: Theme.of(context).textTheme.labelMedium?.apply(
                             decoration: TextDecoration.lineThrough,
                             color: AppColors.darkGrey,
@@ -135,10 +131,8 @@ class ProductCardVertical extends StatelessWidget {
                         ),
                       ProductPriceText(
                         price:
-                            product.hasDiscount
-                                ? product.discountedPrice.toStringAsFixed(2)
-                                : product.price.toStringAsFixed(2),
-                        isLarge: !product.hasDiscount,
+                             '100',
+                        isLarge: true,
                       ),
                     ],
                   ),
