@@ -46,10 +46,12 @@ class ForgetPasswordController extends GetxController {
       FullScreenLoader.stopLoading();
 
       // Show Success Message
-      Loaders.successSnackBar(
-        title: 'Reset Password Email Sent',
-        message: 'Please check your email for further instructions.',
-      );
+      Future.delayed(const Duration(milliseconds: 100), () {
+        Loaders.successSnackBar(
+          title: 'Reset Password Email Sent',
+          message: 'Please check your email for further instructions.',
+        );
+      });
 
       // redirect
       Get.to(() => ResetPasswordScreen(email: email.text.trim()));
@@ -58,7 +60,9 @@ class ForgetPasswordController extends GetxController {
       FullScreenLoader.stopLoading();
 
       // Show Error Message
-      Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      Future.delayed(const Duration(milliseconds: 100), () {
+        Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      });
     }
   }
 
@@ -85,16 +89,20 @@ class ForgetPasswordController extends GetxController {
       FullScreenLoader.stopLoading();
 
       // Show Success Message
-      Loaders.successSnackBar(
-        title: 'Reset Password Email Sent',
-        message: 'Please check your email for further instructions.',
-      );
+      Future.delayed(const Duration(milliseconds: 100), () {
+        Loaders.successSnackBar(
+          title: 'Reset Password Email Sent',
+          message: 'Please check your email for further instructions.',
+        );
+      });
     } catch (e) {
       // Remove Loader
       FullScreenLoader.stopLoading();
 
       // Show Error Message
-      Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      Future.delayed(const Duration(milliseconds: 100), () {
+        Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      });
     }
   }
 }

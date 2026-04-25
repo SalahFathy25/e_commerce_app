@@ -13,10 +13,8 @@ class FullScreenLoader {
   ///   - text: The text to be displayed in the loading dialog.
   ///   - animation: The Lottie animation to be shown.
   static void openLoadingDialog(String text, String animation) {
-    showDialog(
-      context: Get.overlayContext!, // Use Get.overlayContext for overlay dialogs
-      barrierDismissible: false, // The dialog can't be dismissed by tapping outside it
-      builder: (_) => PopScope(
+    Get.dialog(
+      PopScope(
         canPop: false, // Disable popping with the back button
         child: Container(
           color: HelperFunctions.isDarkMode(Get.context!) ? AppColors.dark : AppColors.white,
@@ -30,12 +28,13 @@ class FullScreenLoader {
           ),
         ),
       ),
+      barrierDismissible: false, // The dialog can't be dismissed by tapping outside it
     );
   }
 
   /// Stop the currently open loading dialog.
   /// This method doesn't return anything.
   static stopLoading() {
-    Navigator.of(Get.overlayContext!).pop(); // Close the dialog using the Navigator
+    Get.back(); // Close the dialog using Get.back()
   }
 }

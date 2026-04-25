@@ -66,10 +66,12 @@ class UpdateNameController extends GetxController {
       FullScreenLoader.stopLoading();
 
       // Show Success Message
-      Loaders.successSnackBar(
-        title: 'Congratulations',
-        message: 'Your name has been updated successfully.',
-      );
+      Future.delayed(const Duration(milliseconds: 100), () {
+        Loaders.successSnackBar(
+          title: 'Congratulations',
+          message: 'Your name has been updated successfully.',
+        );
+      });
 
       // Move to Previous Screen
       Get.off(() => const ProfileScreen());
@@ -78,7 +80,9 @@ class UpdateNameController extends GetxController {
       FullScreenLoader.stopLoading();
 
       // Show Error Message
-      Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      Future.delayed(const Duration(milliseconds: 100), () {
+        Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      });
     }
   }
 }

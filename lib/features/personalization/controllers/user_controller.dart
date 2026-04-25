@@ -119,7 +119,9 @@ class UserController extends GetxController {
 
       if (user == null) {
         FullScreenLoader.stopLoading();
-        Loaders.errorSnackBar(title: 'Error', message: 'User not logged in.');
+        Future.delayed(const Duration(milliseconds: 100), () {
+          Loaders.errorSnackBar(title: 'Error', message: 'User not logged in.');
+        });
         return;
       }
 
@@ -141,9 +143,12 @@ class UserController extends GetxController {
       }
     } catch (e) {
       FullScreenLoader.stopLoading();
-      Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      Future.delayed(const Duration(milliseconds: 100), () {
+        Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      });
     } finally {
-      await FullScreenLoader.stopLoading();
+      // It's generally safer to avoid double popping, but stopLoading usually checks if it can pop or if it's already popped.
+      // Since we already called stopLoading above, we might not need this finally or should handle it carefully.
     }
   }
 
@@ -180,7 +185,9 @@ class UserController extends GetxController {
       FullScreenLoader.stopLoading();
 
       // Show Error Message
-      Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      Future.delayed(const Duration(milliseconds: 100), () {
+        Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      });
     }
   }
 

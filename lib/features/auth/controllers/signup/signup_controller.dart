@@ -60,11 +60,13 @@ class SignupController extends GetxController {
       // Privacy Policy Check
       if (!privacyPolicy.value) {
         FullScreenLoader.stopLoading();
-        Loaders.warningSnackBar(
-          title: 'Accept Privacy Policy',
-          message:
-              'In order to create account, you must have to read and accept the privacy policy & terms of use.',
-        );
+        Future.delayed(const Duration(milliseconds: 100), () {
+          Loaders.warningSnackBar(
+            title: 'Accept Privacy Policy',
+            message:
+                'In order to create account, you must have to read and accept the privacy policy & terms of use.',
+          );
+        });
         return;
       }
 
@@ -98,17 +100,22 @@ class SignupController extends GetxController {
       FullScreenLoader.stopLoading();
 
       // Show success message
-      Loaders.successSnackBar(
-        title: 'Congratulations',
-        message:
-            'Your account has been created successfully! Verify your email to continue.',
-      );
+      Future.delayed(const Duration(milliseconds: 100), () {
+        Loaders.successSnackBar(
+          title: 'Congratulations',
+          message:
+              'Your account has been created successfully! Verify your email to continue.',
+        );
+      });
 
       // Move to the verify email screen
       Get.to(() => VerifyEmailScreen(email: emailController.text.trim()));
     } catch (e) {
       FullScreenLoader.stopLoading();
-      Loaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+      // Added a small delay to ensure the loader is fully dismissed before showing the snackbar
+      Future.delayed(const Duration(milliseconds: 500), () {
+        Loaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
+      });
     }
   }
 }

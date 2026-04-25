@@ -37,9 +37,9 @@ class Loaders {
   }
 
   static successSnackBar({required title, message = '', duration = 3}) {
-    Get.snackbar(
-      title,
-      message,
+    Get.rawSnackbar(
+      title: title,
+      message: message,
       isDismissible: true,
       shouldIconPulse: true,
       colorText: Colors.white,
@@ -52,9 +52,9 @@ class Loaders {
   }
 
   static warningSnackBar({required title, message = ''}) {
-    Get.snackbar(
-      title,
-      message,
+    Get.rawSnackbar(
+      title: title,
+      message: message,
       isDismissible: true,
       shouldIconPulse: true,
       colorText: AppColors.white,
@@ -67,9 +67,9 @@ class Loaders {
   }
 
   static errorSnackBar({required title, message = ''}) {
-    Get.snackbar(
-      title,
-      message,
+    Get.rawSnackbar(
+      title: title,
+      message: message,
       isDismissible: true,
       shouldIconPulse: true,
       colorText: AppColors.white,
