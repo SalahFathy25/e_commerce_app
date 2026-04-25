@@ -60,22 +60,26 @@ class SignupController extends GetxController {
       // Privacy Policy Check
       if (!privacyPolicy.value) {
         FullScreenLoader.stopLoading();
-        Future.delayed(const Duration(milliseconds: 100), () {
-          Loaders.warningSnackBar(
-            title: 'Accept Privacy Policy',
-            message:
-                'In order to create account, you must have to read and accept the privacy policy & terms of use.',
-          );
-        });
+        Loaders.warningSnackBar(
+          title: 'Accept Privacy Policy',
+          message:
+              'In order to create account, you must have to read and accept the privacy policy & terms of use.',
+        );
         return;
       }
 
       // Register user in Supabase Authentication
-      final authResponse = await AuthenticationRepository.instance
-          .registerWithEmailAndPassword(
-            emailController.text.trim(),
-            passwordController.text.trim(),
-          );
+      final authResponse = await AuthenticationRepository.instance.registerWithEmailAndPassword(
+        emailController.text.trim(),
+        passwordController.text.trim(),
+        phone: phoneController.text.trim(),
+        data: {
+          'full_name': '${firstNameController.text.trim()} ${lastNameController.text.trim()}',
+          'display_name': '${firstNameController.text.trim()} ${lastNameController.text.trim()}',
+          'phone': phoneController.text.trim(),
+          'username': usernameController.text.trim(),
+        },
+      );
 
       final supabaseUser = authResponse.user;
       if (supabaseUser == null) {
@@ -100,22 +104,20 @@ class SignupController extends GetxController {
       FullScreenLoader.stopLoading();
 
       // Show success message
-      Future.delayed(const Duration(milliseconds: 100), () {
-        Loaders.successSnackBar(
-          title: 'Congratulations',
-          message:
-              'Your account has been created successfully! Verify your email to continue.',
-        );
-      });
+      Loaders.successSnackBar(
+        title: 'Congratulations',
+        message:
+            'Your account has been created successfully! Verify your email to continue.',
+      );
 
       // Move to the verify email screen
       Get.to(() => VerifyEmailScreen(email: emailController.text.trim()));
     } catch (e) {
+      // Stop Loading
       FullScreenLoader.stopLoading();
-      // Added a small delay to ensure the loader is fully dismissed before showing the snackbar
-      Future.delayed(const Duration(milliseconds: 500), () {
-        Loaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
-      });
+
+      // Show error message
+      Loaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
     }
   }
 }

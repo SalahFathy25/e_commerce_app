@@ -65,12 +65,16 @@ class AuthenticationRepository extends GetxController {
   /// [EmailAuthentication] - Register
   Future<AuthResponse> registerWithEmailAndPassword(
     String email,
-    String password,
-  ) async {
+    String password, {
+    String? phone,
+    Map<String, dynamic>? data,
+  }) async {
     try {
       return await _supabase.auth.signUp(
         email: email,
         password: password,
+        phone: phone,
+        data: data,
       );
     } catch (e) {
       throw 'Registration Error: $e';

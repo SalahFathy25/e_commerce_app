@@ -41,6 +41,7 @@ class App extends StatelessWidget {
                       ? Locale(langState.languageCode!)
                       : const Locale('en');
               return GetMaterialApp(
+                navigatorKey: Get.key,
                 debugShowCheckedModeBanner: false,
                 title: 'E-Commerce App',
                 // themeMode: ThemeMode.system,
