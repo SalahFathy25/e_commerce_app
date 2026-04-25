@@ -1,35 +1,44 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
+import 'package:e_commerce_app/utils/constants/constants.dart';
 import 'package:get/get.dart';
 
 import '../../../features/shop/models/category_model.dart';
+import '../../supabase_storage_service.dart';
 
 class CategoryRepository extends GetxController {
   static CategoryRepository get instance => Get.find();
 
   // Variables
-  final _db = FirebaseFirestore.instance;
+  final _supabase = Constants.supabase;
 
   // Get all categories
   Future<List<CategoryModel>> getAllCategories() async {
     try {
-      final snapshot = await _db.collection('Categories').get();
-      final list =
-          snapshot.docs
-              .map((document) => CategoryModel.fromSnapShot(document))
-              .toList();
-      return list;
-    } on FirebaseException catch (e) {
-      throw FirebaseException(code: e.code, plugin: 'firebase_auth');
-    } on FormatException catch (_) {
-      throw FormatException;
+      final List<dynamic> data = await _supabase.from('categories').select();
+      return data.map((json) => CategoryModel.fromJson(json)).toList();
     } catch (e) {
-      throw 'Something went wrong. Please try again';
+      throw 'Something went wrong while fetching categories: $e';
     }
   }
 
-  // Get Sub categories
+  // Upload Categories to the Cloud (Dummy Data)
+  Future<void> uploadDummyData(List<CategoryModel> categories) async {
+    try {
+      final storage = Get.put(SupabaseStorageService());
 
-  // Upload Categories to the Cloud
+      for (var category in categories) {
+        // Upload image if it's a local path
+        if (!category.image.startsWith('http')) {
+          final data = await storage.getImageDataFromAssets(category.image);
+          final fileName = '${category.name.replaceAll(' ', '_')}.jpg';
+          final url = await storage.uploadImageData('categories', data, fileName);
+          category.image = url;
+        }
+
+        // Upsert to categories table
+        await _supabase.from('categories').upsert(category.toJson());
+      }
+    } catch (e) {
+      throw 'Error uploading dummy data: $e';
+    }
+  }
 }

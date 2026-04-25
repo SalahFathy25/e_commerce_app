@@ -1,6 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_commerce_app/utils/formatters/formatters.dart';
-
 class UserModel {
   final String id;
   String firstName;
@@ -22,57 +19,48 @@ class UserModel {
 
   String get fullName => '$firstName $lastName';
 
-  String get formatPhoneNumber => Formatters.formatPhoneNumber(phoneNumber);
+  static List<String> nameParts(String fullName) => fullName.split(" ");
 
-  static List<String> nameParts(fullName) => fullName.split(' ');
-
-  static String generateUsername(fullName) {
-    List<String> nameParts = fullName.split(' ');
+  static String generateUsername(String fullName) {
+    List<String> nameParts = fullName.split(" ");
     String firstName = nameParts[0].toLowerCase();
-    String lastName = nameParts.length > 1 ? nameParts[1].toLowerCase() : '';
-
-    String camelCaseUSerName = "$firstName$lastName";
-    String usernameWithPrefix = "user_$camelCaseUSerName";
+    String lastName = nameParts.length > 1 ? nameParts[1].toLowerCase() : "";
+    String camelCaseUsername = "$firstName$lastName";
+    String usernameWithPrefix = "t_$camelCaseUsername";
     return usernameWithPrefix;
   }
 
   static UserModel empty() => UserModel(
-    id: '',
-    firstName: '',
-    lastName: '',
-    username: '',
-    email: '',
-    phoneNumber: '',
-    profilePicture: '',
-  );
+        id: '',
+        firstName: '',
+        lastName: '',
+        username: '',
+        email: '',
+        phoneNumber: '',
+        profilePicture: '',
+      );
 
   Map<String, dynamic> toJson() {
     return {
-      'firstName': firstName,
-      'lastName': lastName,
+      'id': id,
+      'first_name': firstName,
+      'last_name': lastName,
       'username': username,
       'email': email,
-      'phoneNumber': phoneNumber,
-      'profilePicture': profilePicture,
+      'phone_number': phoneNumber,
+      'profile_picture': profilePicture,
     };
   }
 
-  factory UserModel.fromSnapshot(
-    DocumentSnapshot<Map<String, dynamic>> document,
-  ) {
-    if (document.data() != null) {
-      final data = document.data()!;
-      return UserModel(
-        id: document.id,
-        firstName: data['firstName'] ?? '',
-        lastName: data['lastName'] ?? '',
-        username: data['username'] ?? '',
-        email: data['email'] ?? '',
-        phoneNumber: data['phoneNumber'] ?? '',
-        profilePicture: data['profilePicture'] ?? '',
-      );
-    } else {
-      return UserModel.empty();
-    }
+  factory UserModel.fromJson(Map<String, dynamic> data) {
+    return UserModel(
+      id: data['id'] ?? '',
+      firstName: data['first_name'] ?? '',
+      lastName: data['last_name'] ?? '',
+      username: data['username'] ?? '',
+      email: data['email'] ?? '',
+      phoneNumber: data['phone_number'] ?? '',
+      profilePicture: data['profile_picture'] ?? '',
+    );
   }
 }

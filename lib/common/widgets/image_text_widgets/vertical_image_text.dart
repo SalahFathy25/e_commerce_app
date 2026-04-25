@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/common/widgets/images/circular_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/app_colors.dart';
@@ -10,13 +11,15 @@ class VerticalImageText extends StatelessWidget {
     required this.image,
     required this.title,
     this.textColor = AppColors.white,
-    this.backgroundColor = AppColors.white,
+    this.backgroundColor,
+    this.isNetworkImage = true,
     this.onTap,
   });
 
   final String image, title;
   final Color textColor;
   final Color? backgroundColor;
+  final bool isNetworkImage;
   final void Function()? onTap;
 
   @override
@@ -27,23 +30,16 @@ class VerticalImageText extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(right: Sizes.spaceBetweenItems),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              width: 55,
-              height: 55,
-              padding: const EdgeInsets.all(Sizes.sm),
-              decoration: BoxDecoration(
-                color:
-                    backgroundColor ??
-                    (dark ? AppColors.black : AppColors.white),
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: Image(
-                image: AssetImage(image),
-                fit: BoxFit.cover,
-                color: AppColors.dark ,
-              ),
+            CircularImage(
+              image: image,
+              fit: BoxFit.fitWidth,
+              padding: Sizes.sm*1.4,
+              isNetworkImage: isNetworkImage,
+              backgroundColor: backgroundColor,
+              overlayColor: HelperFunctions.isDarkMode(context)
+                  ? AppColors.light
+                  : AppColors.dark,
             ),
             const SizedBox(height: Sizes.spaceBetweenItems / 2),
             SizedBox(

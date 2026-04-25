@@ -68,21 +68,21 @@ class SignupController extends GetxController {
         return;
       }
 
-      // Register user in the Firebase Authentication & Save user data in Firebase
-      final userCredential = await AuthenticationRepository.instance
+      // Register user in Supabase Authentication
+      final authResponse = await AuthenticationRepository.instance
           .registerWithEmailAndPassword(
             emailController.text.trim(),
             passwordController.text.trim(),
           );
 
-      final firebaseUser = userCredential.user;
-      if (firebaseUser == null) {
-        throw Exception('User registration failed. Please try again.');
+      final supabaseUser = authResponse.user;
+      if (supabaseUser == null) {
+        throw 'User registration failed. Please try again.';
       }
 
-      // Save authentication user data in Firestore
+      // Save user data in Supabase Database
       final newUser = UserModel(
-        id: firebaseUser.uid,
+        id: supabaseUser.id,
         firstName: firstNameController.text.trim(),
         lastName: lastNameController.text.trim(),
         username: usernameController.text.trim(),
@@ -107,9 +107,7 @@ class SignupController extends GetxController {
       // Move to the verify email screen
       Get.to(() => VerifyEmailScreen(email: emailController.text.trim()));
     } catch (e) {
-      // Remove Loader
       FullScreenLoader.stopLoading();
-      // Show some Generic Error to the user
       Loaders.errorSnackBar(title: 'Oh snap!', message: e.toString());
     }
   }

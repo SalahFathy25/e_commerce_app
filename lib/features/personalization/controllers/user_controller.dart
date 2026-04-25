@@ -4,10 +4,10 @@ import 'package:e_commerce_app/features/personalization/screens/profile/widgets/
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:e_commerce_app/utils/popups/full_screen_loader.dart';
 import 'package:e_commerce_app/utils/popups/loaders.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../data/repositories/user/user_repository.dart';
 import '../../../utils/constants/images_strings.dart';
@@ -44,44 +44,34 @@ class UserController extends GetxController {
     }
   }
 
-  // Save user record from any Register provider
-  Future<void> saveUserRecord(UserCredential? userCredential) async {
+  // Save user record from any Auth provider
+  Future<void> saveUserRecord(AuthResponse? response) async {
     try {
-      // First Update RX User and then check if user data is already stored. If not store new data
       await fetchUserRecord();
 
-      // If no record already stored
       if (user.value.id.isEmpty) {
-        if (userCredential != null) {
-          // convert Name to First and Last Name
-          final nameParts = UserModel.nameParts(
-            userCredential.user!.displayName ?? '',
-          );
-          final username = UserModel.generateUsername(
-            userCredential.user!.displayName ?? '',
-          );
+        if (response?.user != null) {
+          final supabaseUser = response!.user!;
+          final nameParts = UserModel.nameParts(supabaseUser.userMetadata?['full_name'] ?? '');
+          final username = UserModel.generateUsername(supabaseUser.userMetadata?['full_name'] ?? '');
 
-          // Map data
           final user = UserModel(
-            id: userCredential.user!.uid,
+            id: supabaseUser.id,
             firstName: nameParts[0],
-            lastName:
-                nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+            lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
             username: username,
-            email: userCredential.user!.email ?? '',
-            phoneNumber: userCredential.user!.phoneNumber ?? '',
-            profilePicture: userCredential.user!.photoURL ?? '',
+            email: supabaseUser.email ?? '',
+            phoneNumber: supabaseUser.phone ?? '',
+            profilePicture: supabaseUser.userMetadata?['avatar_url'] ?? '',
           );
 
-          // Save user data
           await UserRepository.instance.saveUserRecord(user);
         }
       }
     } catch (e) {
       Loaders.warningSnackBar(
-        title: 'Date not saved',
-        message:
-            'something went wrong while saving your information. You can re-save your data in your profile.',
+        title: 'Data not saved',
+        message: 'Something went wrong while saving your information.',
       );
     }
   }
@@ -123,7 +113,7 @@ class UserController extends GetxController {
         ImagesStrings.loading,
       );
 
-      // First reauthenticate the user
+      // First reauthenticate the user (Simplified for Supabase here)
       final auth = AuthenticationRepository.instance;
       final user = auth.authUser;
 
@@ -133,24 +123,20 @@ class UserController extends GetxController {
         return;
       }
 
-      final providers = user.providerData.map((e) => e.providerId).toList();
-      if (providers.isNotEmpty) {
-        // Re Verify Auth Email
-        if (providers.contains('google.com')) {
+      // In Supabase, we can check identities
+      final identities = user.identities ?? [];
+      if (identities.isNotEmpty) {
+        final isGoogle = identities.any((element) => element.provider == 'google');
+
+        if (isGoogle) {
           await auth.googleSignIn();
           await auth.deleteAccount();
           FullScreenLoader.stopLoading();
           Get.offAll(() => const LoginScreen());
-        } else if (providers.contains('password')) {
+        } else {
+          // Default to ReAuth form for Email/Password
           FullScreenLoader.stopLoading();
           Get.offAll(() => const ReAuthUserLoginForm());
-        } else {
-          // Unknown provider
-          FullScreenLoader.stopLoading();
-          Loaders.errorSnackBar(
-            title: 'Error',
-            message: 'Unsupported authentication provider.',
-          );
         }
       }
     } catch (e) {

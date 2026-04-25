@@ -51,10 +51,10 @@ class UpdateNameController extends GetxController {
         return;
       }
 
-      // update user's first & last name in the Firebase Firestore
+      // update user's first & last name in Supabase Database
       Map<String, dynamic> name = {
-        'FirstName': firstName.text.trim(),
-        'LastName': lastName.text.trim(),
+        'first_name': firstName.text.trim(),
+        'last_name': lastName.text.trim(),
       };
       await userRepository.updateSingleField(name);
 

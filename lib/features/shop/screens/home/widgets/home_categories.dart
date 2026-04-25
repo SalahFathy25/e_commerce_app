@@ -1,4 +1,5 @@
-import 'package:e_commerce_app/utils/constants/images_strings.dart';
+import 'package:e_commerce_app/common/widgets/shimmers/category_shimmer.dart';
+import 'package:e_commerce_app/features/shop/controllers/category_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,18 +11,42 @@ class HomeCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 80,
-      child: VerticalImageText(
-        image: ImagesStrings.cosmeticsIcon,
-        title: 'shop',
-        onTap:
-            () => Get.to(
-              () => const SubCategoriesScreen(),
-              transition: Transition.rightToLeft,
-              duration: const Duration(milliseconds: 300),
-            ),
-      ),
-    );
+    final categoryController = Get.put(CategoryController());
+    return Obx(() {
+      if (categoryController.isLoading.value) return CategoryShimmer();
+
+      if (categoryController.featuredCategories.isEmpty) {
+        return Center(
+          child: Text(
+            'No Data Found',
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium!.apply(color: Colors.white),
+          ),
+        );
+      }
+
+      return SizedBox(
+        height: 80,
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: categoryController.featuredCategories.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (_, index) {
+            final category = categoryController.featuredCategories[index];
+            return VerticalImageText(
+              image: category.image,
+              title: category.name,
+              onTap:
+                  () => Get.to(
+                    () => const SubCategoriesScreen(),
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(milliseconds: 300),
+                  ),
+            );
+          },
+        ),
+      );
+    });
   }
 }

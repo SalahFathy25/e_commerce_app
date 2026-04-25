@@ -1,20 +1,16 @@
 import 'dart:async';
 
 import 'package:e_commerce_app/common/widgets/success_screen/success_screen.dart';
+import 'package:e_commerce_app/data/repositories/authentication/authentication_repository.dart';
 import 'package:e_commerce_app/utils/constants/images_strings.dart';
+import 'package:e_commerce_app/utils/constants/text_strings.dart';
 import 'package:e_commerce_app/utils/popups/loaders.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-
-import '../../../../data/repositories/authentication/authentication_repository.dart';
-import '../../../../utils/constants/text_strings.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class VerifyEmailController extends GetxController {
   static VerifyEmailController get instance => Get.find();
 
-  late Timer _timer;
-
-  // Send Email whenever Verify screen appears & set Timer for auto redirect
   @override
   void onInit() {
     sendEmailVerification();
@@ -22,35 +18,32 @@ class VerifyEmailController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onClose() {
-    _timer.cancel();
-    super.onClose();
-  }
-
-  // send verification email link
+  // Send Email Verification link
   sendEmailVerification() async {
     try {
       await AuthenticationRepository.instance.sendEmailVerification();
       Loaders.successSnackBar(
         title: 'Email Sent',
-        message: 'Please check your email for verification link.',
+        message: 'Please Check your inbox and verify your email.',
       );
     } catch (e) {
       Loaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 
-  // timer to automatically redirect on email verification
-  setTimerForAutoRedirect() async {
-    _timer = Timer.periodic(const Duration(seconds: 5), (timer) async {
-      await FirebaseAuth.instance.currentUser?.reload();
-      final user = FirebaseAuth.instance.currentUser;
-      if (user?.emailVerified ?? false) {
+  // Timer to check if Email is verified
+  setTimerForAutoRedirect() {
+    Timer.periodic(const Duration(seconds: 3), (timer) async {
+      final supabase = Supabase.instance.client;
+      // In Supabase, we can refresh the session to get updated user data
+      await supabase.auth.refreshSession();
+      final user = supabase.auth.currentUser;
+
+      if (user != null && user.emailConfirmedAt != null) {
         timer.cancel();
         Get.off(
           () => SuccessScreen(
-            image: ImagesStrings.successfullyRegisterAnimation,
+            image: ImagesStrings.successfullyRegistrationAnimation,
             title: TextStrings.yourAccountCreatedTitle,
             subTitle: TextStrings.yourAccountCreatedSubTitle,
             onPressed: () => AuthenticationRepository.instance.screenRedirect(),
@@ -60,13 +53,16 @@ class VerifyEmailController extends GetxController {
     });
   }
 
-  // manually check if email verification
+  // Manually Check if Email is verified
   checkEmailVerificationStatus() async {
-    final currentUser = FirebaseAuth.instance.currentUser;
-    if (currentUser != null && currentUser.emailVerified) {
+    final supabase = Supabase.instance.client;
+    await supabase.auth.refreshSession();
+    final user = supabase.auth.currentUser;
+
+    if (user != null && user.emailConfirmedAt != null) {
       Get.off(
         () => SuccessScreen(
-          image: ImagesStrings.successfullyRegisterAnimation,
+          image: ImagesStrings.successfullyRegistrationAnimation,
           title: TextStrings.yourAccountCreatedTitle,
           subTitle: TextStrings.yourAccountCreatedSubTitle,
           onPressed: () => AuthenticationRepository.instance.screenRedirect(),

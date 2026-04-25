@@ -2,13 +2,12 @@ import 'package:e_commerce_app/features/auth/screens/login/login_screen.dart';
 import 'package:e_commerce_app/features/auth/screens/onboarding/onboarding_screen.dart';
 import 'package:e_commerce_app/features/auth/screens/signup/verify_email_screen.dart';
 import 'package:e_commerce_app/navigation_menu.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'package:e_commerce_app/utils/constants/constants.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../user/user_repository.dart';
 
@@ -17,10 +16,10 @@ class AuthenticationRepository extends GetxController {
 
   // Variables
   final deviceStorage = GetStorage();
-  final _auth = FirebaseAuth.instance;
+  final _supabase = Constants.supabase;
 
   /// Get Authentication User Data
-  User? get authUser => _auth.currentUser;
+  User? get authUser => _supabase.auth.currentUser;
 
   // called from main.dart on app launch
   @override
@@ -31,15 +30,15 @@ class AuthenticationRepository extends GetxController {
 
   // Function to show Relevant Screen
   screenRedirect() async {
-    final user = _auth.currentUser;
+    final user = _supabase.auth.currentUser;
     if (user != null) {
-      if (user.emailVerified) {
+      // In Supabase, we can check email_confirmed_at
+      if (user.emailConfirmedAt != null) {
         Get.offAll(() => const NavigationMenu());
       } else {
         Get.offAll(() => VerifyEmailScreen(email: user.email));
       }
     } else {
-      // localStorage
       deviceStorage.writeIfNull('isFirstTime', true);
       deviceStorage.read('isFirstTime') != true
           ? Get.offAll(() => const LoginScreen())
@@ -49,198 +48,121 @@ class AuthenticationRepository extends GetxController {
 
   /* ------------------------------------ Email & Password sign-in ------------------------------------ */
   /// [EmailAuthentication] - LogIn
-  Future<UserCredential> loginWithEmailAndPassword(
+  Future<AuthResponse> loginWithEmailAndPassword(
     String email,
     String password,
   ) async {
     try {
-      return await _auth.signInWithEmailAndPassword(
+      return await _supabase.auth.signInWithPassword(
         email: email,
         password: password,
       );
-    } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthException(code: e.code);
-    } on FirebaseException catch (e) {
-      throw FirebaseException(code: e.code, plugin: 'firebase_auth');
-    } on FormatException catch (_) {
-      throw FormatException;
-    } on PlatformException catch (e) {
-      throw PlatformException(code: e.code);
     } catch (e) {
-      throw 'Something went wrong. Please try again';
+      throw 'Authentication Error: $e';
     }
   }
 
   /// [EmailAuthentication] - Register
-  Future<UserCredential> registerWithEmailAndPassword(
+  Future<AuthResponse> registerWithEmailAndPassword(
     String email,
     String password,
   ) async {
     try {
-      return await _auth.createUserWithEmailAndPassword(
+      return await _supabase.auth.signUp(
         email: email,
         password: password,
       );
-    } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthException(code: e.code);
-    } on FirebaseException catch (e) {
-      throw FirebaseException(code: e.code, plugin: 'firebase_auth');
-    } on FormatException catch (_) {
-      throw FormatException;
-    } on PlatformException catch (e) {
-      throw PlatformException(code: e.code);
     } catch (e) {
-      throw 'Something went wrong. Please try again';
-    }
-  }
-
-  /// [Re-Authenticate] - Re-Authenticate User
-  Future<void> reAuthWithEmailAndPassword(String email, String password) async {
-    try {
-      // create a credential
-      AuthCredential credential = EmailAuthProvider.credential(
-        email: email,
-        password: password,
-      );
-      await _auth.currentUser!.reauthenticateWithCredential(credential);
-    } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthException(code: e.code);
-    } on FirebaseException catch (e) {
-      throw FirebaseException(code: e.code, plugin: 'firebase_auth');
-    } on FormatException catch (_) {
-      throw FormatException;
-    } on PlatformException catch (e) {
-      throw PlatformException(code: e.code);
-    } catch (e) {
-      throw 'Something went wrong. Please try again';
+      throw 'Registration Error: $e';
     }
   }
 
   /// [EmailVerification] - Email Verification
   Future<void> sendEmailVerification() async {
     try {
-      await _auth.currentUser?.sendEmailVerification();
-    } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthException(code: e.code);
-    } on FirebaseException catch (e) {
-      throw FirebaseException(code: e.code, plugin: 'firebase_auth');
-    } on FormatException catch (_) {
-      throw FormatException;
-    } on PlatformException catch (e) {
-      throw PlatformException(code: e.code);
+      // Supabase sends verification email automatically on signUp
+      // But we can resend if needed
+      await _supabase.auth.resend(type: OtpType.signup, email: authUser?.email);
     } catch (e) {
-      throw 'Something went wrong. Please try again';
+      throw 'Error sending verification: $e';
     }
   }
 
   /// [EmailAuthentication] - Forget Password
   Future<void> sendPasswordResetEmail(String email) async {
     try {
-      await _auth.sendPasswordResetEmail(email: email);
-    } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthException(code: e.code);
-    } on FirebaseException catch (e) {
-      throw FirebaseException(code: e.code, plugin: 'firebase_auth');
-    } on FormatException catch (_) {
-      throw FormatException;
-    } on PlatformException catch (e) {
-      throw PlatformException(code: e.code);
+      await _supabase.auth.resetPasswordForEmail(email);
     } catch (e) {
-      throw 'Something went wrong. Please try again';
+      throw 'Error sending password reset: $e';
+    }
+  }
+
+  /// [Re-Authenticate] - Re-Authenticate User
+  Future<AuthResponse> reAuthWithEmailAndPassword(String email, String password) async {
+    try {
+      return await _supabase.auth.signInWithPassword(
+        email: email,
+        password: password,
+      );
+    } catch (e) {
+      throw 'Re-authentication Error: $e';
     }
   }
 
   /* ------------------------------------ Federated identity & social sign-in ------------------------------------ */
   /// [GoogleAuthentication] - SignIn with Google
-  Future<UserCredential?> googleSignIn() async {
+  Future<AuthResponse?> googleSignIn() async {
     try {
-      // Trigger the authentication flow
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignIn googleSignIn = GoogleSignIn();
+      final googleUser = await googleSignIn.signIn();
       if (googleUser == null) return null;
-      // Obtain the auth details from the request
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
 
-      // Create a new credential
-      final credentials = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
+      final googleAuth = await googleUser.authentication;
+      final accessToken = googleAuth.accessToken;
+      final idToken = googleAuth.idToken;
 
-      // Once signed in, return the UserCredential
-      return await _auth.signInWithCredential(credentials);
-    } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthException(code: e.code);
-    } on FirebaseException catch (e) {
-      throw FirebaseException(code: e.code, plugin: 'firebase_auth');
-    } on FormatException catch (_) {
-      throw FormatException;
-    } on PlatformException catch (e) {
-      throw PlatformException(code: e.code);
-    } catch (e) {
-      if (kDebugMode) {
-        print('Google SignIn Error: $e\nStackTrace: ${StackTrace.current}');
+      if (accessToken == null || idToken == null) {
+        throw 'No Google tokens found.';
       }
-    }
-    return null;
-  }
 
-  /// [FacebookAuthentication] - SignIn with Facebook
+      return await _supabase.auth.signInWithIdToken(
+        provider: OAuthProvider.google,
+        idToken: idToken,
+        accessToken: accessToken,
+      );
+    } catch (e) {
+      throw 'Google Sign-In Error: $e';
+    }
+  }
 
   /* ------------------------------------ ./end Federated identity & social sign-in ------------------------------------ */
   /// [logout User] - Valid for any authentication
   Future<void> logout() async {
     try {
       await GoogleSignIn().signOut();
-      await FirebaseAuth.instance.signOut();
+      await _supabase.auth.signOut();
       Get.offAll(() => const LoginScreen());
-    } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthException(code: e.code);
-    } on FirebaseException catch (e) {
-      throw FirebaseException(code: e.code, plugin: 'firebase_auth');
-    } on FormatException catch (_) {
-      throw FormatException;
-    } on PlatformException catch (e) {
-      throw PlatformException(code: e.code);
     } catch (e) {
-      throw 'Something went wrong. Please try again';
+      throw 'Logout Error: $e';
     }
   }
 
-  /// [Delete User] - Remove User auth and firestore account
+  /// [Delete User] - Remove User auth and data
   Future<void> deleteAccount() async {
     try {
-      final user = _auth.currentUser;
+      final userId = authUser?.id;
+      if (userId == null) throw 'No authenticated user found';
 
-      if (user == null) throw 'No authenticated user found';
-
-      final providers = user.providerData.map((e) => e.providerId).toList();
-
-      if (providers.contains('google.com')) {
-        // Reauthenticate with Google
-        final googleUser = await GoogleSignIn().signIn();
-        final googleAuth = await googleUser!.authentication;
-
-        final credential = GoogleAuthProvider.credential(
-          accessToken: googleAuth.accessToken,
-          idToken: googleAuth.idToken,
-        );
-
-        await user.reauthenticateWithCredential(credential);
-      }
-
-      await UserRepository.instance.removeUserRecord(user.uid);
-      await user.delete();
-    } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthException(code: e.code);
-    } on FirebaseException catch (e) {
-      throw FirebaseException(code: e.code, plugin: 'firebase_auth');
-    } on FormatException catch (_) {
-      throw FormatException;
-    } on PlatformException catch (e) {
-      throw PlatformException(code: e.code);
+      // Supabase doesn't have a simple user.delete() on the client side for safety.
+      // Usually, we delete the user record from our database table, 
+      // and use a database trigger to delete the auth user, or use a service role.
+      // For simplicity here, we delete from our public.users table.
+      await UserRepository.instance.removeUserRecord(userId);
+      
+      // Note: Full auth deletion usually requires service_role key or Edge Function.
+      await logout();
     } catch (e) {
-      throw 'Something went wrong. Please try again';
+      throw 'Delete Account Error: $e';
     }
   }
 }
